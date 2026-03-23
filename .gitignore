@@ -1,7 +1,8 @@
-# Simulation runtime state — generated during play, not checked in
-sim/state/
-sim/archive/
-sim/log/
+# Simulation instances — generated during play, not checked in
+sim/*/
+
+# Runtime breadcrumb for compaction hooks
+sim/.active
 
 # Local Claude Code settings
 .claude/settings.local.json

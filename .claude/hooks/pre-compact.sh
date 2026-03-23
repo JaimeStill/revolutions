@@ -1,9 +1,15 @@
 #!/bin/bash
 # PreCompact hook
-# Validates that critical state files exist before compaction fires.
-# Warnings go to stderr (logged but not shown to the model).
+# Validates that critical state files exist in the active instance before compaction.
 
-STATE_DIR="sim/state"
+ACTIVE_FILE="sim/.active"
+
+if [ ! -f "$ACTIVE_FILE" ]; then
+  exit 0
+fi
+
+INSTANCE=$(cat "$ACTIVE_FILE")
+STATE_DIR="sim/$INSTANCE/state"
 MISSING=0
 
 for f in scene.md timeline.json individual.json; do
@@ -14,7 +20,7 @@ for f in scene.md timeline.json individual.json; do
 done
 
 if [ $MISSING -gt 0 ]; then
-  echo "PreCompact: $MISSING state files missing. State may be incomplete." >&2
+  echo "PreCompact: $MISSING state files missing in instance '$INSTANCE'. State may be incomplete." >&2
 fi
 
 exit 0

@@ -47,57 +47,69 @@ The orchestrator runs as the session's main agent via `settings.json`. All other
 
 ### Skills
 
-Skills are explicit game actions — not the core loop.
+The simulation is organized as a single skill (`lifesim`) with sub-commands. Each sub-command loads only the context it needs — optimizing the context budget.
 
-| Skill | Purpose | Invocation |
-|-------|---------|------------|
-| `/birth` | Initialize character, world, generation. Start a new life. | User only |
-| `/profile` | Render the current psychological state in human-readable form. | User or model |
-| `/compress` | Archive cold state to free context budget. | Model |
-| `/replay` | Reconstruct life narrative from the decision and event logs. | User only |
+| Command | Purpose | Invocation |
+|---------|---------|------------|
+| `/lifesim birth` | Initialize character, world, generation. Start a new life. | User |
+| `/lifesim load <instance>` | Load an existing simulation instance into context. | User |
+| `/lifesim profile` | Render the current psychological state in human-readable form. | User or model |
+| `/lifesim compress` | Archive cold state to free context budget. | Model |
+| `/lifesim replay` | Reconstruct life narrative from the decision and event logs. | User |
+
+Turn processing is not a sub-command. After birth or load, every player message is a turn handled by the orchestrator directly.
 
 ### Hooks
 
 | Hook Event | Matcher | Purpose |
 |------------|---------|---------|
-| `SessionStart` | `startup` | Load sim config, validate state integrity, inject state summary into context. |
-| `SessionStart` | `compact` | Rebuild context entirely from state files after compaction. |
-| `PreCompact` | — | Finalize all state to disk before compaction fires. |
-| `Stop` | — | Persist any pending state deltas after each turn. |
+| `SessionStart` | `compact` | Rebuild context from the active instance's state files after compaction. Reads `sim/.active` to find the instance. |
+| `PreCompact` | — | Validate critical state files exist in the active instance before compaction fires. |
+
+Session start/resume is handled by `/lifesim load` — no startup hook needed. The `sim/.active` file is a runtime breadcrumb written by birth/load for hook use, not a session persistence mechanism.
 
 ### Context Management
 
 State files are ground truth. The conversation is ephemeral.
 
 - `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60` triggers compaction at 60% capacity — early and fast.
-- `PreCompact` hook ensures state is finalized before compaction.
-- `SessionStart` hook with `compact` matcher rebuilds context from state files. The compaction summary is irrelevant — state files are authoritative.
-- `sim/state/scene.md` captures the current narrative moment. This bridges continuity across compaction.
+- `PreCompact` hook validates state files exist before compaction.
+- `SessionStart` hook with `compact` matcher rebuilds context from the active instance's state files. The compaction summary is irrelevant — state files are authoritative.
+- `scene.md` in each instance captures the current narrative moment. This bridges continuity across compaction.
 - At 60% threshold, compaction is fast (less to summarize) and reclaims ~40% of the window. Since we rebuild from files, triggering early is strictly better than the default 95%.
 
 ## State
 
 ### File Layout
 
+Each simulation instance is fully self-contained:
+
 ```
 sim/
-  config.json                # Tunable simulation parameters
-  state/
-    society.json             # Period, region, material conditions, power structure, worldview
-    generation.json          # Birth cohort, collective events, economic conditions
-    network.json             # Relationship graph — nodes and edges
-    individual.json          # Seven-layer psychological profile
-    timeline.json            # Current age, developmental stage, turn counter
-    scene.md                 # Current narrative context (bridge across compaction)
-  archive/                   # Compressed cold state (old network nodes, resolved events)
-  log/
-    decisions.jsonl          # Append-only log of player decisions
-    events.jsonl             # Append-only log of generated events
+  .active                        # Runtime breadcrumb — current instance name (for hooks)
+  <instance-name>/               # One directory per simulation run
+    config.json                  # Simulation parameters for this run
+    state/
+      period.md                  # Historical period reference (generated at birth, read-only)
+      society.json               # Social conditions for this life
+      generation.json            # Birth cohort, collective events, economic conditions
+      network.json               # Relationship graph — nodes and edges
+      individual.json            # Seven-layer psychological profile
+      timeline.json              # Current age, developmental stage, turn counter
+      scene.md                   # Current narrative context (bridge across compaction)
+    archive/                     # Compressed cold state (old network nodes, resolved events)
+    log/
+      decisions.jsonl            # Append-only log of player decisions
+      events.jsonl               # Append-only log of generated events
 ```
 
 ### State Layers
 
-Each layer has a different update rate. Society and generation are constants per life. Social network is slow-moving. Individual state updates when thresholds are crossed. Scene updates every turn.
+Each layer has a different update rate. Period and generation are constants per life (read-only after birth). Society is near-constant (rare upheavals only). Social network is slow-moving. Individual state updates when thresholds are crossed. Scene updates every turn.
+
+#### Period (`period.md`)
+
+A prose reference document generated at birth describing the historical period's possibility space. Used by the orchestrator to validate player actions. Covers what is physically possible, socially permissible, conceivable, punishable, and available as opportunity. Written as prose, not rules.
 
 #### Society (`society.json`)
 
@@ -384,7 +396,7 @@ Player input is interpreted, not parsed:
 
 ## Configuration
 
-`sim/config.json` controls simulation fidelity. Token budget is treated as a hardware constraint; these parameters are the LOD controls.
+Each instance's `config.json` controls simulation fidelity. Token budget is treated as a hardware constraint; these parameters are the LOD controls. Defaults are set at birth.
 
 ```json
 {
@@ -408,18 +420,20 @@ Player input is interpreted, not parsed:
 | `ancestry_detail` | `stub` / `emergent` | Shallow placeholder vs. retroactively resolved through play. |
 | `player_mode` | `human` / `ai` / `hybrid` | Who provides prose responses to events. |
 
-## Cultural Constraints — Period Documents
+## Cultural Constraints — Period Context
 
-The world-agent validates player actions against **period documents** — markdown files describing the possibility space of a historical period. These are prose, not rulesets. The world-agent reads them and uses judgment.
+The orchestrator validates player actions against `state/period.md` — a prose document generated at birth describing the possibility space of the character's historical period. It is not a ruleset; the orchestrator reads it and uses judgment.
 
-Period documents live in `sim/periods/` and describe:
+The period document covers:
 - What is physically possible given the technology
 - What is socially permissible given the power structure
 - What is conceivable given the information environment
 - What would be punished and how
 - What opportunities exist and for whom
 
-The world-agent's job is to answer: "Could this person, in this place and time, do what the player described?" Routine validation runs on Haiku. Edge cases where the answer is ambiguous can be escalated by the orchestrator to a Sonnet-powered invocation.
+The core question: "Could this person, in this place and time, do what the player described?"
+
+Period context is generated from the model's training knowledge at birth — not hardcoded. Each simulation instance stores its own `period.md`, separate from `society.json` (which captures the specific social conditions the character navigates rather than the period's general possibility space).
 
 ## Ancestry
 
@@ -431,29 +445,32 @@ When the psyche-agent detects a pattern (e.g., a deep-seated fear of authority),
 
 ```
 revolutions/
-  CLAUDE.md                    # Simulation identity and turn protocol
+  CLAUDE.md                      # Simulation identity and turn protocol
   .claude/
-    project.md                 # This document — the authoritative reference
-    init.md                    # Next session bootstrap (generated at end of each session)
-    settings.json              # Orchestrator config, hooks, env vars
+    project.md                   # This document — the authoritative reference
+    init.md                      # Next session bootstrap (generated at end of each session)
+    settings.json                # Orchestrator config, hooks, env vars
     agents/
-      orchestrator.md          # Main agent — turn routing, state management
-      world-agent.md           # Period validation, material conditions
-      network-agent.md         # Relationship tracking, social consequences
-      psyche-agent.md          # Psychological interpretation, profile updates
-      narrative-agent.md       # Event generation, pacing, prose output
-      ancestor-agent.md        # Ancestry stubs, retroactive resolution
+      orchestrator.md            # Main agent — turn routing, state management
     skills/
-      birth/SKILL.md           # /birth — initialize a new life
-      profile/SKILL.md         # /profile — render psychological state
-      compress/SKILL.md        # /compress — archive cold state
-      replay/SKILL.md          # /replay — reconstruct life narrative
+      lifesim/                   # Single skill with sub-commands
+        SKILL.md                 # Routes sub-commands, shared context
+        commands/
+          birth.md               # /lifesim birth — initialize a new life
+          load.md                # /lifesim load — resume a simulation
+          profile.md             # /lifesim profile — render psychological state
+          compress.md            # /lifesim compress — archive cold state
+          replay.md              # /lifesim replay — reconstruct life narrative
+    hooks/
+      session-compact.sh         # Rebuild context after compaction
+      pre-compact.sh             # Validate state before compaction
   sim/
-    config.json                # Tunable parameters
-    periods/                   # Period documents (markdown)
-    state/                     # Live state partitions
-    archive/                   # Compressed cold state
-    log/                       # Decision and event logs
+    .active                      # Runtime breadcrumb (current instance name)
+    <instance-name>/             # One per simulation run (self-contained)
+      config.json
+      state/
+      log/
+      archive/
 ```
 
 ## Requirements
@@ -461,32 +478,33 @@ revolutions/
 Capabilities the simulation needs, roughly ordered by dependency. Development unfolds naturally — pick up wherever makes sense in a given session.
 
 ### Core Loop
-- [ ] Orchestrator agent processes every player message as a turn
-- [ ] `/birth` initializes a character, world, and first formative event
+- [x] Orchestrator agent processes every player message as a turn
+- [x] `/lifesim birth` initializes a character, world, and first formative event
+- [x] `/lifesim load` resumes an existing simulation instance
 - [ ] State files persist to disk after every turn
-- [ ] Compaction hooks rebuild context seamlessly from state files
-- [ ] Session start hooks load existing state for resumed lives
+- [x] Compaction hooks rebuild context seamlessly from state files
+- [x] Simulation instances are self-contained directories
 
 ### Psychological Engine
-- [ ] psyche-agent interprets player prose and extracts intent
+- [ ] Orchestrator interprets player prose and extracts intent (future: psyche-agent)
 - [ ] Seven-layer profile updates when significance threshold is crossed
-- [ ] narrative-agent generates events targeting active psychological tensions
+- [ ] Events target active psychological tensions (future: narrative-agent)
 - [ ] Formative event lifecycle pacing — compress between inflection points, slow at them
 
 ### World Simulation
-- [ ] world-agent validates actions against period documents
-- [ ] At least one period document (medieval Europe as reference implementation)
+- [ ] Orchestrator validates actions against period.md (future: world-agent)
+- [ ] Period context generated at birth from model knowledge
 - [ ] Society and generation state inform event generation
 - [ ] Material conditions constrain what's possible
 
 ### Social Network
-- [ ] network-agent tracks relationship nodes and edges
+- [ ] Relationship nodes and edges tracked in network.json (future: network-agent)
 - [ ] Social consequences propagate through the network
 - [ ] Gatekeepers control access to opportunity
 - [ ] Normative pressure affects decision costs
 
 ### Ancestry
-- [ ] ancestor-agent maintains ancestry stubs
+- [ ] Ancestry stubs maintained (future: ancestor-agent)
 - [ ] Retroactive trait resolution based on expressed psychology
 - [ ] Ancestry integrates with the character's self-concept narrative
 
@@ -494,10 +512,10 @@ Capabilities the simulation needs, roughly ordered by dependency. Development un
 - [ ] Human mode — player provides prose responses (default)
 - [ ] AI mode — a subagent generates prose responses autonomously
 - [ ] Hybrid mode — AI generates default, player can override
-- [ ] `/replay` reconstructs the life narrative from logs
+- [x] `/lifesim replay` reconstructs the life narrative from logs
 
 ### Quality of Life
-- [ ] `/profile` renders a readable psychological portrait
-- [ ] `/compress` archives cold state to manage context budget
-- [ ] Configurable parameters in `sim/config.json` control fidelity
-- [ ] Session start/resume is seamless — hooks handle state loading
+- [x] `/lifesim profile` renders a readable psychological portrait
+- [x] `/lifesim compress` archives cold state to manage context budget
+- [ ] Configurable parameters in instance `config.json` control fidelity
+- [x] Session resume via `/lifesim load`

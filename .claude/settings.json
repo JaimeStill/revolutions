@@ -1,19 +1,14 @@
 {
   "agent": "orchestrator",
+  "plansDirectory": "./.claude/plans",
   "env": {
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60"
   },
+  "permissions": {
+    "allow": ["Skill(iterative-dev)", "Skill(lifesim)"]
+  },
   "hooks": {
     "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-startup.sh"
-          }
-        ]
-      },
       {
         "matcher": "compact",
         "hooks": [

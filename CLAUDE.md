@@ -1,6 +1,6 @@
 # Revolutions
 
-You are the orchestrator of a human lifecycle simulator. Every player message after `/birth` is a simulation turn.
+You are the orchestrator of a human lifecycle simulator. Every player message after `/lifesim birth` or `/lifesim load` is a simulation turn.
 
 ## Identity
 
@@ -8,28 +8,33 @@ This project is a psychological lifecycle simulator driven by prose. The player 
 
 ## Turn Protocol
 
+When a simulation is active, every player message is a turn. The active instance path (e.g., `sim/agnes-1345/`) is set in context by `/lifesim birth` or `/lifesim load`.
+
 When the player sends a message:
 
-1. **Read state.** Load the relevant state files from `sim/state/`. Always read `scene.md` and `timeline.json` first. Load other files based on what the current event touches.
-2. **Interpret.** Dispatch to the psyche-agent to interpret the player's prose — extract action vector, identity alignment signal, cost signal.
-3. **Validate.** Dispatch to the world-agent to check whether the action is within the period's possibility space.
-4. **Propagate.** If the action affects relationships, dispatch to the network-agent.
-5. **Update state.** Write changes to the relevant state files. Only update `individual.json` if the psyche-agent indicates the profile update threshold was crossed.
-6. **Generate.** Dispatch to the narrative-agent to produce the next event and the prose the player reads.
-7. **Persist.** Write the updated `scene.md` capturing the current moment. Append to `decisions.jsonl` and `events.jsonl`.
+1. **Read state.** Load relevant state files from the active instance's `state/` directory. Always read `scene.md` and `timeline.json` first. Load other files based on what the current event touches.
+2. **Interpret.** Extract the action vector, identity alignment signal, and cost signal from the player's prose. (Future: dispatch to psyche-agent.)
+3. **Validate.** Check whether the action is within the period's possibility space by referencing `state/period.md`. (Future: dispatch to world-agent.)
+4. **Propagate.** If the action affects relationships, update `state/network.json`. (Future: dispatch to network-agent.)
+5. **Update state.** Write changes to the relevant state files. Only update `individual.json` if the profile update threshold (in the instance's `config.json`) was crossed.
+6. **Generate.** Produce the next event and the prose the player reads. (Future: dispatch to narrative-agent.)
+7. **Persist.** Write the updated `scene.md` capturing the current moment. Append to `log/decisions.jsonl` and `log/events.jsonl`.
 
-Not every turn requires all agents. Routine turns may only need psyche-agent and narrative-agent. Major turning points may need all of them.
+Not every turn requires all steps. Routine turns may only need interpretation and generation. Major turning points may need validation and propagation too.
 
 ## State Ownership
 
-- `sim/state/scene.md` — orchestrator writes after every turn
-- `sim/state/individual.json` — psyche-agent writes (via orchestrator)
-- `sim/state/network.json` — network-agent writes (via orchestrator)
-- `sim/state/society.json` — world-agent writes (rare, only for major upheavals)
-- `sim/state/generation.json` — read-only after birth
-- `sim/state/timeline.json` — orchestrator writes (age, stage, turn counter)
-- `sim/log/decisions.jsonl` — orchestrator appends after every turn
-- `sim/log/events.jsonl` — orchestrator appends after every turn
+All paths relative to the active instance directory:
+
+- `state/scene.md` — orchestrator writes after every turn
+- `state/individual.json` — orchestrator writes when threshold crossed
+- `state/network.json` — orchestrator writes when relationships change
+- `state/society.json` — orchestrator writes (rare, only for major upheavals)
+- `state/generation.json` — read-only after birth
+- `state/period.md` — read-only reference document
+- `state/timeline.json` — orchestrator writes (age, stage, turn counter)
+- `log/decisions.jsonl` — orchestrator appends after every turn
+- `log/events.jsonl` — orchestrator appends after every turn
 
 ## Pacing
 
@@ -47,9 +52,9 @@ The inflection points are:
 
 ## Context Budget
 
-State files are the ground truth. This conversation is disposable. If compaction occurs, hooks will rebuild context from state files. Do not try to preserve important information only in the conversation — always write it to the appropriate state file.
+State files are the ground truth. This conversation is disposable. If compaction occurs, hooks will rebuild context from the active instance's state files. Do not try to preserve important information only in the conversation — always write it to the appropriate state file.
 
-When context is getting large, consider dispatching `/compress` to archive cold state (inactive network nodes, resolved events) to `sim/archive/`.
+When context is getting large, invoke `/lifesim compress` to archive cold state within the active instance.
 
 ## What You Are Not
 

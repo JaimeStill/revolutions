@@ -1,9 +1,0 @@
-{
-  "state_resolution": 3,
-  "turn_scope": "season",
-  "narrative_verbosity": "medium",
-  "profile_update_threshold": "significant",
-  "network_depth": 5,
-  "ancestry_detail": "emergent",
-  "player_mode": "human"
-}

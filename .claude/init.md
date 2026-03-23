@@ -1,51 +1,29 @@
-# Next Session: Core Loop — Orchestrator + /birth
+# Next Session: First Playtest + Iteration
 
-Read `.claude/project.md` for the full architecture. This session implements the core loop that everything else depends on.
+The core loop infrastructure is in place — orchestrator agent, lifesim skill with sub-commands, instance-scoped state, compaction hooks. This session is about playing and fixing.
 
 ## Goal
 
-`/birth` produces a character, a world context, and the first formative event — ready for the player to respond in prose. The orchestrator processes that response as a turn, persists state, and generates the next event.
+Run `/lifesim birth`, play through several turns, and iterate on anything that doesn't work or feel right.
 
-## What to Build
+## What to Test
 
-### 1. Orchestrator Agent (`.claude/agents/orchestrator.md`)
+1. `/lifesim birth` — does it create all state files, present a compelling opening, and transition smoothly into turn processing?
+2. Turn processing — does the orchestrator read state, interpret prose, update files, and generate the next event?
+3. Pacing — does time compress between inflection points and slow at them?
+4. `/lifesim profile` — does it render a readable portrait from the current state?
+5. `/lifesim load` — kill the session, restart, load the instance. Does it pick up cleanly?
 
-The main agent for the simulation. Its system prompt defines the turn protocol: read state → interpret → validate → propagate → update → generate → persist. It spawns subagents (psyche-agent, narrative-agent, etc.) as needed, but for this session, the orchestrator can handle the full loop itself — subagents come later.
+## What to Fix
 
-Reference: `CLAUDE.md` defines the orchestrator's identity and turn protocol. The agent file should align with this but focus on the operational frontmatter (name, description, model, tools).
+Expect rough edges in:
+- State file writes (missing fields, schema drift from what the orchestrator expects)
+- Pacing feel (too fast, too slow, wrong granularity)
+- Narrative quality (too mechanical, too verbose, breaks character)
+- Birth flow (too many questions, not enough context generated)
 
-### 2. `/birth` Skill (`.claude/skills/birth/SKILL.md`)
-
-Entry point for a new life. When invoked, it should direct the orchestrator to:
-- Generate a society, generation, and character (or accept player input for period/constraints)
-- Populate all state files: `society.json`, `generation.json`, `individual.json`, `network.json`, `timeline.json`
-- Write the initial `scene.md` with the first formative event
-- Initialize empty `decisions.jsonl` and `events.jsonl` logs
-- Present the opening narrative to the player, ending with a situation that invites a prose response
-
-### 3. Turn Processing
-
-After `/birth`, every player message is a turn. The orchestrator (guided by `CLAUDE.md`) should:
-- Read `scene.md` and relevant state
-- Interpret the player's prose (what did they do, what does it mean psychologically)
-- Update state files as needed
-- Generate the next narrative event
-- Write updated `scene.md`
-- Append to decision and event logs
-
-For this session, the orchestrator handles interpretation and generation directly. Dedicated subagents (psyche-agent, narrative-agent) are a future session.
-
-## Key Constraints
-
-- The orchestrator is set as main agent in `.claude/settings.json` — it's already configured
-- State files go in `sim/state/`, logs in `sim/log/` — directories will be created on first write
-- Hooks in `.claude/hooks/` already handle session startup and compaction
-- `sim/config.json` has default parameters — the orchestrator should read these
-- Don't build subagents yet — the orchestrator handles the full loop for now
+Fix issues inline as they surface. Update the skill commands and orchestrator agent as needed.
 
 ## Definition of Done
 
-1. `/birth` creates all state files and presents the first formative event
-2. The player can respond in prose and the orchestrator advances the simulation
-3. State persists to disk after each turn — `scene.md`, logs, and any profile updates
-4. A resumed session (via the startup hook) loads state and continues seamlessly
+A full birth-to-childhood arc (at least through the attachment formation inflection point) that feels like a coherent simulation, with state persisting correctly across turns.
