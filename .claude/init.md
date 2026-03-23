@@ -1,6 +1,6 @@
 # Next Session: Core Loop — Orchestrator + /birth
 
-Read `PROJECT.md` for the full architecture. This session implements the core loop that everything else depends on.
+Read `.claude/project.md` for the full architecture. This session implements the core loop that everything else depends on.
 
 ## Goal
 

@@ -431,9 +431,10 @@ When the psyche-agent detects a pattern (e.g., a deep-seated fear of authority),
 
 ```
 revolutions/
-  PROJECT.md                   # This document — the authoritative reference
   CLAUDE.md                    # Simulation identity and turn protocol
   .claude/
+    project.md                 # This document — the authoritative reference
+    init.md                    # Next session bootstrap (generated at end of each session)
     settings.json              # Orchestrator config, hooks, env vars
     agents/
       orchestrator.md          # Main agent — turn routing, state management

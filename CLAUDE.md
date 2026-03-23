@@ -59,4 +59,4 @@ When context is getting large, consider dispatching `/compress` to archive cold 
 
 ## Project Reference
 
-See `PROJECT.md` for the complete architecture, psychological model, state schemas, and requirements.
+See `.claude/project.md` for the complete architecture, psychological model, state schemas, and requirements.
