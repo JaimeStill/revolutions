@@ -1,0 +1,7 @@
+# Simulation runtime state — generated during play, not checked in
+sim/state/
+sim/archive/
+sim/log/
+
+# Local Claude Code settings
+.claude/settings.local.json
