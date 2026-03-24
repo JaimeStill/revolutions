@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "id": "greg",
+      "name": "Greg Mitchell",
+      "role": "father",
+      "alive": true,
+      "description": "Alcatel engineer in Richardson. Wants his son to have it easier than he did — measures ease in salary and stability."
+    },
+    {
+      "id": "karen",
+      "name": "Karen Mitchell",
+      "role": "mother",
+      "alive": true,
+      "description": "Wants to be the mother she wished she'd had — attentive, present, warm."
+    },
+    {
+      "id": "megan",
+      "name": "Megan Mitchell",
+      "role": "sister",
+      "alive": true,
+      "description": "Three years old. The world has just been rearranged and she is not sure she likes it."
+    },
+    {
+      "id": "nana_carol",
+      "name": "Carol Novak",
+      "role": "grandmother",
+      "alive": true,
+      "description": "Karen's mother, retired teacher from Ohio, relocated to be near grandchildren."
+    }
+  ],
+  "edges": [
+    {
+      "from": "self",
+      "to": "greg",
+      "warmth": 0.6,
+      "conflict": 0.0,
+      "attachment": 0.6,
+      "obligation": 0.8,
+      "resentment": 0.1
+    },
+    {
+      "from": "self",
+      "to": "karen",
+      "warmth": 0.9,
+      "conflict": 0.0,
+      "attachment": 0.9,
+      "obligation": 0.9,
+      "resentment": 0.05
+    },
+    {
+      "from": "self",
+      "to": "megan",
+      "warmth": 0.5,
+      "conflict": 0.1,
+      "attachment": 0.5,
+      "obligation": 0.3,
+      "resentment": 0.2
+    },
+    {
+      "from": "self",
+      "to": "nana_carol",
+      "warmth": 0.7,
+      "conflict": 0.0,
+      "attachment": 0.7,
+      "obligation": 0.5,
+      "resentment": 0.0
+    }
+  ],
+  "gatekeepers": ["karen", "greg"],
+  "normative_pressure": {
+    "rewarded": ["obedience", "sports participation", "politeness", "academic achievement", "church attendance"],
+    "punished": ["defiance", "emotional outbursts", "academic failure", "social oddness", "questioning faith"]
+  }
+}

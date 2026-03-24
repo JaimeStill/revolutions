@@ -31,37 +31,22 @@ This document is the orchestrator's reference for validating player actions. Wri
 
 #### `state/society.json`
 
-The specific social conditions the character is born into:
+Structured facts the engine needs for quick lookup. Period.md handles texture.
 
 ```json
 {
   "period": "string — era label",
   "region": "string — geographic specificity",
   "culture": "string — cultural identity",
-  "material_conditions": {
-    "economic_mode": "string",
-    "scarcity_profile": "string",
-    "technology_tier": "string"
-  },
-  "power_structure": {
-    "political_form": "string",
-    "enforcement": "string",
-    "mobility_constraints": {
-      "class": "string",
-      "gender": "string",
-      "ethnicity": "string"
-    }
-  },
-  "worldview": {
-    "dominant": "string",
-    "relationship_to_nature": "string",
-    "relationship_to_authority": "string"
+  "mobility_constraints": {
+    "class": "string",
+    "gender": "string",
+    "ethnicity": "string"
   },
   "collective_trauma": ["string"],
   "information_environment": {
     "literacy_rate": "string",
-    "primary_medium": "string",
-    "censorship": "string"
+    "primary_medium": "string"
   }
 }
 ```
@@ -101,14 +86,12 @@ At birth, only biological and temperament layers exist. Other layers form throug
     "physical_capacity": "string"
   },
   "temperament": {
-    "_theory": "Thomas & Chess / Rothbart",
     "activity": "number 0-1",
     "reactivity": "number 0-1",
     "sociability": "number 0-1",
     "persistence": "number 0-1"
   },
   "attachment": {
-    "_theory": "Bowlby / Ainsworth",
     "style": "not yet formed",
     "stability": null,
     "formed_at": null,
@@ -116,24 +99,20 @@ At birth, only biological and temperament layers exist. Other layers form throug
     "key_relationship": null
   },
   "schemas": {
-    "_theory": "Young's Schema Therapy",
     "active": []
   },
   "values": {
-    "_theory": "Schwartz's Theory of Basic Human Values",
     "hierarchy": [],
     "tested_by": [],
     "last_reordered": null
   },
   "self_concept": {
-    "_theory": "McAdams' Narrative Identity Theory",
     "agency": null,
     "communion": null,
     "dominant_sequence": null,
     "identity_statement": null
   },
   "defenses": {
-    "_theory": "Vaillant's hierarchy",
     "repertoire": {
       "mature": [],
       "neurotic": [],
@@ -150,7 +129,9 @@ At birth, only biological and temperament layers exist. Other layers form throug
 
 #### `state/network.json`
 
-Start with the character's immediate family — the people present at birth. Generate names, roles, and initial relationship qualities appropriate to the period and culture.
+Start with the character's immediate family — the people present at birth. Generate names, roles, and initial relationship data appropriate to the period and culture.
+
+Nodes describe WHO someone is. Edges describe the relationship TO the character.
 
 ```json
 {
@@ -158,23 +139,20 @@ Start with the character's immediate family — the people present at birth. Gen
     {
       "id": "string",
       "name": "string",
-      "role": "string — family_nuclear, family_extended, community, etc.",
+      "role": "string — mother, father, sibling, etc.",
       "alive": true,
-      "qualities": {
-        "attachment_strength": "number 0-1",
-        "obligation_weight": "number 0-1",
-        "aspiration_vector": "string",
-        "resentment_load": "number 0-1"
-      }
+      "description": "string — brief prose sketch of this person"
     }
   ],
   "edges": [
     {
       "from": "self",
       "to": "string — node id",
-      "type": "string",
       "warmth": "number 0-1",
-      "conflict": "number 0-1"
+      "conflict": "number 0-1",
+      "attachment": "number 0-1",
+      "obligation": "number 0-1",
+      "resentment": "number 0-1"
     }
   ],
   "gatekeepers": [],
@@ -216,7 +194,9 @@ Write the simulation parameters to the instance root. Defaults:
   "profile_update_threshold": "significant",
   "network_depth": 5,
   "ancestry_detail": "emergent",
-  "player_mode": "human"
+  "player_mode": "human",
+  "interaction_model": "discussion",
+  "player_intention": null
 }
 ```
 
@@ -233,17 +213,23 @@ Write the opening scene. This is the character's entry into the world — the fi
 
 The scene should feel immediate and grounded in the period. Not a summary — a moment.
 
-### 8. Initialize Logs
+### 8. Create Initial Snapshot
 
-Create empty files:
-- `log/decisions.jsonl`
-- `log/events.jsonl`
+Copy all state files to `state/snapshots/turn-0-birth/` to capture the initial state.
 
-### 9. Name the Instance
+### 9. Initialize Codex
 
-Suggest a name based on the character's name and birth year (e.g., `agnes-1345`). Ask the player to confirm or provide an alternative. Validate that the directory `sim/<name>/` doesn't already exist.
+Create the empty codex structure:
+- `codex/chronicle.md` (empty or with a brief birth entry)
+- `codex/characters/` (empty directory)
+- `codex/world/` (empty directory)
+- `codex/psychology/` (empty directory)
 
-### 10. Write Everything
+### 10. Name the Instance
+
+Suggest a name based on the character's name and birth year (e.g., `drew-1993`). Ask the player to confirm or provide an alternative. Validate that the directory `sim/<name>/` doesn't already exist.
+
+### 11. Write Everything
 
 Create the instance directory structure and write all files:
 
@@ -258,14 +244,17 @@ sim/<instance-name>/
     network.json
     timeline.json
     scene.md
-  log/
-    decisions.jsonl
-    events.jsonl
-  archive/
+    snapshots/
+      turn-0-birth/
+  codex/
+    chronicle.md
+    characters/
+    world/
+    psychology/
 ```
 
 Write the instance name to `sim/.active`.
 
-### 11. Present the Opening
+### 12. Present the Opening
 
 Output the narrative from `scene.md` to the player. From this point forward, every player message is a simulation turn processed by the orchestrator.

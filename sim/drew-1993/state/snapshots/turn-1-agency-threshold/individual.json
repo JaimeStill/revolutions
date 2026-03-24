@@ -5,14 +5,12 @@
     "physical_capacity": "lean, slightly small for age, good coordination"
   },
   "temperament": {
-    "_theory": "Thomas & Chess / Rothbart",
     "activity": 0.55,
     "reactivity": 0.65,
     "sociability": 0.45,
     "persistence": 0.6
   },
   "attachment": {
-    "_theory": "Bowlby / Ainsworth",
     "style": "secure with anxious undertone",
     "stability": 0.7,
     "formed_at": "age 2-3",
@@ -20,7 +18,6 @@
     "key_relationship": "karen"
   },
   "schemas": {
-    "_theory": "Young's Schema Therapy",
     "active": [
       {
         "name": "emotional_inhibition",
@@ -34,20 +31,17 @@
     ]
   },
   "values": {
-    "_theory": "Schwartz's Theory of Basic Human Values",
     "hierarchy": [],
     "tested_by": [],
     "last_reordered": null
   },
   "self_concept": {
-    "_theory": "McAdams' Narrative Identity Theory",
     "agency": null,
     "communion": null,
     "dominant_sequence": null,
     "identity_statement": null
   },
   "defenses": {
-    "_theory": "Vaillant's hierarchy",
     "repertoire": {
       "mature": [],
       "neurotic": ["intellectualization"],

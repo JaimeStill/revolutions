@@ -1,0 +1,5 @@
+# Karen Mitchell
+
+Karen Mitchell is the first face Drew learned to read, and the one he read most carefully. She was warm and present in his earliest years --- the mother who held him on her lap while the Oklahoma City coverage looped, who cried in the car after Columbine, who arrived at school on September 11 with her mascara applied unevenly because she'd been weeping and tried to fix it before he could see. Her love has always carried an anxious frequency, a sense that the world is full of things that could take her children from her.
+
+Her real estate career took off in the early 2000s, and Megan's high school years --- varsity soccer, the social turbulence of adolescence --- have consumed most of her worry. Drew has become the child she worries about less, because he seems so steady, so self-sufficient, so unlikely to need her in the urgent way that triggers her attention. She does not yet see that his steadiness is itself a response to her anxiety --- that he learned early to be the child who did not add to her burden. She is starting to look away from him at precisely the age when looking closely would matter most.

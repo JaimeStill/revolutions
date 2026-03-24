@@ -5,14 +5,12 @@
     "physical_capacity": "lean, wiry, good coordination. Not the biggest kid but quick."
   },
   "temperament": {
-    "_theory": "Thomas & Chess / Rothbart",
     "activity": 0.55,
     "reactivity": 0.65,
     "sociability": 0.45,
     "persistence": 0.65
   },
   "attachment": {
-    "_theory": "Bowlby / Ainsworth",
     "style": "secure with anxious undertone",
     "stability": 0.75,
     "formed_at": "age 2-3",
@@ -20,7 +18,6 @@
     "key_relationship": "karen"
   },
   "schemas": {
-    "_theory": "Young's Schema Therapy",
     "active": [
       {
         "name": "emotional_inhibition",
@@ -43,20 +40,17 @@
     ]
   },
   "values": {
-    "_theory": "Schwartz's Theory of Basic Human Values",
     "hierarchy": ["security", "benevolence", "self-direction", "achievement"],
     "tested_by": [],
     "last_reordered": null
   },
   "self_concept": {
-    "_theory": "McAdams' Narrative Identity Theory",
     "agency": "emerging — I can learn things and fix things and that matters",
     "communion": "moderate — I care about my family and Connor but I don't need a crowd",
     "dominant_sequence": null,
     "identity_statement": "I am someone who figures things out"
   },
   "defenses": {
-    "_theory": "Vaillant's hierarchy",
     "repertoire": {
       "mature": ["sublimation"],
       "neurotic": ["intellectualization"],

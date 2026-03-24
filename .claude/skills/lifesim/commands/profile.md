@@ -29,3 +29,5 @@ Present the character's psychology as prose, not raw JSON. Structure it as a cli
 Skip layers that haven't formed yet (they're null/empty in the profile). Note what developmental stage the character is in and what's coming next.
 
 End with a brief note on the character's active tensions — where the narrative pressure is, what internal conflicts are unresolved.
+
+If `codex/psychology/portrait.md` exists, it contains a persistent version of this portrait that is updated at inflection points and session exits.

@@ -1,0 +1,107 @@
+{
+  "nodes": [
+    {
+      "id": "greg",
+      "name": "Greg Mitchell",
+      "role": "father",
+      "alive": true,
+      "description": "Wants Drew to be tough, competent, successful. Signed him up for T-ball before he asked."
+    },
+    {
+      "id": "karen",
+      "name": "Karen Mitchell",
+      "role": "mother",
+      "alive": true,
+      "description": "Protective. Got her real estate license in '99 but keeps hours around the kids' schedule. Starting to feel the squeeze between identity-as-mother and identity-as-person."
+    },
+    {
+      "id": "megan",
+      "name": "Megan Mitchell",
+      "role": "sister",
+      "alive": true,
+      "description": "10 years old, sharp, already competitive. Good at school, good at soccer, good at performing goodness. The standard Drew is measured against without anyone saying so."
+    },
+    {
+      "id": "nana_carol",
+      "name": "Carol Novak",
+      "role": "grandmother",
+      "alive": true,
+      "description": "The soft landing. Reads to Drew, doesn't correct him, lets him be weird. Lives 10 minutes away in a smaller house full of books."
+    },
+    {
+      "id": "connor",
+      "name": "Connor Huang",
+      "role": "best_friend",
+      "alive": true,
+      "description": "Neighbor kid, same age. Taiwanese-American. In the same class since kindergarten. Connor is louder, braver, funnier. Drew's first real friend."
+    },
+    {
+      "id": "mrs_pollard",
+      "name": "Mrs. Pollard",
+      "role": "teacher",
+      "alive": true,
+      "description": "Second grade teacher at Mendenhall Elementary. Firm, fair, likes Drew because he's quiet and finishes his work. Doesn't notice what the quietness costs."
+    }
+  ],
+  "edges": [
+    {
+      "from": "self",
+      "to": "greg",
+      "warmth": 0.5,
+      "conflict": 0.15,
+      "attachment": 0.55,
+      "obligation": 0.8,
+      "resentment": 0.15
+    },
+    {
+      "from": "self",
+      "to": "karen",
+      "warmth": 0.85,
+      "conflict": 0.05,
+      "attachment": 0.9,
+      "obligation": 0.85,
+      "resentment": 0.1
+    },
+    {
+      "from": "self",
+      "to": "megan",
+      "warmth": 0.55,
+      "conflict": 0.2,
+      "attachment": 0.6,
+      "obligation": 0.3,
+      "resentment": 0.1
+    },
+    {
+      "from": "self",
+      "to": "nana_carol",
+      "warmth": 0.8,
+      "conflict": 0.0,
+      "attachment": 0.75,
+      "obligation": 0.4,
+      "resentment": 0.0
+    },
+    {
+      "from": "self",
+      "to": "connor",
+      "warmth": 0.6,
+      "conflict": 0.05,
+      "attachment": 0.4,
+      "obligation": 0.1,
+      "resentment": 0.0
+    },
+    {
+      "from": "self",
+      "to": "mrs_pollard",
+      "warmth": 0.4,
+      "conflict": 0.05,
+      "attachment": 0.3,
+      "obligation": 0.5,
+      "resentment": 0.0
+    }
+  ],
+  "gatekeepers": ["karen", "greg", "mrs_pollard"],
+  "normative_pressure": {
+    "rewarded": ["obedience", "sports participation", "politeness", "academic achievement", "church attendance"],
+    "punished": ["defiance", "emotional outbursts", "academic failure", "social oddness", "questioning faith"]
+  }
+}

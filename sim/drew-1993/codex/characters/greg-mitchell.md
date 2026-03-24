@@ -1,0 +1,5 @@
+# Greg Mitchell
+
+Greg Mitchell is an engineer at Alcatel, deep in the Plano Telecom Corridor --- a man who speaks in solutions rather than feelings. He survived the 2000 restructuring that took three men on his team, came home carrying a cardboard box of their desk photos, and went back to work the next Monday. He was promoted in 2003. He drives to Oklahoma for disaster relief and says things like "This changes everything" only when he means it.
+
+His relationship with Drew is built on a currency of competence. Greg does not say he is proud of his son; he hands him a wrench. When Drew started mowing the lawn without being asked, Greg responded by trusting him with the sprinkler timer, then the oil check on the Camry, then the loose hinge on the garage door. Each task was a small transfer of authority, and Drew understood every one. They do not talk about fear or sadness or the arguments Greg has with Karen about money in voices pitched below a child's hearing. They talk about whether the mower blade needs sharpening. It is not enough, but neither of them knows that yet.

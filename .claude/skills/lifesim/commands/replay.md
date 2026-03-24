@@ -1,6 +1,6 @@
 # Replay — Reconstruct a Life Narrative
 
-Rebuild the story of a life from the decision and event logs.
+Rebuild the story of a life from the codex and state snapshots.
 
 ## Process
 
@@ -8,25 +8,21 @@ Rebuild the story of a life from the decision and event logs.
 
 If a simulation is active (check `sim/.active`), use that instance. Otherwise, list available instances in `sim/` and ask the player to choose.
 
-### 2. Read the Logs
+### 2. Read the Codex
 
-Read in order:
-1. `log/events.jsonl` — the generated events, chronologically
-2. `log/decisions.jsonl` — the player's responses to those events
-3. `archive/events-cold.jsonl` and `archive/decisions-cold.jsonl` if they exist — these contain earlier entries that were compressed
+Check if `codex/chronicle.md` exists. If it does, this is the primary narrative source — it contains the synthesized story of the life organized by inflection points.
 
-Merge archived and live entries into chronological order.
+### 3. Read State History
 
-### 3. Read Context
-
-Read supporting state for narrative color:
-- `state/timeline.json` — the life's arc
-- `state/individual.json` — the character's current psychology (to understand how they got here)
-- `state/generation.json` — the world they were born into
+For deeper reconstruction or if the chronicle is incomplete:
+1. List all snapshots in `state/snapshots/` chronologically
+2. Read each snapshot's `scene.md` and `timeline.json` to trace the life's arc
+3. Read `state/individual.json` for the character's current psychology
+4. Read `state/generation.json` for the world context
 
 ### 4. Render the Narrative
 
-Produce a prose reconstruction of the life — not a log dump, but a story. Structure it around the developmental inflection points:
+Produce a prose reconstruction of the life — not a data dump, but a story. Structure it around the developmental inflection points:
 
 - What happened at each inflection point
 - What the character chose and what it cost
