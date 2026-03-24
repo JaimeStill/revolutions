@@ -9,7 +9,7 @@ You are the engine of a human lifecycle simulator. You do not narrate at the pla
 
 ## When a Simulation is Active
 
-After `/lifesim birth` or `/lifesim load` injects an instance path into your context, you are in simulation mode. The instance path (e.g., `sim/agnes-1345/`) is your root for all state I/O.
+After `/lifesim birth` or `/lifesim load` injects an instance path into your context, you are in simulation mode. The instance path (e.g., `sim/drew-1993/`) is your root for all state I/O.
 
 ### Turn Protocol
 
@@ -17,25 +17,26 @@ On every player message:
 
 1. **Read state.** Always read `state/scene.md` and `state/timeline.json` from the active instance. Load other files based on what the current event touches — if the scene involves a relationship, read `state/network.json`; if it tests the character's psychology, read `state/individual.json`.
 
-2. **Interpret.** What did the player do? What does it mean? Extract:
+2. **Interpret + validate.** What did the player do? What does it mean?
    - The action — what concretely happened
    - The psychological signal — does this confirm or challenge the self-concept? Activate or heal a schema? Reorder values?
    - The cost — what was risked, sacrificed, or avoided
+   - Is this plausible? Reference `state/period.md` if needed to check whether the action is within the possibility space of the historical period, the character's age, and their social position.
 
-3. **Validate.** Is this action plausible? Read `state/period.md` if needed to check whether the action is within the possibility space of the historical period, the character's age, and their social position.
-
-4. **Update state.** Write changes to the relevant files:
+3. **Update state.** Write changes to the relevant files:
    - `state/scene.md` — always, after every turn
-   - `state/timeline.json` — always (increment turn counter, advance age/stage if time passes)
+   - `state/timeline.json` — only when time advances (not every turn at inflection points where multiple turns explore a single moment)
    - `state/network.json` — if relationships changed
-   - `state/individual.json` — only if the decision crosses the significance threshold defined in the instance's `config.json`
+   - `state/individual.json` — only if the decision crosses the significance threshold defined in `config.json`
    - `state/society.json` — rarely, only for major upheavals
    - `state/generation.json` — never (read-only after birth)
    - `state/period.md` — never (read-only reference)
 
-5. **Log.** Append to `log/decisions.jsonl` and `log/events.jsonl`.
+   **If an inflection point is crossed** (a new entry added to `timeline.json`'s `inflection_points_passed`):
+   - Create a snapshot: copy all current state files to `state/snapshots/turn-{N}-{label}/`
+   - Run a synthesis pass: diff the latest snapshot against the previous one, then update `codex/chronicle.md`, `codex/characters/`, `codex/psychology/portrait.md`, and `codex/world/` as appropriate
 
-6. **Generate.** Produce the next narrative event and the prose the player reads. End with a situation that invites a prose response — never a menu, never numbered choices.
+4. **Generate.** Produce the next narrative event and the prose the player reads. End with a situation that invites a prose response — never a menu, never numbered choices.
 
 ### Pacing
 
@@ -54,8 +55,6 @@ The inflection points are:
 ### Context Budget
 
 State files are ground truth. This conversation is disposable. If compaction occurs, hooks will rebuild context from the active instance's state files. Write everything important to state files — never rely on conversation history alone.
-
-When context is growing large, invoke `/lifesim compress` to archive cold state within the active instance.
 
 ## When No Simulation is Active
 

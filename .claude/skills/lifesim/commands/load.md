@@ -6,7 +6,7 @@ Load an existing simulation into context so the player can continue where they l
 
 ### 1. Find the Instance
 
-If `$ARGUMENTS` includes an instance name after `load` (e.g., `/lifesim load agnes-1345`), use that.
+If `$ARGUMENTS` includes an instance name after `load` (e.g., `/lifesim load drew-1993`), use that.
 
 If no instance is specified, list all directories in `sim/` (excluding `.active`) and ask the player to choose. For each instance, show a brief summary by reading its `state/timeline.json`:
 - Character age and developmental stage
@@ -30,6 +30,8 @@ Read the following files and present a narrative summary to the player:
 2. `state/timeline.json` — age, stage, turn count
 3. `state/individual.json` — brief psychological summary (active schemas, current defense tier, dominant self-concept)
 4. `state/network.json` — active relationships (names and roles only, not full detail)
+
+If `codex/chronicle.md` exists, mention that the codex is available for the player to review.
 
 ### 4. Activate
 

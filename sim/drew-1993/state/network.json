@@ -3,118 +3,100 @@
     {
       "id": "greg",
       "name": "Greg Mitchell",
-      "role": "family_nuclear",
+      "role": "father",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.55,
-        "obligation_weight": 0.8,
-        "aspiration_vector": "Survived the restructuring. Got promoted in 2003 — manages a team now. More stable but works longer hours. Proud of Drew in a way he shows through nods and handshakes, not words.",
-        "resentment_load": 0.1
-      }
+      "description": "Survived the Alcatel restructuring, promoted in 2003. Manages a team now. More stable but works longer hours. Shows pride through nods and handshakes, not words."
     },
     {
       "id": "karen",
       "name": "Karen Mitchell",
-      "role": "family_nuclear",
+      "role": "mother",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.85,
-        "obligation_weight": 0.8,
-        "aspiration_vector": "Real estate career is real now — she's good at it. But Megan's high school years are consuming. Starting to worry less about Drew because he seems so steady. Doesn't realize that steadiness has a cost.",
-        "resentment_load": 0.1
-      }
+      "description": "Real estate career is real now — she's good at it. Megan's high school years are consuming. Worries less about Drew because he seems so steady. Doesn't realize that steadiness has a cost."
     },
     {
       "id": "megan",
       "name": "Megan Mitchell",
-      "role": "family_nuclear",
+      "role": "sister",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.55,
-        "obligation_weight": 0.25,
-        "aspiration_vector": "14, freshman at Plano Senior High. Varsity soccer. Starting to pull away from the family in the normal ways — closed bedroom door, phone calls with friends, eye-rolling. Drew admires her and is invisible to her in roughly equal measure.",
-        "resentment_load": 0.15
-      }
+      "description": "14, freshman at Plano Senior High. Varsity soccer. Pulling away from the family — closed door, phone calls, eye-rolling. Drew admires her and is invisible to her in roughly equal measure."
     },
     {
       "id": "nana_carol",
       "name": "Carol Novak",
-      "role": "family_extended",
+      "role": "grandmother",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.85,
-        "obligation_weight": 0.4,
-        "aspiration_vector": "The most important relationship in Drew's intellectual life. She taught him to garden — tomatoes, peppers, herbs. They fixed her back porch railing together. She gives him books without comment and lets him talk about them when he's ready.",
-        "resentment_load": 0.0
-      }
+      "description": "The most important relationship in Drew's intellectual life. Taught him to garden. They fixed her back porch railing together. Gives him books without comment and lets him talk about them when he's ready."
     },
     {
       "id": "connor",
       "name": "Connor Huang",
-      "role": "peer",
+      "role": "best_friend",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.55,
-        "obligation_weight": 0.15,
-        "aspiration_vector": "Still Drew's best friend. Getting into skateboarding and video games. Starting to care about what other kids think in ways Drew doesn't yet. The friendship is solid but the gap between their interests is widening.",
-        "resentment_load": 0.0
-      }
+      "description": "Getting into skateboarding and video games. Starting to care about what other kids think in ways Drew doesn't yet. The friendship is solid but the gap between their interests is widening."
     },
     {
       "id": "kyle",
       "name": "Kyle Briggs",
-      "role": "peer",
+      "role": "antagonist",
       "alive": true,
-      "qualities": {
-        "attachment_strength": 0.1,
-        "obligation_weight": 0.0,
-        "aspiration_vector": "Fifth grade alpha. Bigger than everyone, dad coaches youth football. Tested Drew twice — once by knocking his lunch tray, once by calling him a nerd in front of the class. Drew didn't flinch either time, which confused Kyle enough to move on to easier targets.",
-        "resentment_load": 0.15
-      }
+      "description": "Fifth grade alpha. Bigger than everyone, dad coaches youth football. Tested Drew twice — lunch tray, called him a nerd. Drew didn't flinch either time, which confused Kyle enough to move on."
     }
   ],
   "edges": [
     {
       "from": "self",
       "to": "greg",
-      "type": "father",
       "warmth": 0.5,
-      "conflict": 0.1
+      "conflict": 0.1,
+      "attachment": 0.55,
+      "obligation": 0.8,
+      "resentment": 0.1
     },
     {
       "from": "self",
       "to": "karen",
-      "type": "mother",
       "warmth": 0.8,
-      "conflict": 0.05
+      "conflict": 0.05,
+      "attachment": 0.85,
+      "obligation": 0.8,
+      "resentment": 0.1
     },
     {
       "from": "self",
       "to": "megan",
-      "type": "sibling",
       "warmth": 0.5,
-      "conflict": 0.15
+      "conflict": 0.15,
+      "attachment": 0.55,
+      "obligation": 0.25,
+      "resentment": 0.15
     },
     {
       "from": "self",
       "to": "nana_carol",
-      "type": "grandmother",
       "warmth": 0.85,
-      "conflict": 0.0
+      "conflict": 0.0,
+      "attachment": 0.85,
+      "obligation": 0.4,
+      "resentment": 0.0
     },
     {
       "from": "self",
       "to": "connor",
-      "type": "friend",
       "warmth": 0.65,
-      "conflict": 0.05
+      "conflict": 0.05,
+      "attachment": 0.55,
+      "obligation": 0.15,
+      "resentment": 0.0
     },
     {
       "from": "self",
       "to": "kyle",
-      "type": "antagonist",
       "warmth": 0.05,
-      "conflict": 0.2
+      "conflict": 0.2,
+      "attachment": 0.1,
+      "obligation": 0.0,
+      "resentment": 0.15
     }
   ],
   "gatekeepers": ["karen", "greg"],

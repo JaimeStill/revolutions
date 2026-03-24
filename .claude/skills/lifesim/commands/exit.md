@@ -1,6 +1,6 @@
 # Exit — Save and Close an Active Simulation
 
-Gracefully end the current simulation session. Aggregate state, write a session summary, commit, and push.
+Gracefully end the current simulation session. Snapshot state, synthesize codex, commit, and close.
 
 ## Process
 
@@ -16,37 +16,25 @@ Read the current `state/scene.md` and verify it reflects the most recent narrati
 - `state/timeline.json` — correct age, stage, turn count
 - `state/individual.json` — any psychological changes from the session
 - `state/network.json` — any relationship changes from the session
-- `log/events.jsonl` — any unlogged events
-- `log/decisions.jsonl` — any unlogged player decisions
 
-### 3. Write Session Summary
+### 3. Create Snapshot
 
-Create or append to `log/sessions.jsonl` in the instance directory. Each entry captures:
+Copy all current state files to `state/snapshots/turn-{N}-session-exit/` where N is the current turn count. This captures the full machine state at session boundary for future rewind or diffing.
 
-```json
-{
-  "session_date": "YYYY-MM-DD",
-  "turns_this_session": "number",
-  "age_range": "start_age - end_age",
-  "year_range": "start_year - end_year",
-  "key_events": ["brief descriptions"],
-  "psychological_changes": ["brief descriptions"],
-  "open_threads": ["what's unresolved"],
-  "player_intention": "current player intention if set",
-  "interaction_model": "discussion or prose"
-}
-```
+### 4. Synthesize Codex
 
-### 4. Update init.md
+Run a synthesis pass to update the player-facing artifacts:
 
-Update `.claude/init.md` to reflect the current session state so the next session can bootstrap cleanly. Include:
-- Active instance and its current state
-- What was learned or decided this session
-- What to work on next
+1. Identify the latest prior snapshot in `state/snapshots/`
+2. Diff current state against that snapshot to understand what changed this session
+3. Append a new section to `codex/chronicle.md` covering the narrative since the last synthesis
+4. Update `codex/characters/<id>.md` for any network nodes that changed significantly
+5. Update `codex/psychology/portrait.md` if `individual.json` crossed a threshold
+6. Update `codex/world/` entries if world context shifted
 
 ### 5. Present Exit Summary
 
-Tell the player — in narrative terms, not file paths — where Drew (or whoever) is in their life, what's unresolved, and what the next session might explore. Keep it brief and human.
+Tell the player — in narrative terms, not file paths — where the character is in their life, what's unresolved, and what the next session might explore. Keep it brief and human.
 
 ### 6. Commit and Push
 
