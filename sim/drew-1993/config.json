@@ -1,0 +1,11 @@
+{
+  "state_resolution": 3,
+  "turn_scope": "season",
+  "narrative_verbosity": "medium",
+  "profile_update_threshold": "significant",
+  "network_depth": 5,
+  "ancestry_detail": "emergent",
+  "player_mode": "human",
+  "interaction_model": "discussion",
+  "player_intention": "Retroactive wisdom — playing as if applying hard-won adult understanding to a fresh start. The player approaches Drew's life as an opportunity to explore what they would have done differently with the discipline and perspective they have now."
+}

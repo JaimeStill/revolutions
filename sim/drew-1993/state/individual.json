@@ -1,0 +1,69 @@
+{
+  "biological": {
+    "sex": "male",
+    "health_baseline": "healthy — outgrew the ear infections, no issues",
+    "physical_capacity": "lean, wiry, good coordination. Not the biggest kid but quick."
+  },
+  "temperament": {
+    "_theory": "Thomas & Chess / Rothbart",
+    "activity": 0.55,
+    "reactivity": 0.65,
+    "sociability": 0.45,
+    "persistence": 0.65
+  },
+  "attachment": {
+    "_theory": "Bowlby / Ainsworth",
+    "style": "secure with anxious undertone",
+    "stability": 0.75,
+    "formed_at": "age 2-3",
+    "forming_context": "Karen is reliably present and warm, but her own anxiety transmits through her body language. Drew learns that love is dependable but slightly nervous.",
+    "key_relationship": "karen"
+  },
+  "schemas": {
+    "_theory": "Young's Schema Therapy",
+    "active": [
+      {
+        "name": "emotional_inhibition",
+        "unmet_need": "spontaneous expression of feelings",
+        "core_belief": "Strong feelings make things worse — keep it together",
+        "compensatory_strategy": "Channels emotion into productivity and problem-solving. Reads rooms before speaking. Defaults to 'I'm fine.'",
+        "formed_at": "age 4-6",
+        "forming_context": "Greg models stoic competence. Karen's anxiety spikes when Drew is upset. Plano culture rewards cheerful compliance.",
+        "activation_level": 0.45
+      },
+      {
+        "name": "self_sacrifice",
+        "unmet_need": "permission to prioritize own needs",
+        "core_belief": "My job is to make things easier for the people around me",
+        "compensatory_strategy": "Volunteers for tasks, anticipates what others need, measures his own worth by usefulness",
+        "formed_at": "age 8-9",
+        "forming_context": "Post-9/11 household anxiety, Greg's job instability, Karen stretched thin. Drew decided to be the kid who doesn't add to the burden.",
+        "activation_level": 0.35
+      }
+    ]
+  },
+  "values": {
+    "_theory": "Schwartz's Theory of Basic Human Values",
+    "hierarchy": ["security", "benevolence", "self-direction", "achievement"],
+    "tested_by": [],
+    "last_reordered": null
+  },
+  "self_concept": {
+    "_theory": "McAdams' Narrative Identity Theory",
+    "agency": "emerging — I can learn things and fix things and that matters",
+    "communion": "moderate — I care about my family and Connor but I don't need a crowd",
+    "dominant_sequence": null,
+    "identity_statement": "I am someone who figures things out"
+  },
+  "defenses": {
+    "_theory": "Vaillant's hierarchy",
+    "repertoire": {
+      "mature": ["sublimation"],
+      "neurotic": ["intellectualization"],
+      "immature": ["passive-aggression"],
+      "psychotic": []
+    },
+    "current_tier": "neurotic",
+    "stress_threshold_for_regression": 0.6
+  }
+}

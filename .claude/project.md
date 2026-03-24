@@ -53,6 +53,7 @@ The simulation is organized as a single skill (`lifesim`) with sub-commands. Eac
 |---------|---------|------------|
 | `/lifesim birth` | Initialize character, world, generation. Start a new life. | User |
 | `/lifesim load <instance>` | Load an existing simulation instance into context. | User |
+| `/lifesim exit` | Save all state, write session summary, commit and push, close the simulation. | User |
 | `/lifesim profile` | Render the current psychological state in human-readable form. | User or model |
 | `/lifesim compress` | Archive cold state to free context budget. | Model |
 | `/lifesim replay` | Reconstruct life narrative from the decision and event logs. | User |
@@ -378,11 +379,39 @@ Each formative event has a type that determines its narrative function and which
 - **Loss** — activates Layer 3 schemas, tests Layer 6 defenses
 - **Unexpected grace** — potential schema healing, defense maturation
 
+### Interaction Model
+
+The simulation supports two interaction modes. The active mode is stored in the instance's `config.json` as `interaction_model`.
+
+**Discussion mode** (`"discussion"`): The player and engine co-author the character's life through conversation. The player describes intentions, motivations, reactions, and ideas about Drew's trajectory — and can also shape the surrounding world, relationships, and narrative direction. The engine interprets this input, updates state, and generates the next narrative beat. This mode is ideal during formative periods when the character is still crystallizing, and when the player wants to think through choices rather than perform them.
+
+**Prose mode** (`"prose"`): The player responds in-character to narrative scenes. The engine interprets the prose semantically — extracting intent, action, and psychological signal — and advances the simulation. This mode works best once the character is well-established and the player wants immersive scene-level interaction.
+
+The player can shift between modes naturally. The engine should recognize which mode is active from the tone of the player's message and respond accordingly. No explicit switching is required.
+
+#### Player Intention
+
+A player may set an overarching intention for how they approach the simulation — a meta-orientation that sits above the character's psychology. This is stored in `config.json` as `player_intention`. Examples: "explore what I would have done differently with adult wisdom," "see how far ambition takes someone in this period," "play a life of quiet resistance." The intention is not a character trait — it's a lens the player brings. The engine should be aware of it but not force it; it informs interpretation, not plot.
+
+### Presentation Layer
+
+**State files are for the engine. The player sees narrative.**
+
+When the orchestrator updates state files (individual.json, network.json, timeline.json, etc.), those updates are internal bookkeeping. The player should never be shown raw JSON, file paths, or schema field names as the primary output of a turn.
+
+What the player sees after each turn:
+- **Narrative prose** — the scene, the moment, what happened and what it felt like. Written as an expert narrator would deliver it: vivid, economical, grounded in sensory detail.
+- **A brief narrative summary of what changed** — not "updated attachment.style to 'secure with anxious undertone'" but "Drew's sense of the world is forming: his mother is reliable but watchful, and he's learning that safety requires vigilance."
+- **A natural transition** — either a scene that invites response, or (in discussion mode) a question or observation that invites the player's thinking about what comes next.
+
+The engine should be as detailed as it wants in the state files. But the player-facing output is always human-readable narrative. The files are the engine's memory. The prose is the player's experience.
+
 ### Decisions
 
 Player input is interpreted, not parsed:
 
 - **Prose input** — psyche-agent extracts intent, action vector
+- **Discussion input** — player describes intentions, motivations, and trajectory; engine translates to state changes and narrative
 - **Action vs. inaction** — avoidance is a psychological signal (activates different schemas than engagement)
 - **Identity alignment** — confirms or challenges the self-concept
 - **Cost signal** — what was risked or sacrificed reveals actual values (not stated values)

@@ -1,0 +1,50 @@
+{
+  "biological": {
+    "sex": "male",
+    "health_baseline": "healthy — no significant complications at birth",
+    "physical_capacity": "average frame, will trend lean"
+  },
+  "temperament": {
+    "_theory": "Thomas & Chess / Rothbart",
+    "activity": 0.55,
+    "reactivity": 0.65,
+    "sociability": 0.45,
+    "persistence": 0.6
+  },
+  "attachment": {
+    "_theory": "Bowlby / Ainsworth",
+    "style": "not yet formed",
+    "stability": null,
+    "formed_at": null,
+    "forming_context": null,
+    "key_relationship": null
+  },
+  "schemas": {
+    "_theory": "Young's Schema Therapy",
+    "active": []
+  },
+  "values": {
+    "_theory": "Schwartz's Theory of Basic Human Values",
+    "hierarchy": [],
+    "tested_by": [],
+    "last_reordered": null
+  },
+  "self_concept": {
+    "_theory": "McAdams' Narrative Identity Theory",
+    "agency": null,
+    "communion": null,
+    "dominant_sequence": null,
+    "identity_statement": null
+  },
+  "defenses": {
+    "_theory": "Vaillant's hierarchy",
+    "repertoire": {
+      "mature": [],
+      "neurotic": [],
+      "immature": [],
+      "psychotic": []
+    },
+    "current_tier": null,
+    "stress_threshold_for_regression": null
+  }
+}

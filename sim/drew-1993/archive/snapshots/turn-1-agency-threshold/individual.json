@@ -1,0 +1,60 @@
+{
+  "biological": {
+    "sex": "male",
+    "health_baseline": "healthy — ear infections through age 3, otherwise unremarkable",
+    "physical_capacity": "lean, slightly small for age, good coordination"
+  },
+  "temperament": {
+    "_theory": "Thomas & Chess / Rothbart",
+    "activity": 0.55,
+    "reactivity": 0.65,
+    "sociability": 0.45,
+    "persistence": 0.6
+  },
+  "attachment": {
+    "_theory": "Bowlby / Ainsworth",
+    "style": "secure with anxious undertone",
+    "stability": 0.7,
+    "formed_at": "age 2-3",
+    "forming_context": "Karen is reliably present and warm, but her own anxiety — about the neighborhood, the news, doing motherhood right — transmits through her body language. Drew learns that love is dependable but slightly nervous. The world is safe, but someone is always watching for the thing that could make it not safe.",
+    "key_relationship": "karen"
+  },
+  "schemas": {
+    "_theory": "Young's Schema Therapy",
+    "active": [
+      {
+        "name": "emotional_inhibition",
+        "unmet_need": "spontaneous expression of feelings",
+        "core_belief": "Strong feelings make things worse — keep it together",
+        "compensatory_strategy": "Watches others' reactions before expressing his own. Defaults to 'I'm fine.'",
+        "formed_at": "age 4-6",
+        "forming_context": "Greg models stoic competence — problems are solved, not felt. Karen's anxiety spikes when Drew is upset, teaching him that his distress causes her distress. Plano's culture rewards cheerful compliance. Drew learns to process internally.",
+        "activation_level": 0.4
+      }
+    ]
+  },
+  "values": {
+    "_theory": "Schwartz's Theory of Basic Human Values",
+    "hierarchy": [],
+    "tested_by": [],
+    "last_reordered": null
+  },
+  "self_concept": {
+    "_theory": "McAdams' Narrative Identity Theory",
+    "agency": null,
+    "communion": null,
+    "dominant_sequence": null,
+    "identity_statement": null
+  },
+  "defenses": {
+    "_theory": "Vaillant's hierarchy",
+    "repertoire": {
+      "mature": [],
+      "neurotic": ["intellectualization"],
+      "immature": ["passive-aggression"],
+      "psychotic": []
+    },
+    "current_tier": "immature",
+    "stress_threshold_for_regression": 0.6
+  }
+}

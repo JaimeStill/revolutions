@@ -1,0 +1,35 @@
+{
+  "period": "1990s",
+  "region": "Plano, Texas — Collin County, 20 miles north of Dallas",
+  "culture": "Suburban Sunbelt Protestant-corporate",
+  "material_conditions": {
+    "economic_mode": "Corporate-suburban, service and technology sector",
+    "scarcity_profile": "Comfortable — abundance anxiety rather than material want",
+    "technology_tier": "Late industrial transitioning to early digital"
+  },
+  "power_structure": {
+    "political_form": "Municipal suburbia nested in conservative state politics",
+    "enforcement": "HOAs, school administration, social pressure, police",
+    "mobility_constraints": {
+      "class": "Meritocratic mythology — real mobility requires credentials and connections",
+      "gender": "Softening patriarchy — women work but motherhood remains primary identity",
+      "ethnicity": "Structural advantage for white families, polite exclusion for others"
+    }
+  },
+  "worldview": {
+    "dominant": "Protestant work ethic filtered through consumer capitalism",
+    "relationship_to_nature": "Instrumental — nature is landscaping, weather, and weekend lake trips",
+    "relationship_to_authority": "Deferential to institutional authority, skeptical of government"
+  },
+  "collective_trauma": [
+    "Cold War hangover — triumphalism masking purposelessness",
+    "Oklahoma City bombing (1995) — domestic terror shatters heartland safety narrative",
+    "Plano teen heroin epidemic (1997-1998) — suburban paradise narrative collapses",
+    "Columbine (1999) — schools become sites of fear"
+  ],
+  "information_environment": {
+    "literacy_rate": "High — well-funded public schools",
+    "primary_medium": "Cable television, transitioning to early internet",
+    "censorship": "Social rather than legal — what is sayable is controlled by community norms"
+  }
+}

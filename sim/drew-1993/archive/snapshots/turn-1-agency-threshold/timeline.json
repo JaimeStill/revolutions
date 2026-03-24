@@ -1,0 +1,10 @@
+{
+  "birth_year": 1993,
+  "current_year": 2001,
+  "current_age": 8,
+  "developmental_stage": "late_childhood",
+  "erikson_conflict": "industry_vs_inferiority",
+  "turn_count": 1,
+  "inflection_points_passed": ["attachment_formation"],
+  "next_inflection": "agency_threshold"
+}

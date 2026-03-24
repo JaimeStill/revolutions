@@ -1,0 +1,44 @@
+{
+  "birth_cohort": "1991-1996 (late Millennials / Zilennials)",
+  "defining_events": [
+    {
+      "event": "Oklahoma City bombing",
+      "year": 1995,
+      "character_age_at_event": "2 — no direct memory, but parents' fear imprints",
+      "developmental_impact": "Background radiation of vulnerability in supposedly safe places"
+    },
+    {
+      "event": "Plano heroin crisis and teen deaths",
+      "year": 1998,
+      "character_age_at_event": "4-5 — too young to understand, but absorbs adult anxiety",
+      "developmental_impact": "Community trauma that reshapes parenting culture toward control"
+    },
+    {
+      "event": "Columbine massacre",
+      "year": 1999,
+      "character_age_at_event": "5 — entering school system as lockdown drills begin",
+      "developmental_impact": "School as simultaneously safe haven and potential danger zone"
+    },
+    {
+      "event": "September 11 attacks",
+      "year": 2001,
+      "character_age_at_event": "7 — old enough to remember the TV, the teachers crying",
+      "developmental_impact": "End of background safety assumption; patriotism surge in Texas"
+    },
+    {
+      "event": "Telecom Corridor layoffs and dot-com bust",
+      "year": 2001,
+      "character_age_at_event": "7-8 — may experience parent's job loss or neighbors' foreclosure",
+      "developmental_impact": "First crack in the suburban promise"
+    },
+    {
+      "event": "Social media emergence (MySpace, early Facebook)",
+      "year": 2005,
+      "character_age_at_event": "11-12 — entering adolescence with digital identity layer",
+      "developmental_impact": "Identity formation becomes partly public and performative"
+    }
+  ],
+  "economic_entry": "Will enter adulthood during the Great Recession aftermath — credential inflation, gig economy, delayed milestones",
+  "relationship_to_prior_generation": "Parents are Boomers or early Gen X — children of counterculture who became corporate suburbanites. The unspoken question: did they sell out, or grow up?",
+  "cohort_narrative": "The last children to remember a world before the internet ate everything, old enough to feel the before and after."
+}

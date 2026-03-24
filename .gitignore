@@ -1,6 +1,3 @@
-# Simulation instances — generated during play, not checked in
-sim/*/
-
 # Runtime breadcrumb for compaction hooks
 sim/.active
 

@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    {
+      "id": "greg",
+      "name": "Greg Mitchell",
+      "role": "family_nuclear",
+      "alive": true,
+      "qualities": {
+        "attachment_strength": 0.6,
+        "obligation_weight": 0.8,
+        "aspiration_vector": "Wants his son to have it easier than he did — measures ease in salary and stability",
+        "resentment_load": 0.1
+      }
+    },
+    {
+      "id": "karen",
+      "name": "Karen Mitchell",
+      "role": "family_nuclear",
+      "alive": true,
+      "qualities": {
+        "attachment_strength": 0.9,
+        "obligation_weight": 0.9,
+        "aspiration_vector": "Wants to be the mother she wished she'd had — attentive, present, warm",
+        "resentment_load": 0.05
+      }
+    },
+    {
+      "id": "megan",
+      "name": "Megan Mitchell",
+      "role": "family_nuclear",
+      "alive": true,
+      "qualities": {
+        "attachment_strength": 0.5,
+        "obligation_weight": 0.3,
+        "aspiration_vector": "Three years old — the world has just been rearranged and she is not sure she likes it",
+        "resentment_load": 0.2
+      }
+    },
+    {
+      "id": "nana_carol",
+      "name": "Carol Novak",
+      "role": "family_extended",
+      "alive": true,
+      "qualities": {
+        "attachment_strength": 0.7,
+        "obligation_weight": 0.5,
+        "aspiration_vector": "Grandmother — Karen's mother, retired teacher from Ohio, relocated to be near grandchildren",
+        "resentment_load": 0.0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "self",
+      "to": "greg",
+      "type": "father",
+      "warmth": 0.6,
+      "conflict": 0.0
+    },
+    {
+      "from": "self",
+      "to": "karen",
+      "type": "mother",
+      "warmth": 0.9,
+      "conflict": 0.0
+    },
+    {
+      "from": "self",
+      "to": "megan",
+      "type": "sibling",
+      "warmth": 0.5,
+      "conflict": 0.1
+    },
+    {
+      "from": "self",
+      "to": "nana_carol",
+      "type": "grandmother",
+      "warmth": 0.7,
+      "conflict": 0.0
+    }
+  ],
+  "gatekeepers": ["karen", "greg"],
+  "normative_pressure": {
+    "rewarded": ["obedience", "sports participation", "politeness", "academic achievement", "church attendance"],
+    "punished": ["defiance", "emotional outbursts", "academic failure", "social oddness", "questioning faith"]
+  }
+}
