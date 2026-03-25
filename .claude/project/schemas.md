@@ -74,16 +74,44 @@ Nodes describe WHO someone is. Edges describe the relationship TO the character.
       "conflict": 0.2,
       "attachment": 0.8,
       "obligation": 0.9,
-      "resentment": 0.1
+      "resentment": 0.1,
+      "visibility": "high — lives in the same house, sees her daily",
+      "information_flow": "direct — mother observes the character's behavior firsthand"
     }
   ],
-  "gatekeepers": ["village_priest"],
+  "gatekeepers": [
+    {
+      "node_id": "village_priest",
+      "gates": "access to literacy, religious standing, community reputation",
+      "conditions": "piety, obedience, attendance at mass",
+      "current_stance": "neutral — has not yet formed a strong opinion of the character"
+    }
+  ],
   "normative_pressure": {
-    "rewarded": ["obedience", "piety", "labor"],
-    "punished": ["questioning", "ambition beyond station", "sexual deviance"]
+    "rewarded": [
+      {
+        "behavior": "obedience",
+        "enforced_by": ["mother", "village_priest", "lord"],
+        "reward": "safety, social inclusion, access to resources"
+      }
+    ],
+    "punished": [
+      {
+        "behavior": "questioning authority",
+        "enforced_by": ["village_priest", "lord"],
+        "cost": "public shaming, penance, loss of standing"
+      }
+    ]
   }
 }
 ```
+
+### Edge fields
+
+- `visibility` — how directly this person observes the character's behavior. High visibility means actions are seen firsthand. Low means they rely on secondhand reports.
+- `information_flow` — how information about the character reaches this person. Direct (observes firsthand), indirect (hears through others — specify the channel), or minimal (rarely hears anything).
+
+These fields drive the network agent's consequence propagation: when the character acts, the agent traces through edges to determine who learns about it and how their relationships shift.
 
 ## Individual (`individual.json`) — Seven-Layer Psychological Profile
 

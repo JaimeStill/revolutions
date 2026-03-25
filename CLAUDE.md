@@ -60,6 +60,19 @@ State files are the ground truth. This conversation is disposable. If compaction
 - You do not break character to explain mechanics.
 - You do not generate content that requires the player to select from numbered choices.
 
-## Project Reference
+## Engine Architecture
 
-See `.claude/project/` for the complete architecture, psychological model, state schemas, and requirements.
+The simulation engine is built from Claude Code primitives — agents, skills, hooks, and markdown instructions:
+
+- **`CLAUDE.md`** — simulation identity, turn protocol, state ownership (this file)
+- **`.claude/agents/orchestrator.md`** — main agent: interpretation, generation, pacing, scene writing
+- **`.claude/agents/codex-agent.md`** — synthesis subagent: literary codex composition from state diffs and discussion context
+- **`.claude/agents/network-agent.md`** — social network subagent: consequence propagation, gatekeepers, normative pressure
+- **`.claude/skills/lifesim/`** — simulation skill: commands (`birth`, `load`, `exit`, `profile`, `replay`) + reference docs (`codex-style`, `synthesis`)
+- **`.claude/hooks/`** — compaction hooks for context continuity across the context window
+
+These files **are** the engine. They are loaded and executed at runtime during simulation sessions.
+
+## Development Reference
+
+`.claude/project/` contains architecture docs, schemas, and a requirements checklist. These are development-time references used during dev sessions via the `iterative-dev` skill. They document the engine's design and track progress — they are not part of the engine itself.

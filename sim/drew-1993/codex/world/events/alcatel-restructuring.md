@@ -1,0 +1,11 @@
+# Alcatel Restructuring (2000)
+
+In the spring of 2000, the telecommunications company Alcatel — a French multinational with major operations in the Plano, Texas Telecom Corridor — restructured its workforce. The restructuring was part of a broader contraction in the telecom industry following the burst of the dot-com bubble, which had inflated the sector with speculative investment throughout the late 1990s.
+
+The Telecom Corridor was a stretch of corporate campuses along the Dallas North Tollway and the George Bush Turnpike in Plano and Richardson, Texas. At its peak, it housed the North American operations of Alcatel, Ericsson, Fujitsu, Nortel, EDS, and dozens of smaller firms. The corridor employed tens of thousands of engineers, project managers, and support staff, most of whom lived in the surrounding subdivisions. The local economy — the restaurants, the retail, the real estate market — depended on these jobs.
+
+When the bubble burst, the layoffs came in waves. Alcatel's 2000 restructuring was among the first. Three men on Greg Mitchell's team were let go. Greg survived, but he came home that day carrying a cardboard box — not his own, but theirs, filled with desk photos and personal items he'd volunteered to bring to their houses because they hadn't wanted to come back into the building. He still had his job. But the experience of watching colleagues disappear — of understanding that the same thing could happen to him on any given Monday — changed the household's financial psychology.
+
+Karen responded by picking up more shifts at her real estate firm. The arguments about money began — not loud, not dramatic, but persistent, conducted in low voices after the children were in bed. Nana Carol started picking Drew up from school, filling the gap left by Karen's expanded hours. The restructuring didn't destroy the Mitchell family's stability, but it introduced a new frequency of anxiety into the house — the awareness that the Telecom Corridor's glass buildings, which had seemed so permanent, could shed their people at any time.
+
+For Drew, age seven, the restructuring was legible only in its household effects: his father's altered mood, his mother's longer hours, the new presence of Nana Carol in his afternoons, and the arguments he could hear through the walls but not quite make out.

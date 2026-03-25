@@ -23,14 +23,14 @@ Copy all current state files to `state/snapshots/turn-{N}-session-exit/` where N
 
 ### 4. Synthesize Codex
 
-Run a synthesis pass to update the player-facing artifacts:
+Delegate synthesis to the **codex agent** (`.claude/agents/codex-agent.md`). Pass it:
 
-1. Identify the latest prior snapshot in `state/snapshots/`
-2. Diff current state against that snapshot to understand what changed this session
-3. Append a new section to `codex/chronicle.md` covering the narrative since the last synthesis
-4. Update `codex/characters/<id>.md` for any network nodes that changed significantly
-5. Update `codex/psychology/portrait.md` if `individual.json` crossed a threshold
-6. Update `codex/world/` entries if world context shifted
+1. **The active instance path** — so it knows where to read and write
+2. **The baseline snapshot path** — the most recent prior snapshot in `state/snapshots/` (not the one just created — the one *before* it, so the diff covers the session's changes)
+3. **Discussion context** — a summary of the session's conversation: what happened narratively, what decisions were made, what tensions were explored, what the player's intentions were. This is the codex agent's richest source material.
+4. **Any specific guidance** — moments, characters, or themes that deserve particular attention in the codex
+
+The codex agent follows the synthesis protocol in `.claude/skills/lifesim/reference/synthesis.md` and the style guide in `.claude/skills/lifesim/reference/codex-style.md`. It writes updated codex files directly to the instance and returns a summary of what was created or updated.
 
 ### 5. Present Exit Summary
 

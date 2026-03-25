@@ -22,6 +22,15 @@ Route based on `$ARGUMENTS`:
 
 Read the corresponding command file and follow its instructions. If no sub-command is provided, list available commands and any existing simulation instances found in `sim/`.
 
+## Reference Docs
+
+Engine reference documents loaded during specific operations (not commands):
+
+| Document | File | Loaded by |
+|----------|------|-----------|
+| Codex Style Guide | [reference/codex-style.md](reference/codex-style.md) | Codex agent during synthesis |
+| Synthesis Protocol | [reference/synthesis.md](reference/synthesis.md) | Codex agent during synthesis |
+
 ## Instance Layout
 
 Each simulation run is fully self-contained in `sim/<instance-name>/`:
@@ -39,10 +48,20 @@ sim/<instance-name>/
     scene.md               # Current narrative moment
     snapshots/             # Full state copies at inflection points + session exits
   codex/                   # Player domain — human-readable projections
+    README.md              # Codex index
     chronicle.md           # Append-only narrative organized by inflection point
     characters/            # One .md per significant network node
-    world/                 # Period and cultural context entries
+      README.md            # Character index
     psychology/            # Character portrait, updated at thresholds
+      README.md            # Psychology index
+    world/                 # Period and cultural context entries
+      README.md            # World index
+      places/              # Geographic and cultural environments
+        README.md
+      events/              # Historical and cultural events
+        README.md
+      institutions/        # Schools, churches, employers, organizations
+        README.md
 ```
 
 ## Active Instance Tracking

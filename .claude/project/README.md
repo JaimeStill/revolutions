@@ -29,6 +29,15 @@ State lives on disk in `sim/<instance>/state/`. The conversation is a working su
 | [configuration.md](configuration.md) | Instance config.json schema and parameter reference |
 | [requirements.md](requirements.md) | Capability checklist grouped by area |
 
+### Engine Reference Docs
+
+These live in the engine itself (not here) and are loaded at runtime:
+
+| File | Purpose |
+|------|---------|
+| `.claude/skills/lifesim/reference/codex-style.md` | Literary craft guide for codex composition |
+| `.claude/skills/lifesim/reference/synthesis.md` | Synthesis pass protocol — how state becomes codex |
+
 ## Directory Structure
 
 ```
@@ -36,13 +45,17 @@ revolutions/
   CLAUDE.md                      # Simulation identity and turn protocol
   README.md                      # Project overview
   .claude/
-    project/                     # This directory — authoritative reference
+    project/                     # This directory — development-time reference
     init.md                      # Next dev session bootstrap (iterative-dev)
     settings.json                # Orchestrator config, hooks, env vars
     agents/
-      orchestrator.md            # Main agent — turn processing, state management
+      orchestrator.md            # Main agent — interpretation, generation, pacing
+      codex-agent.md             # Synthesis subagent — literary codex composition
+      network-agent.md           # Social network subagent — consequence propagation
     skills/
-      lifesim/                   # Simulation skill with sub-commands
+      lifesim/                   # Simulation skill
+        commands/                # Sub-commands (birth, load, exit, profile, replay)
+        reference/               # Engine reference docs (codex-style, synthesis)
       iterative-dev/             # Development workflow skill
     hooks/
       session-compact.sh         # Rebuild context after compaction (guards on sim/.active)
@@ -54,7 +67,12 @@ revolutions/
       state/
         snapshots/
       codex/
+        README.md
+        chronicle.md
         characters/
-        world/
         psychology/
+        world/
+          places/
+          events/
+          institutions/
 ```
