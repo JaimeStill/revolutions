@@ -24,19 +24,19 @@ Capabilities the simulation needs, roughly ordered by dependency.
 
 ## Social Network
 - [x] Relationship nodes and edges tracked in network.json
-- [ ] Social consequences propagate through the network
-- [ ] Gatekeepers control access to opportunity
-- [ ] Normative pressure affects decision costs
+- [x] Social consequences propagate through the network
+- [x] Gatekeepers control access to opportunity
+- [x] Normative pressure affects decision costs
 
 ## State History
 - [x] Snapshots capture full state at inflection points and session exits
 - [ ] Simulation can be rewound to any snapshot point
 
 ## Codex
-- [ ] Synthesis pass generates codex at inflection transitions
-- [ ] Synthesis pass runs at session exit
-- [ ] Chronicle organized by inflection point chapters
-- [ ] Codex entries for characters, world, and psychology
+- [x] Synthesis pass generates codex at inflection transitions
+- [x] Synthesis pass runs at session exit
+- [x] Chronicle organized by inflection point chapters
+- [x] Codex entries for characters, world, and psychology
 
 ## Ancestry
 - [ ] Ancestry stubs maintained

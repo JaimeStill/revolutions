@@ -25,9 +25,10 @@ The orchestrator runs as the session's main agent via `settings.json`. Currently
 
 | Agent | Model | Responsibility | Status |
 |-------|-------|---------------|--------|
-| **orchestrator** | inherit (Opus) | Main thread. Turn processing, state I/O, context budget. | Active |
+| **orchestrator** | inherit (Opus) | Main thread. Interpretation, generation, pacing, scene writing. Delegates to subagents for social processing and synthesis. | Active |
+| **codex-agent** | opus | Synthesis pass. Composes literary codex entries from state diffs and discussion context. Triggered at inflection points and session exits. | Active |
+| **network-agent** | sonnet | Social consequence processing. Propagates actions through relationship network, updates gatekeepers, applies normative pressure. Triggered during socially relevant turns. | Active |
 | **world-agent** | haiku | Validate actions against period possibility space. | Future |
-| **network-agent** | haiku | Process social consequences of decisions. | Future |
 | **psyche-agent** | sonnet | Interpret player prose, update psychological profile. | Future |
 | **narrative-agent** | sonnet | Generate formative events targeting active tensions. | Future |
 | **ancestor-agent** | haiku / sonnet | Retroactively resolve ancestry from expressed psychology. | Future |

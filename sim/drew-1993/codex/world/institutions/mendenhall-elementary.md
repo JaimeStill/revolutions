@@ -1,0 +1,11 @@
+# Mendenhall Elementary
+
+Mendenhall Elementary is a public school in Plano Independent School District, serving kindergarten through fifth grade. Drew attended from 1998 to 2004. It is the institution where he spent most of his waking hours during the years his psychological patterns were forming.
+
+The school sits in a residential neighborhood east of Coit Road — a single-story brick building with a flagpole out front, a playground with a covered pavilion, and a parking loop where parents line up in SUVs and minivans for pickup. The hallways smell of industrial cleaner and laminated paper. The classrooms have cinderblock walls painted in primary colors and windows that don't open.
+
+Mendenhall is a high-performing school in a high-performing district. Plano ISD consistently ranks among the top districts in Texas, and the culture of academic achievement is embedded in the institution's daily rhythms — benchmark tests, reading logs, the quiet competition for placement in gifted and talented programs. The teachers are experienced and generally caring, but they operate within a system optimized for compliance and measurable outcomes. A child who is quiet, compliant, and performs well on tests is a child the system considers successful. A child who "could participate more" — as Drew's kindergarten teacher noted — is flagged as a minor concern and then, if grades remain good, forgotten.
+
+After Columbine, Mendenhall added lockdown drills to its safety protocols. The school installed new locks on classroom doors. Visitors began signing in at the front office. These changes were part of a national pattern — school security measures adopted in response to violence that had occurred in a different state, in a different school, under different circumstances. For the children, the drills were a recurring ritual with no clear explanation: hide under your desk, stay quiet, wait for the all-clear. For the adults, the drills were a performance of preparedness against a threat they could not actually prevent.
+
+Drew's significant relationships at Mendenhall: Connor Huang (best friend since kindergarten, now drifting), Kyle Briggs (fifth-grade alpha who tested him), and a series of teachers who noted his competence and his quietness in roughly equal measure.

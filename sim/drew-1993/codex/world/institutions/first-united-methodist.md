@@ -1,0 +1,9 @@
+# First United Methodist Church
+
+First United Methodist is one of the large mainline Protestant churches in Plano, Texas — not a megachurch in the mold of Prestonwood Baptist, but substantial enough to have a gymnasium, a fellowship hall, multiple Sunday school wings, and a preschool program. It sits on a landscaped campus near downtown Plano, its architecture a blend of traditional brick and the kind of purpose-built functionality that characterizes Sunbelt church construction.
+
+In Plano's social architecture, churches serve a function that extends well beyond worship. The subdivisions, with their privacy fences and three-car garages, are designed for private life. The churches provide the communal infrastructure the neighborhoods lack — potluck dinners, youth groups, vacation Bible school, men's breakfasts, women's circles, volunteer coordination for disaster relief. For families who have moved to Plano from elsewhere — which is most families, since the suburb grew explosively in the 1980s and 1990s — the church is often the first and strongest community tie.
+
+Karen Mitchell enrolled Drew in First United Methodist's preschool program in 1996, when he was three. She was not particularly devout, but the preschool was well-regarded, and the church was where families like hers sent their children. The brutal drop-offs — two weeks of sobbing at the door before Drew walked in by himself, checking the door twice — happened in this building.
+
+The church's role in Drew's life diminished as he grew older. The family attends Sunday services with declining regularity. But the institution matters as a node in the normative pressure network: church attendance is one of the behaviors rewarded by Plano's parenting culture, and absence is noticed, if not punished. For Karen, the church remains a source of social connection. For Drew, it is a place he goes when told to, where he sits quietly and thinks about other things.
