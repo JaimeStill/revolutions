@@ -1,0 +1,20 @@
+{
+  "period": "1990s-2000s",
+  "region": "Plano, Texas — Collin County, 20 miles north of Dallas",
+  "culture": "Suburban Sunbelt Protestant-corporate",
+  "mobility_constraints": {
+    "class": "Meritocratic mythology — real mobility requires credentials and connections",
+    "gender": "Softening patriarchy — women work but motherhood remains primary identity",
+    "ethnicity": "Structural advantage for white families, polite exclusion for others"
+  },
+  "collective_trauma": [
+    "Oklahoma City bombing (1995) — domestic terror shatters heartland safety narrative",
+    "Plano teen heroin epidemic (1997-1998) — suburban paradise narrative collapses",
+    "Columbine (1999) — schools become sites of fear",
+    "September 11 (2001) — end of background safety assumption"
+  ],
+  "information_environment": {
+    "literacy_rate": "High — well-funded public schools",
+    "primary_medium": "Cable television, transitioning to early internet"
+  }
+}

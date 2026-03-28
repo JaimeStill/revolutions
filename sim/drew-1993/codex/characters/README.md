@@ -1,12 +1,16 @@
 # Characters
 
-People in Drew Mitchell's life, as of May 2004 (age 11).
+People in Drew Mitchell's life, as of August 2007 (age 14).
 
 | Entry | Role |
 |-------|------|
-| [carol-novak.md](carol-novak.md) | Grandmother — Drew's most important intellectual relationship |
-| [connor-huang.md](connor-huang.md) | Best friend since kindergarten, drifting apart |
-| [greg-mitchell.md](greg-mitchell.md) | Father — communicates through competence and delegation |
-| [karen-mitchell.md](karen-mitchell.md) | Mother — warm, anxious, increasingly distracted by Megan's adolescence |
-| [kyle-briggs.md](kyle-briggs.md) | Fifth-grade alpha who tested Drew and found no purchase |
-| [megan-mitchell.md](megan-mitchell.md) | Older sister — admired and invisible to Drew in equal measure |
+| [carol-novak.md](carol-novak.md) | Grandmother --- the unfiltered channel, the mind that feeds his |
+| [coach-davis.md](coach-davis.md) | Jasper wrestling coach --- effort recognized, effort rewarded |
+| [connor-huang.md](connor-huang.md) | Former best friend --- childhood friendship completed its drift |
+| [greg-mitchell.md](greg-mitchell.md) | Father --- communicates through competence, with martial arts as a new channel |
+| [karen-mitchell.md](karen-mitchell.md) | Mother --- warm, anxious, looking away at the age when looking closely would matter |
+| [kyle-briggs.md](kyle-briggs.md) | Childhood antagonist turned ambient presence in the athlete power structure |
+| [marcus-webb.md](marcus-webb.md) | Best friend --- the first person who saw the same layer of the world |
+| [megan-mitchell.md](megan-mitchell.md) | Older sister --- about to leave for college, a preview of unmanaged emotion |
+| [mr-tran.md](mr-tran.md) | Martial arts instructor --- mentor who teaches through the body, not the mind |
+| [mrs-halverson.md](mrs-halverson.md) | Sixth-grade homeroom teacher --- the calm room, remembered fondly |
