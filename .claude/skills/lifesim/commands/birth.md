@@ -219,11 +219,27 @@ Copy all state files to `state/snapshots/turn-0-birth/` to capture the initial s
 
 ### 9. Initialize Codex
 
-Create the empty codex structure:
-- `codex/chronicle.md` (empty or with a brief birth entry)
-- `codex/characters/` (empty directory)
-- `codex/world/` (empty directory)
-- `codex/psychology/` (empty directory)
+Create the codex structure with README indexes in every subdirectory:
+
+```
+codex/
+  README.md              # "Codex for <character name>. Contains:" + pointers to subdirs
+  chronicle.md           # Empty or with a brief birth entry
+  characters/
+    README.md            # "Character entries for <character name>'s social network."
+  psychology/
+    README.md            # "Psychological documentation for <character name>."
+  world/
+    README.md            # "World context for <character name>'s life." + pointers to subdirs
+    places/
+      README.md          # "Places in <character name>'s world."
+    events/
+      README.md          # "Historical and cultural events shaping <character name>'s life."
+    institutions/
+      README.md          # "Institutions in <character name>'s world."
+```
+
+Each README starts nearly empty — just the index header and a note that entries will be added as the life develops. The codex agent populates them during synthesis passes.
 
 ### 10. Name the Instance
 
@@ -247,10 +263,20 @@ sim/<instance-name>/
     snapshots/
       turn-0-birth/
   codex/
+    README.md
     chronicle.md
     characters/
-    world/
+      README.md
     psychology/
+      README.md
+    world/
+      README.md
+      places/
+        README.md
+      events/
+        README.md
+      institutions/
+        README.md
 ```
 
 Write the instance name to `sim/.active`.

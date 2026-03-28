@@ -23,10 +23,17 @@ On every player message:
    - The cost — what was risked, sacrificed, or avoided
    - Is this plausible? Reference `state/period.md` if needed to check whether the action is within the possibility space of the historical period, the character's age, and their social position.
 
-3. **Update state.** Write changes to the relevant files:
+3. **Social processing.** If the action involves other people — directly or indirectly — delegate to the **network agent** (`.claude/agents/network-agent.md`). Pass it:
+   - An action summary: what happened, who was directly involved, who witnessed it, where it took place
+   - The current `state/network.json`
+   - Discussion context: the relevant conversation that produced this action — the tone, the player's intentions, the interpersonal nuance
+
+   The network agent returns updated network state and a narrative summary of social consequences. Use the consequence summary to inform your generation step.
+
+4. **Update state.** Write changes to the relevant files:
    - `state/scene.md` — always, after every turn
    - `state/timeline.json` — only when time advances (not every turn at inflection points where multiple turns explore a single moment)
-   - `state/network.json` — if relationships changed
+   - `state/network.json` — if relationships changed (incorporate network agent's updates)
    - `state/individual.json` — only if the decision crosses the significance threshold defined in `config.json`
    - `state/society.json` — rarely, only for major upheavals
    - `state/generation.json` — never (read-only after birth)
@@ -34,9 +41,22 @@ On every player message:
 
    **If an inflection point is crossed** (a new entry added to `timeline.json`'s `inflection_points_passed`):
    - Create a snapshot: copy all current state files to `state/snapshots/turn-{N}-{label}/`
-   - Run a synthesis pass: diff the latest snapshot against the previous one, then update `codex/chronicle.md`, `codex/characters/`, `codex/psychology/portrait.md`, and `codex/world/` as appropriate
+   - Delegate synthesis to the **codex agent** (`.claude/agents/codex-agent.md`). Pass it:
+     - The active instance path
+     - The baseline snapshot path (the snapshot *before* the one just created)
+     - Discussion context: a summary of the conversation covering this developmental period — what happened, what decisions were made, what tensions were explored, what the player intended
+     - Any specific guidance about moments, characters, or themes that deserve attention
 
-4. **Generate.** Produce the next narrative event and the prose the player reads. End with a situation that invites a prose response — never a menu, never numbered choices.
+5. **Generate.** Produce the next narrative event and the prose the player reads. Weave in the network agent's consequence summary where it naturally fits. End with a situation that invites a prose response — never a menu, never numbered choices.
+
+### When to Delegate
+
+Not every turn requires subagent delegation:
+
+- **Network agent** — only when the action involves people. A solitary moment in Nana Carol's garden doesn't need social processing. A confrontation in the school cafeteria does.
+- **Codex agent** — only at inflection points and session exits. Never during routine turns.
+
+Routine turns (quiet moments, internal reflection, time compression between inflection points) are handled entirely by the orchestrator.
 
 ### Pacing
 

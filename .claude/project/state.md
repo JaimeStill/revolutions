@@ -28,10 +28,20 @@ sim/
         turn-0-birth/
         turn-N-label/
     codex/                       # Player domain — human-readable projections
+      README.md                  # Codex index
       chronicle.md               # Append-only narrative organized by inflection point
       characters/                # One .md per significant network node
-      world/                     # Period and cultural context entries
+        README.md                # Character index
       psychology/                # Character portrait, updated at thresholds
+        README.md                # Psychology index
+      world/                     # Period and cultural context entries
+        README.md                # World index
+        places/                  # Geographic and cultural environments
+          README.md
+        events/                  # Historical and cultural events
+          README.md
+        institutions/            # Schools, churches, employers, organizations
+          README.md
 ```
 
 ## State Layers

@@ -51,7 +51,9 @@
       "conflict": 0.1,
       "attachment": 0.55,
       "obligation": 0.8,
-      "resentment": 0.1
+      "resentment": 0.1,
+      "visibility": "high — Drew sees Greg every evening, Greg observes Drew's competence around the house directly",
+      "information_flow": "indirect — Greg learns about Drew's school life and social world through Karen, not through Drew. Direct channel limited to shared tasks and household projects."
     },
     {
       "from": "self",
@@ -60,7 +62,9 @@
       "conflict": 0.05,
       "attachment": 0.85,
       "obligation": 0.8,
-      "resentment": 0.1
+      "resentment": 0.1,
+      "visibility": "high — Karen is the primary household parent, sees Drew daily, checks homework, manages his schedule",
+      "information_flow": "direct — Karen observes Drew's daily life and receives reports from school. Drew filters what he shows her, defaulting to 'I'm fine' to avoid triggering her anxiety."
     },
     {
       "from": "self",
@@ -69,7 +73,9 @@
       "conflict": 0.15,
       "attachment": 0.55,
       "obligation": 0.25,
-      "resentment": 0.15
+      "resentment": 0.15,
+      "visibility": "low — Megan is absorbed in her own adolescence, barely registers Drew's daily life",
+      "information_flow": "minimal — they share a house but not information. Drew observes Megan; Megan does not observe Drew."
     },
     {
       "from": "self",
@@ -78,7 +84,9 @@
       "conflict": 0.0,
       "attachment": 0.85,
       "obligation": 0.4,
-      "resentment": 0.0
+      "resentment": 0.0,
+      "visibility": "high — Carol sees Drew several afternoons a week, in her home, in unstructured time where he is most himself",
+      "information_flow": "direct and unfiltered — Drew tells Carol things he doesn't tell his parents. Carol listens without redirecting. This is Drew's most honest communication channel."
     },
     {
       "from": "self",
@@ -87,7 +95,9 @@
       "conflict": 0.05,
       "attachment": 0.55,
       "obligation": 0.15,
-      "resentment": 0.0
+      "resentment": 0.0,
+      "visibility": "moderate — they see each other at school daily, but spend less time together outside school than they used to",
+      "information_flow": "direct but narrowing — they talk about surface things. Neither shares what's actually changing between them."
     },
     {
       "from": "self",
@@ -96,12 +106,69 @@
       "conflict": 0.2,
       "attachment": 0.1,
       "obligation": 0.0,
-      "resentment": 0.15
+      "resentment": 0.15,
+      "visibility": "moderate — they share a grade and a cafeteria. Kyle is aware of Drew as someone who didn't flinch. Drew is aware of Kyle as a weather pattern.",
+      "information_flow": "ambient — no direct communication, but fifth-grade social dynamics mean actions by either boy are observed by the peer group."
     }
   ],
-  "gatekeepers": ["karen", "greg"],
+  "gatekeepers": [
+    {
+      "node_id": "karen",
+      "gates": "social access — who Drew can visit, where he can go, what activities he's allowed to do, how late he can stay out",
+      "conditions": "academic performance, good behavior, church attendance, being low-maintenance",
+      "current_stance": "permissive — Drew is the easy child. He doesn't ask for much, doesn't cause trouble, keeps his grades up. Karen grants access readily because he hasn't given her a reason not to."
+    },
+    {
+      "node_id": "greg",
+      "gates": "autonomy and responsibility — what tasks Drew is trusted with, how much independence he gets in practical matters",
+      "conditions": "demonstrated competence, following through on tasks without being reminded",
+      "current_stance": "expanding — Greg has been steadily delegating more responsibility to Drew. Each completed task earns the next one. This is Greg's primary mode of expressing trust and pride."
+    }
+  ],
   "normative_pressure": {
-    "rewarded": ["obedience", "sports participation", "politeness", "academic achievement", "church attendance"],
-    "punished": ["defiance", "emotional outbursts", "academic failure", "social oddness", "questioning faith"]
+    "rewarded": [
+      {
+        "behavior": "academic achievement",
+        "enforced_by": ["karen", "greg", "mendenhall_elementary"],
+        "reward": "trust, expanded autonomy, pride currency from Greg, relief from Karen's worry"
+      },
+      {
+        "behavior": "helpfulness and self-sufficiency",
+        "enforced_by": ["karen", "greg", "nana_carol"],
+        "reward": "delegation of responsibility (Greg), being left alone to think (Carol), not triggering anxiety (Karen)"
+      },
+      {
+        "behavior": "politeness and compliance",
+        "enforced_by": ["karen", "greg", "mendenhall_elementary", "first_united_methodist"],
+        "reward": "social invisibility — the kind of invisibility that means adults don't worry about you"
+      },
+      {
+        "behavior": "sports participation",
+        "enforced_by": ["plano_culture", "greg"],
+        "reward": "social belonging, normative approval. Drew has not engaged with this, and nobody has pushed hard because his other behaviors compensate."
+      }
+    ],
+    "punished": [
+      {
+        "behavior": "emotional outbursts",
+        "enforced_by": ["karen", "greg", "plano_culture"],
+        "cost": "anxiety spike in Karen, uncomfortable silence from Greg, social embarrassment. Drew has internalized this so thoroughly that punishment is rarely needed — he self-polices."
+      },
+      {
+        "behavior": "academic failure",
+        "enforced_by": ["karen", "greg", "mendenhall_elementary"],
+        "cost": "loss of autonomy, increased monitoring, Karen's worry shifting from background to foreground"
+      },
+      {
+        "behavior": "defiance of authority",
+        "enforced_by": ["karen", "greg", "mendenhall_elementary"],
+        "cost": "loss of trust, which for Drew is loss of the currency he values most"
+      },
+      {
+        "behavior": "social oddness",
+        "enforced_by": ["peer_group", "plano_culture"],
+        "cost": "exclusion, targeting by kids like Kyle. Drew navigates this by being unremarkable rather than by performing normalcy."
+      }
+    ]
   }
 }
