@@ -179,3 +179,89 @@ Drew said, "See you around," and walked out of Mrs. Patterson's classroom withou
 He had wanted something. He had done something about it. The outcome was not his. And that --- the release of it, the giving-away of control to another person's freedom --- was so unfamiliar that it felt like a new sense, a perception he'd never used before, like discovering at fourteen that he'd had a limb he'd never extended.
 
 The rest of the first day of eighth grade passed in the ordinary blur of schedules and syllabi. But Drew carried through it a quiet, persistent awareness that something structural had shifted. Not in his circumstances --- Sofia might never respond, might hand the letter back, might show it to someone, might do nothing at all. The shift was in him. He had spent three years building an architecture of competence, and for the first time he had used it not to solve a problem or meet a challenge but to reach toward something he wanted. The architecture, it turned out, had a door in it. He had just walked through.
+
+---
+
+The afternoon was bad. Not in any way Drew could have articulated to Karen when she picked him up, not in any way that would have registered on the surface of a normal Tuesday in September. He did his homework at the kitchen desk. He ate dinner. He said "fine" when Karen asked about school, and it was not exactly a lie, but it was the first time in a long time that "fine" felt like it was holding something back rather than accurately summarizing a day that didn't require more detail.
+
+He went to the garage after dinner and hit the bag. The routine was the same --- jab-cross-hook, jab-cross-low kick, reset --- but the rhythm kept fracturing. His mind would settle into the combination for four or five repetitions and then drift, and each time it drifted it went to the same place: the folded paper, the receiving expression on her face, the single word "Okay" that could mean anything. He hit the bag for forty minutes instead of the usual twenty-five. The extra fifteen were not productive. They were a boy trying to metabolize anticipation through his fists and failing because anticipation is not a problem the body can solve.
+
+He checked the family computer before bed. There was no reason to. Sofia did not have his email address. He checked it anyway, the way you check a door you've already locked, and then he went to bed and slept poorly, waking twice to the sound of the house settling and mistaking it, both times, for something that mattered.
+
+This was the thing Drew's system had no protocol for: waiting. He had trained himself to prepare, to anticipate, to build frameworks for problems before the problems arrived. But this was not a problem. It was a person's freedom operating on its own timeline, and there was nothing to prepare for, nothing to build, no framework that would make the hours between Monday afternoon and Tuesday morning pass faster or resolve into certainty. The waiting was just waiting. It was formless and uncomfortable and it did not respond to intelligence.
+
+---
+
+Tuesday morning. Second day of eighth grade. Drew arrived early again, found Marcus at the adjacent locker, fell into the morning routine of schedule-comparing and weekend-plan-sketching that constituted their daily check-in. The letter sat in his chest like a second heartbeat. He said nothing about it.
+
+Third period. Mrs. Patterson's room with its half-circle of desks. Drew sat in the same seat as Monday. Sofia sat three seats to his left. He did not look at her. He was aware of her for the full forty-seven minutes the way you are aware of a sound that is not loud but is continuous --- the hum of a refrigerator, the ticking of a clock you cannot see. Mrs. Patterson began the first real unit of the semester. Drew heard enough to take notes. He could not have told you what the notes said.
+
+The bell rang. Students stood, gathered bags, moved toward the door. Drew was putting his notebook away when he heard his name.
+
+"Drew."
+
+Sofia was standing at her desk, bag over one shoulder, looking at him with the same receiving expression from Monday, except now it had something else in it --- something considered, something that had been turned over and examined. She had read it. He knew she had read it before she said so.
+
+"I read your letter," she said. "Twice, actually."
+
+Drew stood still. His hands were at his sides. The room was emptying around them, Mrs. Patterson erasing the whiteboard, two students lingering near the door. He waited, because waiting was the only honest thing to do, and because anything he said now would be a performance and she would know it.
+
+"That thing you said about me thinking before I talk," Sofia said. "Most people say that like it's a problem. You said it like it was the point."
+
+She put her hand on her bag, where the letter was. She was keeping it. Not returning it. Drew clocked this the way he clocked everything --- as data, as information, as a small physical fact that carried weight far out of proportion to the gesture.
+
+"I eat lunch at 12:15," she said. "By the courtyard doors. If you want."
+
+Drew said he'd be there. She nodded once and walked out.
+
+He stood in Mrs. Patterson's room for perhaps three seconds after she left, which was long enough for the shaking to start in his hands again and long enough for him to understand that the shaking was different this time. Monday's shaking had been the adrenaline of a leap. Tuesday's was the adrenaline of being caught.
+
+---
+
+He told Marcus between third and fourth period. They were in the hallway near the science wing, the traffic of eighth-graders flowing around them, and Drew said it without preamble because preamble would have been a kind of lying.
+
+"I wrote Sofia Reyes a letter," he said. "Gave it to her yesterday. She just talked to me about it."
+
+Marcus looked at him. The contacts made his face more readable than the old wire-rimmed glasses had, and what Drew read there was not surprise. It was something closer to recognition --- the same expression Marcus wore when Drew finally understood a piece of code Marcus had been waiting for him to see.
+
+"And?"
+
+"She invited me to lunch."
+
+Marcus nodded. Drew had expected to feel the need to manage this moment --- to hedge, to minimize, to make the confession smaller than it was. Instead he said the thing he had come to say.
+
+"Nothing changes between us. You know that."
+
+Marcus said, "I know."
+
+Two words. No drama, no performance, no wounded posture. Just the clean receipt of information by someone who did not need reassurance but received it as what it was: not doubt, but declaration. Drew was not apologizing for having another person in his life. He was telling Marcus that the friendship was load-bearing and he knew it.
+
+"Tell me how lunch goes," Marcus said, and walked to fourth period.
+
+It was the first time emotional content had entered their channel --- not thinking-about-feelings, which they could have intellectualized into safety, but the raw fact of Drew wanting something and saying so, and Marcus responding with care rather than deflection. The well had not become a lake. But it had, for the first time, caught rain.
+
+---
+
+The courtyard at Jasper Middle School was not much --- a rectangle of concrete between the main building and the gym wing, with two wooden benches, a sad row of crape myrtles that the district had planted and then forgotten, and a pair of double doors that opened from the cafeteria. At 12:15 on the second day of eighth grade, Drew pushed through those doors and found Sofia already sitting on the far bench, a brown paper bag on her lap, her legs crossed at the ankle.
+
+Twenty minutes. That was all it was. Twenty minutes on a concrete bench in the September heat, eating lunch, talking about nothing that would have sounded significant to anyone walking by.
+
+She told him about her summer in San Antonio --- her grandmother's house, her cousins, the way the city felt different from Plano in a way she was still trying to articulate. Something about the pace. Something about the sound of Spanish in grocery stores, which she heard at home but which sounded different when it was the ambient language rather than the private one. Drew listened. He asked a question about the cousins and she answered it with a specificity that told him the question had landed.
+
+He told her about the gym. About Marcus and the message board project. She asked him to explain the three-range framework --- muay thai, wrestling, jiu-jitsu --- and he did, the way he explained things, structurally, each discipline covering a distance the others couldn't. She was quiet for a moment, and then she said, "So it's like learning three languages for the same conversation."
+
+Drew stopped chewing. The metaphor was not one he would have generated. His framework was structural --- ranges, distances, coverage. Hers was communicative. The reframing didn't replace his understanding; it added a dimension to it that he hadn't known was missing. Three languages for the same conversation. He could feel the idea settling into the space where his thinking about martial arts lived, rearranging things slightly, making room for itself.
+
+They talked about orchestra politics --- the second-chair violinist who was better than the first but wouldn't challenge for the seat, and what that said about the difference between ability and ambition. They talked about *To Kill a Mockingbird*, which Mrs. Patterson had assigned and which Sofia had already read twice. Drew had read it once, at Nana Carol's, the summer before seventh grade. He said something about Atticus Finch that he couldn't remember afterward. She said something about Scout that he could.
+
+The bell rang. Sofia stood, folded her paper bag neatly, and said, "Same time tomorrow?"
+
+Drew said, "I want ---"
+
+The sentence began before the filter could catch it. *I want.* Two words that had never, in fourteen years, escaped Drew Mitchell's mouth in a relational context without being attached to a practical object --- I want to go to the gym, I want to try Ubuntu, I want to build the message board. This *I want* was naked. It was not followed by a noun because the noun was everything, and the sentence hung in the air between them for half a second before Drew's inhibition caught up and finished it: "--- that. Yeah. Same time."
+
+Sofia smiled. Not a large smile. A small one, precise, the kind of smile that was chosen the way she chose her words. She nodded and walked toward the cafeteria doors.
+
+Drew sat on the bench for another ten seconds after she left. The crape myrtles were blooming late, their pink clusters fading at the edges. The concrete was warm under his palms. The bell had rung and the courtyard was emptying and he was going to be late to fifth period and he did not care, not because tardiness didn't matter but because something else mattered more, and the hierarchy of what mattered had just rearranged itself without his permission.
+
+*I want.* The words sat in him like the first line of code in a program he hadn't written yet. He didn't know what it would build. He knew it had compiled.
