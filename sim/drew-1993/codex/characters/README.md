@@ -1,10 +1,10 @@
 # Characters
 
-People in Drew Mitchell's life, as of September 2007 (age 14).
+People in Drew Mitchell's life, as of October 2007 (age 14).
 
 | Entry | Role |
 |-------|------|
-| [carol-novak.md](carol-novak.md) | Grandmother --- the unfiltered channel, the mind that feeds his |
+| [carol-novak.md](carol-novak.md) | Grandmother --- the unfiltered channel, now holding his heart as well as his mind |
 | [coach-davis.md](coach-davis.md) | Jasper wrestling coach --- effort recognized, effort rewarded |
 | [connor-huang.md](connor-huang.md) | Former best friend --- childhood friendship completed its drift |
 | [greg-mitchell.md](greg-mitchell.md) | Father --- communicates through competence, with martial arts as a new channel |
@@ -14,4 +14,4 @@ People in Drew Mitchell's life, as of September 2007 (age 14).
 | [megan-mitchell.md](megan-mitchell.md) | Older sister --- about to leave for college, a preview of unmanaged emotion |
 | [mr-tran.md](mr-tran.md) | Martial arts instructor --- mentor who teaches through the body, not the mind |
 | [mrs-halverson.md](mrs-halverson.md) | Sixth-grade homeroom teacher --- the calm room, remembered fondly |
-| [sofia-reyes.md](sofia-reyes.md) | The first person Drew reached for --- now a real and reciprocal connection |
+| [sofia-reyes.md](sofia-reyes.md) | The first person Drew reached for --- courtyard lunches holding steady, the gate still open |
