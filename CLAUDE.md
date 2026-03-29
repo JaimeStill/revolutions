@@ -20,6 +20,8 @@ The commit trigger is conversational — either side signals readiness naturally
 
 The orchestrator coordinates. Domain agents own state:
 
+**Domain agents** (`agents/domain/`) — own state files, invoked at commit time:
+
 | Domain | Agent | Owns | Role |
 |--------|-------|------|------|
 | Orchestration | orchestrator | `scene.md`, `timeline.json` | Player interface, discussion, commit routing, narrative assembly, pacing |
@@ -28,7 +30,13 @@ The orchestrator coordinates. Domain agents own state:
 | World | world-agent | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, tonal register |
 | Literary Codex | codex-agent | `codex/*` | Literary synthesis from state diffs and discussion context |
 
-At commit time, the orchestrator delegates to every domain agent whose state was affected. For domains without changes, no delegation.
+**Actor agents** (`agents/actors/`) — embody characters, invoked during events:
+
+| Agent | Role |
+|-------|------|
+| persona-agent | Takes on a character's perspective for direct interaction with the player |
+
+At commit time, the orchestrator delegates to every domain agent whose state was affected. During events, the orchestrator delegates character embodiment to the persona agent — the player interacts with the character directly.
 
 ## Tonal Sovereignty
 
@@ -83,11 +91,15 @@ The simulation engine is built from Claude Code primitives — agents, skills, a
 
 - **`CLAUDE.md`** — simulation identity, turn cycle, domain ownership (this file)
 - **`.claude/agents/orchestrator.md`** — main agent: three-phase cycle, delegation routing, narrative assembly, pacing
-- **`.claude/agents/psychology-agent.md`** — psychology subagent: schema dynamics, defense assessment, value processing, self-concept
-- **`.claude/agents/network-agent.md`** — social network subagent: consequence propagation, gatekeepers, normative pressure
-- **`.claude/agents/world-agent.md`** — world subagent: world generation at birth, plausibility validation, tonal register
-- **`.claude/agents/codex-agent.md`** — synthesis subagent: literary codex composition from state diffs and discussion context
-- **`.claude/skills/lifesim/`** — simulation skill: commands (`birth`, `load`, `exit`, `profile`, `replay`) + reference docs (`codex-style`, `synthesis`)
+- **`.claude/agents/domain/`** — domain subagents that own and process state files:
+  - `psychology-agent.md` — schema dynamics, defense assessment, value processing, self-concept
+  - `network-agent.md` — consequence propagation, gatekeepers, normative pressure
+  - `world-agent.md` — world generation at birth, plausibility validation, tonal register
+  - `codex-agent.md` — literary codex composition from state diffs and discussion context
+- **`.claude/agents/actors/`** — performance subagents that embody characters and return content:
+  - `persona-agent.md` — takes on a specific character's perspective for dialogue, actions, and reactions
+- **`.claude/skills/lifesim/`** — simulation skill: commands (`birth`, `load`, `exit`, `profile`, `replay`) + reference docs (`codex-style`, `synthesis`, `events`)
+
 These files **are** the engine. They are loaded and executed at runtime during simulation sessions.
 
 ## Development Reference

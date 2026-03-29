@@ -33,7 +33,7 @@ What **can** emerge:
 
 ### 2. Generate the World
 
-Once the world-building conversation reaches alignment, delegate to the **world agent** (`.claude/agents/world-agent.md`) in birth mode. Pass it everything established during the conversation.
+Once the world-building conversation reaches alignment, delegate to the **world agent** (`.claude/agents/domain/world-agent.md`) in birth mode. Pass it everything established during the conversation.
 
 The world agent generates:
 

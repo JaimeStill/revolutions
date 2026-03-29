@@ -56,7 +56,18 @@ Review `.claude/project/` against the session's changes:
 
 The goal is that someone reading the project docs after this session sees a coherent, current picture of the engine.
 
-#### 6b. Plan Next Steps
+#### 6b. Reconcile Simulation State
+
+If any simulation instances exist in `sim/`, evaluate whether the session's changes affect them. Check:
+
+- **State files** — do any state file formats or expectations need updating to align with new mechanics?
+- **Codex** — do codex entries need revision to reflect new engine capabilities or changed conventions?
+- **Configuration** — does `config.json` need new fields or adjusted parameters?
+- **Consistency** — does the simulation's current state make sense given the mechanics that now govern it?
+
+Not every dev session will affect existing simulations. If nothing changed that touches simulation state, skip this step. But when the engine evolves in ways that change how state is interpreted or generated, existing instances should be brought into alignment rather than left to drift.
+
+#### 6c. Plan Next Steps
 
 Have a conversation with the user about what comes next. This is not a rubber stamp — it's a genuine discussion. Cover:
 
@@ -72,7 +83,7 @@ Have a conversation with the user about what comes next. This is not a rubber st
 **If there's no obvious next step:**
 - Discuss openly. Review the project's current state, what's working well, what feels incomplete. See if there's something compelling to target. The conversation itself often reveals the next direction.
 
-#### 6c. Write `.claude/init.md`
+#### 6d. Write `.claude/init.md`
 
 Capture the discussion's outcome as the next session's bootstrap:
 - Goal, scope, constraints, definition of done (for dev sessions)

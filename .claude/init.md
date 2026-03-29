@@ -1,51 +1,63 @@
-# Next Session: Playtest + Pivotal Moment Design
+# Next Session: Playtest + Pivotal Moment / Persona Agent Design
 
 ## Context
 
-Session 5 refactored the engine into a three-phase turn cycle (Scene → Discussion → Commit) with dedicated domain agents (psychology, network, world, codex). Two new design principles were encoded: world-agnostic simulation and tonal sovereignty. Compaction hooks were retired — the 1M context window and stateless orchestrator model make them unnecessary for now.
+Session 6 added three runtime mechanics to the engine:
 
-The core interaction model is in place. What's missing: **pivotal moment mechanics** — the formalized engagement mode for how the simulation behaves when the character hits a moment of real consequence.
+1. **Load narration** — `load.md` now instructs the orchestrator to present a conversational briefing (like catching a friend up on a game) instead of engine prose. Chronicle is the primary source.
+2. **Relationship events** — the orchestrator now inserts 1-2 naturalistic character interaction scenes during time compression, targeting network characters with high warmth/attachment who haven't had recent screen time. Craft guidance lives in `.claude/skills/lifesim/reference/events.md`.
+3. **Event presentation** — the orchestrator applies a presence test: if the protagonist would have been there, present it as a scene; if not, present information arriving through a specific network channel. Significant network events slow compression.
+4. **Persona agent** — a new actor subagent (`agents/actors/persona-agent.md`) that embodies characters during events. The player interacts with the character directly; the orchestrator relays transparently and only interjects for scene transitions or when the player addresses the orchestrator. Agent directory reorganized into `domain/` (state processors) and `actors/` (character performers).
+
+Additionally: inflection point recognition was refined — the orchestrator now looks for the crystallizing moment (point of no return) rather than treating inflection points as binary thresholds.
+
+The iterative-dev pre-commit review was also updated with a new step (6b) for reconciling simulation state against engine changes.
 
 ## Playtest Notes (for the human)
 
-Run the drew-1993 simulation pure. Drew is 14, about to start eighth grade (August 2007). Identity consolidation inflection point is approaching.
+Run the drew-1993 simulation. Drew is 14, first day of eighth grade, just delivered a letter to Sofia Reyes.
 
 Things to pay attention to:
-- Does the three-phase cycle feel natural? Does the commit boundary emerge organically?
-- Does the orchestrator stay in its coordination lane?
-- Does the tonal register hold? Does the engine ever introduce something off-register?
-- How does the discussion phase feel? Good rhythm between co-authoring and scene presentation?
-- **When the simulation hits a moment that should be pivotal** — does it shift gears? Does it feel different? What's missing mechanically? What would make it feel like "roll for initiative" — that moment where you know the stakes just changed and every choice matters?
+- **Load narration** — does the orientation read like a friend catching you up, or does it still sound like engine prose?
+- **Relationship events** — when the simulation compresses time, does the orchestrator insert moments with family or other neglected characters? Do they feel naturalistic or forced?
+- **Event presentation** — if a significant event involving a network character happens, does the orchestrator apply the presence test correctly? Does it present the event as a scene when Drew would be there?
+- **Inflection point recognition** — Drew is approaching identity consolidation. Does the orchestrator recognize the crystallizing moment when it arrives?
+- **Persona agent** — when the orchestrator delegates to the persona agent during events, does the character feel like a real person? Does the relay loop (orchestrator → persona → player → persona) feel natural or stilted? Does the player know when they're talking to a character vs. the orchestrator?
 
 ## Development Work Queued (after playtest resolves)
 
 ### Primary: Pivotal Moment Mechanics
 
-Design and implement the engagement mode for pivotal moments:
+The five unchecked requirements under Event Mechanics are all pivotal-moment items. The placeholder in `events.md` is waiting for this design. Key questions:
 - What triggers the shift from routine pacing to pivotal mode?
-- How does the three-phase cycle behave differently during a pivotal moment? (Tighter discussion loops? Constraints on available actions? Time pressure? Forced trade-offs?)
-- How do world events emerge organically at narrative climaxes — not scripted, but timed to the character's trajectory?
-- How do consequences of pivotal moments propagate with outsized impact?
+- How does the three-phase cycle behave differently under pressure?
+- How do world events emerge organically at narrative climaxes?
+- How do consequences amplify?
 
-This is the next critical simulation component beyond the three-phase cycle itself.
+### Secondary: Persona Agent Tuning
 
-### Secondary: Evaluate Hook Utility
+The persona agent is built and integrated. Playtest will reveal:
+- Does the relay loop feel natural enough, or does the orchestrator mediation create friction?
+- Do characters sound distinct from each other and from the orchestrator's narrative voice?
+- Is the persona context (codex entry + network node/edge + scene) sufficient, or does the agent need more?
+- Should the persona agent be used beyond relationship events — e.g., during pivotal moments where another character's agency matters?
 
-Hooks were retired because compaction isn't an issue at 1M context. But hooks can do more than compaction recovery — automated behaviors, invariant enforcement, pre/post processing. Evaluate whether any simulation mechanics would benefit from hook-level automation. Don't force it; only add hooks if there's a real need.
+### Tertiary: Evaluate Hook Utility
+
+Carried from session 5. Only add hooks if a real need emerges.
 
 ## Future Vision (captured, not active)
 
-These are directions discussed during the session 5 closeout. None are active development targets — they're here so they don't get lost:
-
-- **World simulation** — expanding beyond single-character perspective to simulate the full world. Architecture TBD. Affects how snapshot rewinding and branching would work.
-- **Snapshot rewinding** — depends on world simulation architecture decisions.
-- **Non-historical birth validation** — test the world-building session with fantasy/sci-fi settings. After core mechanics stabilize.
-- **Bun / GitHub Pages deployment** — bring the codex and simulation state to life as a deployed site. After state and codex schemas are stable and unlikely to change.
+- World simulation — full world perspective beyond single character
+- Snapshot rewinding — depends on world simulation architecture
+- Non-historical birth validation — after core mechanics stabilize
+- Bun / GitHub Pages deployment — after state and codex schemas are stable
 
 ## Definition of Done (for the dev session after playtest)
 
-- Playtest observations reviewed against simulation state and codex updates
+- Playtest observations reviewed against new mechanics
 - Friction points identified and categorized (architectural vs. tuning)
-- Pivotal moment mechanics designed (at minimum: trigger conditions, behavioral differences, consequence amplification)
-- Requirements.md updated with refined pivotal moment requirements
-- If design is clear enough: implement the mechanics
+- Pivotal moment mechanics designed (trigger conditions, behavioral differences, consequence amplification)
+- Persona agent tuned based on playtest feedback
+- Requirements.md updated
+- If designs are clear enough: implement

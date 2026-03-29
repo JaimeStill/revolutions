@@ -24,7 +24,7 @@ Copy all current state files to `state/snapshots/turn-{N}-session-exit/` where N
 
 Synthesis is primarily triggered during commit phases at inflection points. At session exit, only run the codex agent if the session included commits that didn't already trigger synthesis — i.e., if the session advanced the narrative but no inflection point was crossed.
 
-If synthesis is needed, delegate to the **codex agent** (`.claude/agents/codex-agent.md`):
+If synthesis is needed, delegate to the **codex agent** (`.claude/agents/domain/codex-agent.md`):
 
 1. **The active instance path**
 2. **The baseline snapshot path** — the most recent prior snapshot (not the one just created)
