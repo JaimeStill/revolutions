@@ -1,6 +1,6 @@
 # Characters
 
-People in Drew Mitchell's life, as of August 2007 (age 14).
+People in Drew Mitchell's life, as of September 2007 (age 14).
 
 | Entry | Role |
 |-------|------|
@@ -14,3 +14,4 @@ People in Drew Mitchell's life, as of August 2007 (age 14).
 | [megan-mitchell.md](megan-mitchell.md) | Older sister --- about to leave for college, a preview of unmanaged emotion |
 | [mr-tran.md](mr-tran.md) | Martial arts instructor --- mentor who teaches through the body, not the mind |
 | [mrs-halverson.md](mrs-halverson.md) | Sixth-grade homeroom teacher --- the calm room, remembered fondly |
+| [sofia-reyes.md](sofia-reyes.md) | The girl Drew wrote a letter to --- the first person he reached for |
