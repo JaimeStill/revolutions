@@ -66,4 +66,4 @@ sim/<instance-name>/
 
 ## Active Instance Tracking
 
-During an active session, `sim/.active` contains the instance directory name. This file is a runtime breadcrumb used by compaction hooks — not a session persistence mechanism. Players always start a simulation explicitly via `/lifesim birth` or `/lifesim load`.
+During an active session, `sim/.active` contains the instance directory name. This file is a runtime breadcrumb — not a session persistence mechanism. Players always start a simulation explicitly via `/lifesim birth` or `/lifesim load`.

@@ -4,7 +4,7 @@ A human lifecycle simulator where Claude Code is the simulation engine.
 
 ## Vision
 
-Revolutions captures patterns of human growth under specific cultural and historical conditions. It generates psychological profiles of individuals within generational and social constraints, driven by prose input — from a human player or AI subagent — rather than discrete choice menus.
+Revolutions captures patterns of human growth within the constraints of a specific world — historical, fantastical, or anything in between. It generates psychological profiles of individuals within generational and social constraints, driven by prose input — from a human player or AI subagent — rather than discrete choice menus.
 
 Every decision is a prose response to a narrative event. Intent is interpreted semantically, not parsed. Formative moments are structured around developmental psychology inflection points. Ancestry is not predetermined — ancestor traits emerge retroactively through the psychological profile of the main character.
 
@@ -12,9 +12,9 @@ The simulation treats Claude Code's context window as its frame buffer, its agen
 
 ## How It Works
 
-A player starts a life with `/lifesim birth`. The orchestrator — the main agent running the session — generates a world, a character, and the first formative event. The player responds in prose. The orchestrator processes every subsequent message as a turn: interpreting the response, validating it against the period's possibility space, propagating social consequences, and generating the next event.
+A player starts a life with `/lifesim birth`. The orchestrator runs a collaborative world-building session — the world can be historical, fantasy, sci-fi, or anything else — then generates a character and the first formative event. From there, the simulation operates in a three-phase cycle: the orchestrator presents a **scene**, the player and engine co-author what happens through **discussion**, and when alignment is reached, the orchestrator **commits** — delegating to domain agents (psychology, network, world) to process state changes, then presenting the next scene.
 
-There is no `/turn` command. The conversation IS the simulation. Every message after `/lifesim birth` is a turn. The orchestrator knows the protocol because its system prompt defines it.
+There is no `/turn` command. The conversation IS the simulation. The orchestrator knows the protocol because its system prompt defines it.
 
 State lives on disk in `sim/<instance>/state/`. The conversation is a working surface — disposable, rebuildable. When context compaction fires, hooks rebuild the simulation entirely from state files.
 
@@ -49,17 +49,16 @@ revolutions/
     init.md                      # Next dev session bootstrap (iterative-dev)
     settings.json                # Orchestrator config, hooks, env vars
     agents/
-      orchestrator.md            # Main agent — interpretation, generation, pacing
-      codex-agent.md             # Synthesis subagent — literary codex composition
+      orchestrator.md            # Main agent — three-phase cycle, delegation, narrative assembly
+      psychology-agent.md        # Psychology subagent — schemas, defenses, values, self-concept
       network-agent.md           # Social network subagent — consequence propagation
+      world-agent.md             # World subagent — world generation, plausibility, tonal register
+      codex-agent.md             # Synthesis subagent — literary codex composition
     skills/
       lifesim/                   # Simulation skill
         commands/                # Sub-commands (birth, load, exit, profile, replay)
         reference/               # Engine reference docs (codex-style, synthesis)
       iterative-dev/             # Development workflow skill
-    hooks/
-      session-compact.sh         # Rebuild context after compaction (guards on sim/.active)
-      pre-compact.sh             # Validate state before compaction (guards on sim/.active)
   sim/
     .active                      # Runtime breadcrumb (current instance name)
     <instance-name>/             # One per simulation run (self-contained)

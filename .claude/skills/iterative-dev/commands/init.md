@@ -41,9 +41,44 @@ The user trusts Claude with implementation details after alignment in the planni
 
 ### 5. Execute
 
-Once the plan is approved, implement the work. After completing:
+Once the plan is approved, implement the work.
 
-1. **Update `.claude/project/`** — check off completed requirements, update any sub-files that changed (architecture, schemas, etc.)
-2. **Generate `.claude/init.md`** — read the remaining requirements, identify the next logical step, write the bootstrap for the next session
-3. **Commit** — all session work, updated project files, and new init.md
-4. **Push and open a PR** — push the branch and create a pull request against `main`
+### 6. Pre-Commit Review
+
+Before committing, run a structured closeout:
+
+#### 6a. Reconcile Project Docs
+
+Review `.claude/project/` against the session's changes:
+- **`requirements.md`** — check off completed items, add new ones that emerged
+- **`README.md`** — does the vision or directory structure need updating?
+- **Other sub-files** — do architecture, schemas, simulation, state, or configuration docs need revision? Did new concepts emerge that warrant a new sub-file?
+
+The goal is that someone reading the project docs after this session sees a coherent, current picture of the engine.
+
+#### 6b. Plan Next Steps
+
+Have a conversation with the user about what comes next. This is not a rubber stamp — it's a genuine discussion. Cover:
+
+**If the next step is a playtest:**
+- What was built that needs validation?
+- What should the user pay attention to during the simulation? (This is a note *to the user* — the engine runs pure with no awareness that evaluation is happening.)
+- What development work is queued after the playtest cycle resolves? This ensures that once playtesting and any tuning it produces are complete, there's a clear picture of the next development stage.
+
+**If the next step is a development session:**
+- What's the next logical build target from remaining requirements?
+- Are there new ideas or directions worth exploring? The user may have ambitions beyond the current requirements — features, infrastructure, integrations — that should be surfaced and discussed here.
+
+**If there's no obvious next step:**
+- Discuss openly. Review the project's current state, what's working well, what feels incomplete. See if there's something compelling to target. The conversation itself often reveals the next direction.
+
+#### 6c. Write `.claude/init.md`
+
+Capture the discussion's outcome as the next session's bootstrap:
+- Goal, scope, constraints, definition of done (for dev sessions)
+- Observation notes and queued development work (for playtest sessions)
+- Any new ideas or directions that were discussed but deferred
+
+### 7. Commit, Push, and PR
+
+Stage all session work, commit, push the branch, and open a pull request against `main`.

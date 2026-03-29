@@ -19,7 +19,7 @@ Each instance's `config.json` controls simulation fidelity. Token budget is trea
 | Parameter | Values | Effect |
 |-----------|--------|--------|
 | `state_resolution` | 1-5 | Number of actively tracked fields per state layer. |
-| `turn_scope` | `day` / `season` / `year` / `decade` | Time window per turn. |
+| `turn_scope` | `day` / `season` / `year` / `decade` | Time window per commit cycle. |
 | `narrative_verbosity` | `minimal` / `medium` / `rich` | Prose length per event. |
 | `profile_update_threshold` | `any` / `significant` / `major` | How significant a decision must be to trigger profile update. |
 | `network_depth` | 1-10 | Number of actively simulated relationship nodes. |

@@ -1,16 +1,18 @@
 # State Schemas
 
-JSON schemas for all simulation state files. Instance files contain only data — theory references are documented here.
+JSON schemas for all simulation state files. Instance files contain only data — theory references are documented here. Each domain's state is owned by a specific agent.
 
-## Period (`period.md`)
+## Period (`period.md`) — owned by world-agent
 
-A prose reference document generated at birth describing the historical period's possibility space. Used by the orchestrator to validate player actions. Covers what is physically possible, socially permissible, conceivable, punishable, and available as opportunity. Written as prose, not rules.
+A prose reference document generated at birth describing the world's possibility space. Not limited to historical periods — the world can be fantasy, sci-fi, alt-history, or any setting. Used by the world agent to validate player actions at commit time.
 
-The core question: "Could this person, in this place and time, do what the player described?"
+Covers what is physically possible, socially permissible, conceivable, punishable, and available as opportunity. Also captures the **tonal register** — the established narrative tone (grounded realism, high fantasy, gritty noir, etc.) — which the world agent validates against alongside factual plausibility.
 
-Period context is generated from the model's training knowledge at birth — not hardcoded. Separate from `society.json`, which captures specific structured facts rather than the period's general possibility space.
+The core question: "Could this person, in this world, do what the player described — and is it tonally consistent with the story we've been telling?"
 
-## Society (`society.json`)
+Period context is generated from the model's knowledge at birth — not hardcoded. For historical settings, this means research into the actual period. For fictional settings, it means establishing internal consistency. Separate from `society.json`, which captures specific structured facts rather than the world's general possibility space.
+
+## Society (`society.json`) — owned by world-agent
 
 Structured facts the engine needs for quick lookup. Period.md handles texture and prose.
 
@@ -19,6 +21,7 @@ Structured facts the engine needs for quick lookup. Period.md handles texture an
   "period": "14th century",
   "region": "Northern France",
   "culture": "Feudal Christian Europe",
+  "setting_type": "historical",
   "mobility_constraints": {
     "class": "rigid — born into station",
     "gender": "severe — women as property in most contexts",
@@ -32,7 +35,7 @@ Structured facts the engine needs for quick lookup. Period.md handles texture an
 }
 ```
 
-## Generation (`generation.json`)
+## Generation (`generation.json`) — owned by world-agent
 
 ```json
 {
@@ -51,7 +54,7 @@ Structured facts the engine needs for quick lookup. Period.md handles texture an
 }
 ```
 
-## Network (`network.json`)
+## Network (`network.json`) — owned by network-agent
 
 Nodes describe WHO someone is. Edges describe the relationship TO the character. These are separate concerns.
 
@@ -113,7 +116,7 @@ Nodes describe WHO someone is. Edges describe the relationship TO the character.
 
 These fields drive the network agent's consequence propagation: when the character acts, the agent traces through edges to determine who learns about it and how their relationships shift.
 
-## Individual (`individual.json`) — Seven-Layer Psychological Profile
+## Individual (`individual.json`) — owned by psychology-agent — Seven-Layer Psychological Profile
 
 The core of the simulation. Each layer is grounded in established psychological theory, operates at a different timescale, and serves a different narrative function.
 
@@ -186,15 +189,15 @@ The core of the simulation. Each layer is grounded in established psychological 
 
 **How the layers interact:**
 
-The orchestrator reads all layers when interpreting a player decision. It checks:
+The psychology agent reads all layers when processing the psychological impact of a committed action. It checks:
 - Does this action confirm or contradict the **values hierarchy**?
 - Does it activate or heal a **schema/wound**?
 - Does it confirm or challenge the **self-concept narrative**?
 - What **defense mechanisms** are currently active?
 
-If the decision crosses a significance threshold, the orchestrator updates the relevant layers. Layers 1-2 barely change. Layer 3 shifts only at major inflection points. Layer 4 can reorder through moral tests. Layers 5-6 are moderately dynamic. Scene (Layer 7, in `scene.md`) changes every turn.
+If the action crosses the significance threshold, the psychology agent updates the relevant layers. Layers 1-2 barely change. Layer 3 shifts only at major inflection points. Layer 4 can reorder through moral tests. Layers 5-6 are moderately dynamic. Scene (`scene.md`, owned by the orchestrator) updates at every commit.
 
-## Timeline (`timeline.json`)
+## Timeline (`timeline.json`) — owned by orchestrator
 
 ```json
 {
@@ -209,6 +212,6 @@ If the decision crosses a significance threshold, the orchestrator updates the r
 }
 ```
 
-## Scene (`scene.md`)
+## Scene (`scene.md`) — owned by orchestrator
 
-A narrative document, not JSON. Written by the orchestrator after each turn. Read first on session start and after compaction. Contains the current moment, last decision, pending threads, and emotional state.
+A narrative document, not JSON. Written by the orchestrator at commit time. Read first on session start and after compaction. Contains the current moment, last decision, pending threads, and emotional state.

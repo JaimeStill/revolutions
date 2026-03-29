@@ -1,43 +1,56 @@
 # Birth — Initialize a New Life
 
-Create a new simulation instance: a character, a world, and the first formative event.
+Create a new simulation instance: a world, a character, and the first formative event.
 
 ## Process
 
-### 1. Gather Context
+### 1. World-Building Session
 
-Ask the player if they have preferences for any of the following, or if they'd like everything generated:
+Begin a collaborative conversation to establish the simulation world. This phase runs as long as needed — it could be a quick exchange or an extended world-building session depending on how much the user has already defined.
 
-- **Historical period and region** (e.g., "14th century Northern France", "1920s Shanghai", "pre-colonial West Africa")
-- **Any character constraints** (e.g., sex, social class, a specific trait)
+Ask the user what kind of world they want to explore:
 
-If the player provides nothing, generate everything — pick a period and region that offers rich narrative potential.
+- A historical period and region (14th century Northern France, 1990s suburban America, Edo-period Japan)
+- A fantasy setting (secondary world, mythological, fairy-tale logic)
+- A science fiction world (space colonization, post-singularity, alien contact)
+- Alt-history, magical realism, post-apocalyptic, or any hybrid
+- Something the user has already developed and wants to bring in
+
+If the user provides a detailed vision, work with it — ask clarifying questions, research historical or cultural material when relevant, and push for specificity where the simulation needs it. If the user provides a loose sketch or says "surprise me," generate a world with rich narrative potential.
+
+**The goal is a viable foundation**, not exhaustive detail. Establish enough that the simulation can validate actions and generate culturally grounded events. Leave room for emergence — details that aren't nailed down will be discovered through play.
+
+What **must** be established:
+- The possibility space (what can happen in this world)
+- The social structure (who has power, how it's distributed)
+- The material conditions (resources, scarcity, technology or its equivalent)
+- The tonal register (what kind of story this is — grounded realism, high fantasy, etc.)
+
+What **can** emerge:
+- Specific places, secondary characters, cultural details
+- Historical or world events the character hasn't encountered yet
+- Deeper social dynamics that surface through play
 
 ### 2. Generate the World
 
-Use your knowledge of history, anthropology, and sociology. Do not rely on templates — each world should feel researched and specific.
+Once the world-building conversation reaches alignment, delegate to the **world agent** (`.claude/agents/world-agent.md`) in birth mode. Pass it everything established during the conversation.
+
+The world agent generates:
 
 #### `state/period.md`
 
-A prose reference document describing the historical period's possibility space:
-- What is physically possible given the technology
-- What is socially permissible given the power structure
-- What is conceivable given the information environment
-- What would be punished and how
-- What opportunities exist and for whom
-- Key material conditions (food, shelter, medicine, trade)
-
-This document is the orchestrator's reference for validating player actions. Write it as prose, not rules.
+The world's possibility space as prose — what is physically possible, socially permissible, conceivable, punishable, and available. Includes the tonal register. This is the engine's reference for all plausibility validation during play.
 
 #### `state/society.json`
 
-Structured facts the engine needs for quick lookup. Period.md handles texture.
+Structured facts for quick engine lookup:
 
 ```json
 {
-  "period": "string — era label",
+  "period": "string — era label or world name",
   "region": "string — geographic specificity",
   "culture": "string — cultural identity",
+  "setting_type": "string — historical | fantasy | sci-fi | alt-history | hybrid | other",
   "mobility_constraints": {
     "class": "string",
     "gender": "string",
@@ -57,11 +70,11 @@ The birth cohort and its defining conditions:
 
 ```json
 {
-  "birth_cohort": "string — year range",
+  "birth_cohort": "string — year range or equivalent",
   "defining_events": [
     {
       "event": "string",
-      "year": "number",
+      "year": "number or string",
       "character_age_at_event": "string",
       "developmental_impact": "string"
     }
@@ -74,7 +87,7 @@ The birth cohort and its defining conditions:
 
 ### 3. Generate the Character
 
-At birth, only biological and temperament layers exist. Other layers form through play.
+At birth, only biological and temperament layers exist. Other layers form through play. The orchestrator writes this directly — no interpretation needed, just initialization.
 
 #### `state/individual.json`
 
@@ -127,9 +140,9 @@ At birth, only biological and temperament layers exist. Other layers form throug
 
 ### 4. Initialize the Social Network
 
-#### `state/network.json`
+The orchestrator writes this directly. Start with the character's immediate family — the people present at birth. Generate names, roles, and initial relationship data appropriate to the world.
 
-Start with the character's immediate family — the people present at birth. Generate names, roles, and initial relationship data appropriate to the period and culture.
+#### `state/network.json`
 
 Nodes describe WHO someone is. Edges describe the relationship TO the character.
 
@@ -169,8 +182,8 @@ Nodes describe WHO someone is. Edges describe the relationship TO the character.
 
 ```json
 {
-  "birth_year": "number",
-  "current_year": "number — same as birth_year",
+  "birth_year": "number or string",
+  "current_year": "number or string — same as birth_year",
   "current_age": 0,
   "developmental_stage": "infancy",
   "erikson_conflict": "trust_vs_mistrust",
@@ -183,8 +196,6 @@ Nodes describe WHO someone is. Edges describe the relationship TO the character.
 ### 6. Write Config
 
 #### `config.json`
-
-Write the simulation parameters to the instance root. Defaults:
 
 ```json
 {
@@ -200,7 +211,7 @@ Write the simulation parameters to the instance root. Defaults:
 }
 ```
 
-### 7. Generate the First Event
+### 7. Generate the First Scene
 
 #### `state/scene.md`
 
@@ -211,7 +222,7 @@ Write the opening scene. This is the character's entry into the world — the fi
 - Set up the first developmental tension (trust vs. mistrust)
 - End with a situation that invites the player's first prose response
 
-The scene should feel immediate and grounded in the period. Not a summary — a moment.
+The scene should feel immediate and grounded in the world that was built. Not a summary — a moment.
 
 ### 8. Create Initial Snapshot
 
@@ -239,11 +250,9 @@ codex/
       README.md          # "Institutions in <character name>'s world."
 ```
 
-Each README starts nearly empty — just the index header and a note that entries will be added as the life develops. The codex agent populates them during synthesis passes.
-
 ### 10. Name the Instance
 
-Suggest a name based on the character's name and birth year (e.g., `drew-1993`). Ask the player to confirm or provide an alternative. Validate that the directory `sim/<name>/` doesn't already exist.
+Suggest a name based on the character's name and birth year or world (e.g., `drew-1993`, `kael-ashenmere`). Ask the player to confirm or provide an alternative. Validate that the directory `sim/<name>/` doesn't already exist.
 
 ### 11. Write Everything
 
@@ -283,4 +292,4 @@ Write the instance name to `sim/.active`.
 
 ### 12. Present the Opening
 
-Output the narrative from `scene.md` to the player. From this point forward, every player message is a simulation turn processed by the orchestrator.
+Output the narrative from `scene.md` to the player. From this point forward, the simulation is active and operates in the three-phase turn cycle.

@@ -54,17 +54,22 @@ Start session
           └─ Load relevant sub-files from .claude/project/
              └─ Plan the session scope
                 └─ Execute implementation
-                   └─ Update project files (requirements, schemas, etc.)
-                      └─ Generate new init.md for next session
+                   └─ Pre-commit review
+                      ├─ Reconcile project docs against changes
+                      ├─ Discuss next steps with the user
+                      └─ Write init.md from the discussion
                          └─ Commit, push, and open a PR
 ```
 
-### Session Closeout
+### Pre-Commit Review
 
-At the end of every session:
+Before committing, run a structured closeout with three parts:
 
-1. Update `.claude/project/requirements.md` — check off completed requirements, add new ones
-2. Update other project files if architecture or schemas changed
-3. Write `.claude/init.md` — identify the next logical step from remaining requirements
-4. Commit all session work
-5. Push the branch and open a PR against `main`
+1. **Reconcile project docs** — review `.claude/project/` against the session's changes. Check off completed requirements, update architecture/schema/state docs, add new sub-files if new concepts emerged. The goal: someone reading the project docs after this session sees a coherent, current picture.
+
+2. **Discuss next steps** — have a genuine conversation with the user about what comes next:
+   - If the next step is a **playtest**: note what was built and what to observe (written for the human — the engine runs pure with no awareness of evaluation). Also capture what development work is queued after the playtest cycle resolves, so there's a clear picture of the next build stage.
+   - If the next step is a **dev session**: identify the next build target. Surface new ideas or directions beyond current requirements.
+   - If there's **no obvious next step**: discuss openly. Review project state, what's working, what's incomplete. The conversation often reveals the next direction.
+
+3. **Write `.claude/init.md`** — capture the discussion's outcome as the next session's bootstrap.

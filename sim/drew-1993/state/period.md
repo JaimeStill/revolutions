@@ -38,6 +38,10 @@ Poverty. Visible failure. Academic underperformance. Being weird in ways that ar
 
 Achievement. Sports. Politeness. Church attendance. Good colleges. Being well-rounded. Having a nice house. Volunteering in ways that appear on applications. Performing happiness.
 
+## Tonal Register
+
+Grounded realism. This simulation operates in the register of literary domestic fiction — think Richard Ford, Ann Patchett, early Jonathan Franzen. The world is the actual world. Events are plausible within the documented historical period. Psychology is naturalistic. There are no supernatural elements, no magical realism, no genre intrusions. Drama comes from the ordinary pressures of growing up in a specific place and time — family dynamics, social hierarchies, economic anxiety, the gap between the suburban promise and lived experience. The extraordinary, when it appears, is the kind of extraordinary that real life produces: a kid who trains harder than anyone expects, a friendship that quietly reshapes a trajectory, a moment of clarity that arrives without fanfare.
+
 ## Undercurrents
 
 Beneath the prosperity runs anxiety. The Corridor companies restructure and lay off without warning. Marriages strain under the weight of performance. Kids feel the pressure before they can name it. Plano will become nationally famous for its teen suicide clusters, its heroin deaths, its revelation that paradise has a body count. But in 1993, standing in the delivery room of Plano Presbyterian Hospital, none of that has happened yet. The lawn is green. The nursery is painted. The future is a four-bedroom house with good schools.
