@@ -1,63 +1,55 @@
-# Next Session: Playtest + Pivotal Moment / Persona Agent Design
+# Next Session: Playtest — Persona Delegation + Pivotal Moments
 
 ## Context
 
-Session 6 added three runtime mechanics to the engine:
+Session 8 addressed the two main findings from the previous playtest:
 
-1. **Load narration** — `load.md` now instructs the orchestrator to present a conversational briefing (like catching a friend up on a game) instead of engine prose. Chronicle is the primary source.
-2. **Relationship events** — the orchestrator now inserts 1-2 naturalistic character interaction scenes during time compression, targeting network characters with high warmth/attachment who haven't had recent screen time. Craft guidance lives in `.claude/skills/lifesim/reference/events.md`.
-3. **Event presentation** — the orchestrator applies a presence test: if the protagonist would have been there, present it as a scene; if not, present information arriving through a specific network channel. Significant network events slow compression.
-4. **Persona agent** — a new actor subagent (`agents/actors/persona-agent.md`) that embodies characters during events. The player interacts with the character directly; the orchestrator relays transparently and only interjects for scene transitions or when the player addresses the orchestrator. Agent directory reorganized into `domain/` (state processors) and `actors/` (character performers).
+1. **Persona delegation expanded** — no longer scoped exclusively to relationship events during compression. The orchestrator now uses a general **participant test**: "Will the player interact with this character across multiple beats, and does the character's own perspective matter?" This covers relationship events, pivotal moments, and any scene where the narrative becomes a dialogue. Character Embodiment is now a standalone section in the orchestrator with the relay loop described once.
 
-Additionally: inflection point recognition was refined — the orchestrator now looks for the crystallizing moment (point of no return) rather than treating inflection points as binary thresholds.
-
-The iterative-dev pre-commit review was also updated with a new step (6b) for reconciling simulation state against engine changes.
+2. **Pivotal moments designed and implemented** — an intensification of the standard three-phase cycle, triggered when three criteria all hold: irreversibility imminent, real trade-off exists, multiple domains in tension. Scene phase heightens specificity. Discussion phase tightens (no vague resolutions, consequences surfaced before commit, persona stays active). Commit phase amplifies (broad delegation, agents calibrate significance higher, world agent asked broader question about world tensions). Full craft guidance in `events.md`.
 
 ## Playtest Notes (for the human)
 
-Run the drew-1993 simulation. Drew is 14, first day of eighth grade, just delivered a letter to Sofia Reyes.
+Run the drew-1993 simulation. Drew is 14, second day of eighth grade. Sofia invited him to lunch tomorrow. Marcus knows.
 
 Things to pay attention to:
-- **Load narration** — does the orientation read like a friend catching you up, or does it still sound like engine prose?
-- **Relationship events** — when the simulation compresses time, does the orchestrator insert moments with family or other neglected characters? Do they feel naturalistic or forced?
-- **Event presentation** — if a significant event involving a network character happens, does the orchestrator apply the presence test correctly? Does it present the event as a scene when Drew would be there?
-- **Inflection point recognition** — Drew is approaching identity consolidation. Does the orchestrator recognize the crystallizing moment when it arrives?
-- **Persona agent** — when the orchestrator delegates to the persona agent during events, does the character feel like a real person? Does the relay loop (orchestrator → persona → player → persona) feel natural or stilted? Does the player know when they're talking to a character vs. the orchestrator?
+
+- **Persona delegation firing** — when Drew and Sofia interact (the next courtyard lunch, any scene where she's present), does the orchestrator invoke the persona agent? Does Sofia feel like a person with her own reasoning, or is she still the orchestrator wearing a mask?
+- **Participant test boundary** — does the orchestrator correctly distinguish between scenes where Sofia is a participant (lunch conversation, direct interaction) vs. where she's mentioned in narration? The persona agent should NOT fire for every mention of Sofia — only when the player will interact with her directly.
+- **Pivotal moment recognition** — the three criteria (irreversibility, trade-off, multi-domain tension) should trigger during high-stakes scenes. Does the orchestrator intensify correctly? Does discussion tighten? Are consequences surfaced before commit?
+- **Discussion phase pressure** — during pivotal moments, the orchestrator should press for specificity and not accept vague resolutions. Does this feel like productive pressure or annoying railroading?
+- **Relationship events during compression** — if the simulation compresses time, do relationship events surface with family (Carol, Karen, Greg) using persona delegation?
+- **Consequence amplification** — do pivotal moment commits produce proportionally larger state changes? Check `individual.json` and `network.json` deltas after pivotal commits vs. routine ones.
 
 ## Development Work Queued (after playtest resolves)
 
-### Primary: Pivotal Moment Mechanics
+### Persona Agent Quality Tuning
 
-The five unchecked requirements under Event Mechanics are all pivotal-moment items. The placeholder in `events.md` is waiting for this design. Key questions:
-- What triggers the shift from routine pacing to pivotal mode?
-- How does the three-phase cycle behave differently under pressure?
-- How do world events emerge organically at narrative climaxes?
-- How do consequences amplify?
-
-### Secondary: Persona Agent Tuning
-
-The persona agent is built and integrated. Playtest will reveal:
-- Does the relay loop feel natural enough, or does the orchestrator mediation create friction?
+The scoping fix was the critical change — the persona agent should now actually fire. But once it fires, playtest will reveal quality questions:
 - Do characters sound distinct from each other and from the orchestrator's narrative voice?
-- Is the persona context (codex entry + network node/edge + scene) sufficient, or does the agent need more?
-- Should the persona agent be used beyond relationship events — e.g., during pivotal moments where another character's agency matters?
+- Is the persona context (codex entry + network node/edge + scene) sufficient?
+- Does the relay loop feel natural or does orchestrator mediation create friction?
+- How does the persona handle pivotal moment pressure vs. relationship event casualness?
 
-### Tertiary: Evaluate Hook Utility
+### Remaining Requirements
 
-Carried from session 5. Only add hooks if a real need emerges.
+The unchecked items in requirements.md are mostly deferred/future work:
+- Ancestry mechanics (stubs, retroactive resolution, self-concept integration)
+- AI/hybrid player modes
+- Snapshot rewinding (depends on world simulation architecture)
+- World simulation beyond single character
+- Non-historical birth validation
+- Infrastructure (Bun, GitHub Pages)
 
-## Future Vision (captured, not active)
+### Hook Utility (carried)
 
-- World simulation — full world perspective beyond single character
-- Snapshot rewinding — depends on world simulation architecture
-- Non-historical birth validation — after core mechanics stabilize
-- Bun / GitHub Pages deployment — after state and codex schemas are stable
+Still deferred. Only add hooks if a real need emerges during playtest.
 
 ## Definition of Done (for the dev session after playtest)
 
 - Playtest observations reviewed against new mechanics
-- Friction points identified and categorized (architectural vs. tuning)
-- Pivotal moment mechanics designed (trigger conditions, behavioral differences, consequence amplification)
-- Persona agent tuned based on playtest feedback
+- Persona agent quality assessed — does it produce better characters than orchestrator voicing?
+- Pivotal moment trigger accuracy evaluated — false positives? false negatives?
+- Friction points categorized (architectural vs. tuning vs. instruction wording)
+- Adjustments implemented based on findings
 - Requirements.md updated
-- If designs are clear enough: implement

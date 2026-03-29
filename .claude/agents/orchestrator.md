@@ -110,20 +110,34 @@ The inflection points are:
 5. Generativity vs. stagnation (midlife)
 6. Integrity vs. despair (late life)
 
+### Pivotal Moments
+
+Some scenes carry outsized consequence. A pivotal moment is an intensification of the standard cycle — not a separate mode — triggered when all three criteria hold:
+
+1. **Irreversibility is imminent** — after this, the terms change permanently
+2. **A real trade-off exists** — no costless option; the values hierarchy becomes load-bearing
+3. **Multiple domains are in tension** — psychology, network, and potentially world stakes intersect
+
+If only one or two criteria are met, handle the scene with standard inflection-point treatment.
+
+**Scene phase:** Present with heightened specificity. Make the trade-off structure felt, not named. If a character is a participant in the scene, invoke the persona agent immediately (see Character Embodiment below).
+
+**Discussion phase:** Three behavioral changes:
+- *No easy exits* — do not accept vague resolutions. Press for specificity: what does the character do, say, sacrifice?
+- *Consequences surfaced before commit* — sketch what will follow from a choice so the player chooses with awareness
+- *Persona stays active* — the character responds through the relay loop during discussion, creating pressure before state is written
+
+**Commit phase:** Err toward invoking all affected domain agents. Include in delegation prompts that this is a pivotal moment — agents calibrate significance higher (larger edge deltas, deeper schema activation, more aggressive value reordering). Ask the world agent a broader question: "Do current world tensions intersect with this moment?" Ad-hoc codex synthesis is available for moments of exceptional significance.
+
+For detailed craft guidance — scene construction, examples by inflection point, delegation contrast with relationship events — see `.claude/skills/lifesim/reference/events.md`.
+
 ### Relationship Events
 
 Compression is not silence. Before advancing through a multi-year period, check `network.json` for characters who have high warmth or attachment (above 0.5), direct information flow, and no recent scene presence. Insert 1-2 relationship events per compression period — brief, naturalistic scenes that give the player direct interaction with these characters.
 
 Relationship events use the same three-phase cycle but with lighter treatment: shorter discussion, lower-stakes commit. The network agent processes relationship changes. The psychology agent only engages if the significance threshold is crossed. No snapshots, no codex synthesis.
 
-**Persona delegation:** During relationship events, delegate character embodiment to the **persona agent** (`.claude/agents/actors/persona-agent.md`). The orchestrator's role during these interactions is:
-
-1. **Set the stage** — present the scene, then invoke the persona agent with the character's codex entry, network node/edge, and scene context.
-2. **Relay transparently** — present the persona's output to the player as the character's voice. When the player responds in-character, pass their response back to the persona agent. Stay out of the way.
-3. **Distinguish player intent** — the player may step outside the interaction to talk to you directly (questions, hypotheticals, discussing what their character is thinking). Handle those exchanges yourself, then resume relaying to the persona when the player returns to the interaction.
-4. **Recognize closure** — when the interaction reaches a natural conclusion (the conversation winds down, someone leaves, the moment resolves), close the persona loop and transition to the commit phase.
-
-The orchestrator does not voice characters directly during relationship events. The persona agent embodies them. This keeps the orchestrator in its coordination lane and gives each character a dedicated reasoning space.
+When a character is a participant in a relationship event, delegate to the persona agent using the standard relay loop (see Character Embodiment below).
 
 For craft guidance on selecting candidates and scene construction, see `.claude/skills/lifesim/reference/events.md`.
 
@@ -137,6 +151,23 @@ Events involving network characters must be presented based on the protagonist's
 
 For deeper guidance on the presence test, information channels, and significance thresholds, see `.claude/skills/lifesim/reference/events.md`.
 
+## Character Embodiment
+
+When a character is a **participant** in a scene — someone the player will interact with across multiple beats, whose perspective and agency matter to how the interaction unfolds — delegate their embodiment to the **persona agent** (`.claude/agents/actors/persona-agent.md`).
+
+**The participant test:** "Will the player interact with this character across multiple beats, and does the character's own perspective matter to how the interaction unfolds?" If yes, delegate. If the character appears briefly in narration or delivers a single line the player does not respond to, voice them inline.
+
+This applies everywhere — relationship events during compression, pivotal moments at inflection points, and any scene where the narrative becomes a dialogue the player inhabits. The orchestrator does not voice participant characters directly. The persona agent embodies them.
+
+### The Relay Loop
+
+1. **Set the stage** — present the scene, then invoke the persona agent with the character's codex entry, network node/edge, and scene context.
+2. **Relay transparently** — present the persona's output to the player as the character's voice. When the player responds in-character, pass their response back to the persona agent. Stay out of the way.
+3. **Distinguish player intent** — the player may step outside the interaction to talk to you directly (questions, hypotheticals, discussing what their character is thinking). Handle those exchanges yourself, then resume relaying to the persona when the player returns to the interaction.
+4. **Recognize closure** — when the interaction reaches a natural conclusion (the conversation winds down, someone leaves, the moment resolves), close the persona loop and transition to the commit phase.
+
+During pivotal moments, the relay loop may run longer — multiple exchanges, rising tension, the character pushing back or going quiet. Do not cut the interaction short. Pivotal moments earn their duration.
+
 ## When to Delegate
 
 Not every commit requires all domain agents:
@@ -145,6 +176,7 @@ Not every commit requires all domain agents:
 - **Network agent** — when the action involves people. A solitary moment doesn't need social processing. A confrontation does.
 - **World agent** — when the action tests plausibility or the tonal register. Most actions within an established world don't need validation. Novel, boundary-pushing, or register-shifting actions do.
 - **Codex agent** — only at inflection points and session exits. Never during routine commits.
+- **Persona agent** — when a character is a participant in the scene (see Character Embodiment above). Brief appearances and single lines do not need delegation.
 
 Routine commits (quiet moments, time compression, internal reflection) may need no delegation at all — just scene and timeline updates.
 
