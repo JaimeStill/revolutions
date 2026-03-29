@@ -37,6 +37,7 @@ These live in the engine itself (not here) and are loaded at runtime:
 |------|---------|
 | `.claude/skills/lifesim/reference/codex-style.md` | Literary craft guide for codex composition |
 | `.claude/skills/lifesim/reference/synthesis.md` | Synthesis pass protocol — how state becomes codex |
+| `.claude/skills/lifesim/reference/events.md` | Event craft guide — relationship events, event presentation, pivotal moments (placeholder) |
 
 ## Directory Structure
 
@@ -50,14 +51,17 @@ revolutions/
     settings.json                # Orchestrator config, hooks, env vars
     agents/
       orchestrator.md            # Main agent — three-phase cycle, delegation, narrative assembly
-      psychology-agent.md        # Psychology subagent — schemas, defenses, values, self-concept
-      network-agent.md           # Social network subagent — consequence propagation
-      world-agent.md             # World subagent — world generation, plausibility, tonal register
-      codex-agent.md             # Synthesis subagent — literary codex composition
+      domain/                    # Domain subagents — own and process state files
+        psychology-agent.md      # Schemas, defenses, values, self-concept
+        network-agent.md         # Consequence propagation, gatekeepers, normative pressure
+        world-agent.md           # World generation, plausibility, tonal register
+        codex-agent.md           # Literary codex composition
+      actors/                    # Actor subagents — embody characters, return content
+        persona-agent.md         # Character embodiment for direct player interaction
     skills/
       lifesim/                   # Simulation skill
         commands/                # Sub-commands (birth, load, exit, profile, replay)
-        reference/               # Engine reference docs (codex-style, synthesis)
+        reference/               # Engine reference docs (codex-style, synthesis, events)
       iterative-dev/             # Development workflow skill
   sim/
     .active                      # Runtime breadcrumb (current instance name)

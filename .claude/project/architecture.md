@@ -19,26 +19,37 @@ These constraints define the simulation's physics:
 6. **Persistence = files.** JSON and markdown in `sim/` are the only state that survives across turns and sessions.
 7. **Model routing is per-agent.** Haiku for cheap/fast validation, Sonnet for nuanced interpretation, Opus for deep reasoning.
 
-## Domain Architecture
+## Agent Architecture
 
-The orchestrator coordinates. Domain agents own state. Every state file has exactly one owning agent.
+Agents are organized by role:
 
-| Agent | Model | Owns | Role | Status |
-|-------|-------|------|------|--------|
-| **orchestrator** | inherit (Opus) | `scene.md`, `timeline.json` | Player interface, three-phase turn cycle, commit routing, narrative assembly, pacing | Active |
-| **psychology-agent** | sonnet | `individual.json` | Schema activation, defense assessment, value reordering, self-concept evolution | Active |
-| **network-agent** | sonnet | `network.json` | Social consequence propagation, gatekeepers, normative pressure | Active |
-| **world-agent** | sonnet | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, tonal register | Active |
-| **codex-agent** | opus | `codex/*` | Literary synthesis from state diffs and discussion context | Active |
+- **Orchestrator** — the main thread. Coordinates the turn cycle, delegates to other agents, renders the player's experience.
+- **Domain agents** (`agents/domain/`) — own state files and process mechanics. Invoked at commit time.
+- **Actor agents** (`agents/actors/`) — embody characters and perform within scenes. Invoked during the discussion phase. They don't own state — they perform and return.
+
+### Domain Agents
+
+Every state file has exactly one owning domain agent.
+
+| Agent | Model | Owns | Role |
+|-------|-------|------|------|
+| **orchestrator** | inherit (Opus) | `scene.md`, `timeline.json` | Player interface, three-phase turn cycle, commit routing, narrative assembly, pacing |
+| **psychology-agent** | sonnet | `individual.json` | Schema activation, defense assessment, value reordering, self-concept evolution |
+| **network-agent** | sonnet | `network.json` | Social consequence propagation, gatekeepers, normative pressure |
+| **world-agent** | sonnet | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, tonal register |
+| **codex-agent** | opus | `codex/*` | Literary synthesis from state diffs and discussion context |
+
+### Actor Agents
+
+| Agent | Model | Owns | Role |
+|-------|-------|------|------|
+| **persona-agent** | sonnet | nothing | Embodies a specific character for direct interaction with the player during events |
 
 ### Delegation Model
 
-The orchestrator never writes domain state directly (except at birth for initial setup). During the commit phase:
+**At commit time:** The orchestrator delegates to domain agents whose state was affected. Each returns a consequence narrative. The orchestrator assembles results, writes coordination files, and presents the next scene.
 
-1. The orchestrator assesses what changed during discussion
-2. It delegates to every domain agent whose state was affected
-3. Each agent processes its domain and returns a consequence narrative
-4. The orchestrator assembles results, writes its coordination files (`scene.md`, `timeline.json`), and presents the next scene
+**During events:** The orchestrator delegates character embodiment to the persona agent. The player interacts with the persona's output directly — the orchestrator relays transparently, only interjecting for scene transitions or when the player steps out of the interaction to address the orchestrator.
 
 For domains without changes, no delegation. Routine commits may need no delegation at all.
 

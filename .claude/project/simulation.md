@@ -52,6 +52,32 @@ Each formative event has a type that determines its narrative function and which
 - **Loss** — activates schemas, tests defenses
 - **Unexpected grace** — potential schema healing, defense maturation
 
+## Relationship Events
+
+Relationship events are a lighter mechanic that operates between inflection points, during time compression. They exist to give the player direct interaction with network characters who would otherwise only appear as background state.
+
+**When they fire:** During time compression, when the orchestrator identifies network characters who haven't had direct player interaction recently. Characters with high warmth or attachment edges, direct information flow, but no recent scene presence are candidates.
+
+**What they are:** Small, naturalistic character interaction scenes. A conversation with a parent at the dinner table. A moment with a sibling in the car. A grandparent's weekend visit. They are texture, not plot — they build relational depth without requiring pivotal-moment stakes.
+
+**How they flow through the turn cycle:** Same three-phase cycle (scene → discussion → commit), but with lower stakes. The scene is a moment, not a crisis. Discussion is shorter. The commit updates `network.json` via the network agent and `scene.md` via the orchestrator. The psychology agent only engages if the interaction crosses the significance threshold — most relationship events won't.
+
+**What they are not:** Not inflection points. They don't trigger snapshots. They don't trigger codex synthesis. They are lightweight commits that build network texture and give the player presence in the character's relational life.
+
+**Pacing integration:** During time compression, instead of a single summary commit covering years, the orchestrator interleaves 1-2 relationship events with the compression narrative. Time still advances — the compression still happens — but the player gets to be present for selected moments within the compressed period.
+
+## Event Presentation
+
+Events involving network characters must be presented based on the protagonist's proximity, not the engine's convenience.
+
+**The presence test:** When a significant event involves a network character, ask: *Would the protagonist have been there?* If yes, present it as a scene the player experiences directly. If no, present it as information arriving through a specific network channel — a phone call, a conversation where someone tells them, a rumor overheard.
+
+**Network events slow compression:** Even during time compression, if a significant event occurs involving a network character and the protagonist would have been present, slow down enough to present it as a scene. Do not skip past it and report it after the fact.
+
+**The significance test:** If the event would change a relationship dynamic — warmth, conflict, attachment, gatekeeper stance — it is significant enough to warrant a scene when the protagonist is present.
+
+**What this prevents:** Events like "Kyle got into a fight and you heard about it later" when the protagonist was in the same building and would have witnessed or been pulled into it. If the character would have been there, the character is there. If the character would only hear about it, they hear about it through a specific channel with its own texture — Marcus telling them at lunch, overhearing in the hallway, a parent mentioning it at dinner.
+
 ## Interaction Model
 
 The simulation supports two interaction modes, detected from the tone of the player's message:

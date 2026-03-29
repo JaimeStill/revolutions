@@ -74,9 +74,15 @@ Evaluate what was decided during discussion and delegate to domain agents. This 
    - `state/scene.md` — always, capturing the current moment and pending threads
    - `state/timeline.json` — only if time advances (not every commit at inflection points where multiple commits explore a single moment)
 
-5. **Handle inflection points.** If a new inflection point is crossed:
+5. **Handle inflection points.** Inflection points are not binary thresholds crossed at a single identifiable moment — they crystallize over a series of moments. The orchestrator should recognize when a commit represents the **crystallizing moment** — the point where the inflection becomes irreversible — and treat it as the transition.
+
+   The test: *Has the character done something that cannot be undone, that sets the terms for how this inflection will resolve?*
+
+   When an inflection point crystallizes:
    - Create a snapshot: copy all current state files to `state/snapshots/turn-{N}-{label}/`
    - Delegate synthesis to the codex agent
+
+   Session-exit snapshots are handled separately by the `/lifesim exit` command.
 
 6. **Present the next scene.** Weave agent consequence narratives into vivid prose. End with a moment that invites response. Return to Phase 1.
 
@@ -103,6 +109,33 @@ The inflection points are:
 4. Moral reasoning inflection (early adulthood)
 5. Generativity vs. stagnation (midlife)
 6. Integrity vs. despair (late life)
+
+### Relationship Events
+
+Compression is not silence. Before advancing through a multi-year period, check `network.json` for characters who have high warmth or attachment (above 0.5), direct information flow, and no recent scene presence. Insert 1-2 relationship events per compression period — brief, naturalistic scenes that give the player direct interaction with these characters.
+
+Relationship events use the same three-phase cycle but with lighter treatment: shorter discussion, lower-stakes commit. The network agent processes relationship changes. The psychology agent only engages if the significance threshold is crossed. No snapshots, no codex synthesis.
+
+**Persona delegation:** During relationship events, delegate character embodiment to the **persona agent** (`.claude/agents/actors/persona-agent.md`). The orchestrator's role during these interactions is:
+
+1. **Set the stage** — present the scene, then invoke the persona agent with the character's codex entry, network node/edge, and scene context.
+2. **Relay transparently** — present the persona's output to the player as the character's voice. When the player responds in-character, pass their response back to the persona agent. Stay out of the way.
+3. **Distinguish player intent** — the player may step outside the interaction to talk to you directly (questions, hypotheticals, discussing what their character is thinking). Handle those exchanges yourself, then resume relaying to the persona when the player returns to the interaction.
+4. **Recognize closure** — when the interaction reaches a natural conclusion (the conversation winds down, someone leaves, the moment resolves), close the persona loop and transition to the commit phase.
+
+The orchestrator does not voice characters directly during relationship events. The persona agent embodies them. This keeps the orchestrator in its coordination lane and gives each character a dedicated reasoning space.
+
+For craft guidance on selecting candidates and scene construction, see `.claude/skills/lifesim/reference/events.md`.
+
+### Event Presentation
+
+Events involving network characters must be presented based on the protagonist's proximity, not the engine's convenience.
+
+**The presence test:** *Would the protagonist have been there?* If yes, present it as a scene. If no, present information arriving through a specific network channel — not omniscient narration, but a concrete moment of receiving the information through a person or context that shapes how it lands.
+
+**Network events slow compression:** If a significant event would change a relationship dynamic (warmth, conflict, attachment, gatekeeper stance) and the protagonist would have been present, slow down and present it as a scene — even during time compression.
+
+For deeper guidance on the presence test, information channels, and significance thresholds, see `.claude/skills/lifesim/reference/events.md`.
 
 ## When to Delegate
 

@@ -20,7 +20,14 @@ Capabilities the simulation needs, roughly ordered by dependency.
 - [x] Codex agent owns codex/*
 - [x] Orchestrator delegates to affected domain agents at commit time
 
-## Pivotal Moment Mechanics
+## Event Mechanics
+- [x] Relationship events during time compression — orchestrator selects neglected high-warmth/attachment characters
+- [x] Relationship event pacing — 1-2 per compression period, woven into compression narrative
+- [x] Event presentation principle — presence test determines scene vs. information channel
+- [x] Network events slow compression when protagonist would be present
+- [x] Event reference guide for craft guidance (`.claude/skills/lifesim/reference/events.md`)
+- [x] Persona agent for character embodiment during events — player interacts with characters directly
+- [x] Agent directory organized by role: domain (state processors) vs. actors (character performers)
 - [ ] Formalized engagement mode for pivotal moments — distinct from routine turn cycle
 - [ ] Mechanics for how pivotal moments play out (stakes, constraints, feedback loops)
 - [ ] Integration with three-phase cycle (how does discussion/commit behave during pivotal moments?)
@@ -73,6 +80,10 @@ Capabilities the simulation needs, roughly ordered by dependency.
 - [ ] AI mode — a subagent generates prose responses autonomously
 - [ ] Hybrid mode — AI generates default, player can override
 - [x] `/lifesim replay` reconstructs life narrative
+
+## Session Continuity
+- [x] `/lifesim load` uses conversational briefing style — catches player up like a friend, not engine prose
+- [x] Inflection point recognition — orchestrator identifies crystallizing moments, not just binary thresholds
 
 ## Quality of Life
 - [x] `/lifesim profile` renders a readable psychological portrait
