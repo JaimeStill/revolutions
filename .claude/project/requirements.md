@@ -28,11 +28,11 @@ Capabilities the simulation needs, roughly ordered by dependency.
 - [x] Event reference guide for craft guidance (`.claude/skills/lifesim/reference/events.md`)
 - [x] Persona agent for character embodiment during events — player interacts with characters directly
 - [x] Agent directory organized by role: domain (state processors) vs. actors (character performers)
-- [ ] Formalized engagement mode for pivotal moments — distinct from routine turn cycle
-- [ ] Mechanics for how pivotal moments play out (stakes, constraints, feedback loops)
-- [ ] Integration with three-phase cycle (how does discussion/commit behave during pivotal moments?)
-- [ ] World events that emerge at narrative climaxes — not scripted, but organically timed
-- [ ] Consequences of pivotal moments have outsized impact on state
+- [x] Formalized engagement mode for pivotal moments — distinct from routine turn cycle
+- [x] Mechanics for how pivotal moments play out (stakes, constraints, feedback loops)
+- [x] Integration with three-phase cycle (how does discussion/commit behave during pivotal moments?)
+- [x] World events that emerge at narrative climaxes — not scripted, but organically timed
+- [x] Consequences of pivotal moments have outsized impact on state
 
 ## Psychological Engine
 - [x] Psychology agent interprets psychological signals from committed actions

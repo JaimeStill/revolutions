@@ -66,6 +66,30 @@ Relationship events are a lighter mechanic that operates between inflection poin
 
 **Pacing integration:** During time compression, instead of a single summary commit covering years, the orchestrator interleaves 1-2 relationship events with the compression narrative. Time still advances — the compression still happens — but the player gets to be present for selected moments within the compressed period.
 
+## Pivotal Moments
+
+Pivotal moments are scenes of real consequence — an intensification of the standard three-phase cycle, not a separate system. A moment is pivotal when all three criteria hold:
+
+1. **Irreversibility is imminent** — after this, the terms change permanently
+2. **A real trade-off exists** — no costless option; the character's values hierarchy becomes load-bearing
+3. **Multiple domains are in tension** — psychology, network, and potentially world stakes intersect simultaneously
+
+Most pivotal moments occur at or near developmental inflection points, but the trigger is the criteria, not proximity to a milestone. A pivotal moment could emerge mid-compression if conditions align.
+
+**How the cycle intensifies:** The scene phase presents with heightened specificity — stakes felt, not named. The discussion phase tightens: no vague resolutions accepted, consequences surfaced before commit, and any participant character stays active through the persona relay loop, creating pressure before state is written. The commit phase invokes all affected domain agents with amplified significance — larger edge deltas, deeper schema activation, and a broader question to the world agent about whether world tensions intersect with the moment.
+
+**Character embodiment:** Pivotal moments are where persona delegation matters most. When a character is a participant — the player will interact with them across multiple beats and their perspective shapes the outcome — the persona agent is invoked. This is the same participant test used for relationship events. The difference is duration and stakes: pivotal moment relay loops run longer and the character's responses carry more weight.
+
+Detailed craft guidance — scene construction, discussion behavior, commit processing, examples by inflection point — lives in `.claude/skills/lifesim/reference/events.md`.
+
+## Character Embodiment
+
+The orchestrator delegates character voicing to the persona agent (`.claude/agents/actors/persona-agent.md`) whenever a character is a **participant** in a scene — someone the player interacts with across multiple beats, whose own perspective and agency matter to the interaction.
+
+**The participant test:** "Will the player interact with this character across multiple beats, and does the character's own perspective matter to how the interaction unfolds?" If yes, delegate. If the character appears briefly or delivers a single line, the orchestrator voices them inline.
+
+This applies across all scene types: relationship events during compression, pivotal moments at inflection points, and any scene where the narrative becomes a dialogue the player inhabits. The persona agent receives the character's codex entry, network state, and scene context, then embodies that person through a relay loop with the player. The orchestrator sets the stage, relays transparently, and recognizes closure.
+
 ## Event Presentation
 
 Events involving network characters must be presented based on the protagonist's proximity, not the engine's convenience.
