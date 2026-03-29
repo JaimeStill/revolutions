@@ -11,7 +11,7 @@ Read `sim/.active` to get the instance name. If no simulation is active, tell th
 ### 2. Read State
 
 Read from the active instance:
-- `state/individual.json` — the full seven-layer profile
+- `state/individual.json` — the full seven-layer profile (owned by the psychology agent, authoritative source)
 - `state/timeline.json` — current age and developmental stage
 - `state/network.json` — key relationships (for context)
 

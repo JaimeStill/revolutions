@@ -37,7 +37,7 @@ If `codex/chronicle.md` exists, mention that the codex is available for the play
 
 Write the instance name to `sim/.active`.
 
-Set the instance path in context so the orchestrator knows where to read/write state. From this point forward, every player message is a simulation turn.
+Set the instance path in context so the orchestrator knows where to read/write state. From this point forward, the simulation is active and operates in the three-phase turn cycle (Scene → Discussion → Commit).
 
 ### 5. Present
 

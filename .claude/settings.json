@@ -1,33 +1,7 @@
 {
   "agent": "orchestrator",
   "plansDirectory": "./.claude/plans",
-  "env": {
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60"
-  },
   "permissions": {
-    "allow": ["Skill(iterative-dev)", "Skill(lifesim)"]
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-compact.sh"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/pre-compact.sh"
-          }
-        ]
-      }
-    ]
+    "allow": ["Bash(grep:*)", "Skill(iterative-dev)", "Skill(lifesim)"]
   }
 }

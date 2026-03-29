@@ -1,74 +1,51 @@
-# Next Session: Domain Architecture Refactor
+# Next Session: Playtest + Pivotal Moment Design
 
 ## Context
 
-Session 4 playtest advanced Drew to age 14 (August 2007, threshold of eighth grade). Content quality is excellent — chronicle, psychology portrait, character entries, network state all read well. But evaluation of the engine itself revealed two architectural issues:
+Session 5 refactored the engine into a three-phase turn cycle (Scene → Discussion → Commit) with dedicated domain agents (psychology, network, world, codex). Two new design principles were encoded: world-agnostic simulation and tonal sovereignty. Compaction hooks were retired — the 1M context window and stateless orchestrator model make them unnecessary for now.
 
-1. **The turn model doesn't match how the simulation plays.** Every player message is treated as a turn that advances state. In practice, the simulation works best as collaborative discussion — multiple exchanges building up narrative before anything should change. The protocol needs a distinct discussion phase where no state is written, followed by an explicit commit phase where all processing happens.
+The core interaction model is in place. What's missing: **pivotal moment mechanics** — the formalized engagement mode for how the simulation behaves when the character hits a moment of real consequence.
 
-2. **Subagent delegation barely fires.** Only the codex agent was invoked (during `/lifesim exit`). The network agent never ran. The orchestrator handled everything monolithically because there's no natural delegation point in a "every message is a turn" model.
+## Playtest Notes (for the human)
 
-## What to Build
+Run the drew-1993 simulation pure. Drew is 14, about to start eighth grade (August 2007). Identity consolidation inflection point is approaching.
 
-### Three-Phase Turn Cycle
+Things to pay attention to:
+- Does the three-phase cycle feel natural? Does the commit boundary emerge organically?
+- Does the orchestrator stay in its coordination lane?
+- Does the tonal register hold? Does the engine ever introduce something off-register?
+- How does the discussion phase feel? Good rhythm between co-authoring and scene presentation?
+- **When the simulation hits a moment that should be pivotal** — does it shift gears? Does it feel different? What's missing mechanically? What would make it feel like "roll for initiative" — that moment where you know the stakes just changed and every choice matters?
 
-Replace the current "every message is a turn" protocol with:
+## Development Work Queued (after playtest resolves)
 
-1. **Scene** — Orchestrator presents a situation. Narrative output only, no state changes.
-2. **Discussion** — Player and orchestrator go back and forth. Multiple exchanges co-authoring what happens — the details, the tone, the consequences. No state files are touched.
-3. **Commit** — When discussion reaches mutual alignment (natural language, no explicit command), the orchestrator evaluates what changed and delegates to domain agents. State files are written, snapshots created. Then the next scene is presented.
+### Primary: Pivotal Moment Mechanics
 
-The commit trigger is conversational — either side can signal alignment ("that feels right", "ready to lock this in?"). No explicit command needed.
+Design and implement the engagement mode for pivotal moments:
+- What triggers the shift from routine pacing to pivotal mode?
+- How does the three-phase cycle behave differently during a pivotal moment? (Tighter discussion loops? Constraints on available actions? Time pressure? Forced trade-offs?)
+- How do world events emerge organically at narrative climaxes — not scripted, but timed to the character's trajectory?
+- How do consequences of pivotal moments propagate with outsized impact?
 
-### Domain Agent Architecture
+This is the next critical simulation component beyond the three-phase cycle itself.
 
-Every state domain gets a dedicated subagent. The orchestrator becomes pure coordination — it owns no state domain, it's the interface between the player and the subsystems.
+### Secondary: Evaluate Hook Utility
 
-| Domain | Agent | Owns | Role |
-|--------|-------|------|------|
-| Orchestration | orchestrator | `scene.md`, `timeline.json` | Player interface, discussion, commit routing, narrative assembly, pacing |
-| Psychology | psychology-agent (**new**) | `individual.json` | Schema activation, defense assessment, value reordering, self-concept evolution |
-| Social Network | network-agent (exists) | `network.json` | Consequence propagation, gatekeepers, normative pressure |
-| World | world-agent (**new**) | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, rare societal updates |
-| Literary Codex | codex-agent (exists) | `codex/*` | Literary synthesis from state diffs and discussion context |
+Hooks were retired because compaction isn't an issue at 1M context. But hooks can do more than compaction recovery — automated behaviors, invariant enforcement, pre/post processing. Evaluate whether any simulation mechanics would benefit from hook-level automation. Don't force it; only add hooks if there's a real need.
 
-At commit time, the orchestrator evaluates what changed during discussion and delegates to every domain agent whose state was affected. For domains without changes, no delegation. Scene and timeline are orchestrator coordination files — it writes those directly.
+## Future Vision (captured, not active)
 
-### `/lifesim exit` Becomes Lighter
+These are directions discussed during the session 5 closeout. None are active development targets — they're here so they don't get lost:
 
-Exit validates state is current, creates a final snapshot if needed, and commits to git. It is **not** the primary synthesis trigger — that happens during commit phases throughout the session.
+- **World simulation** — expanding beyond single-character perspective to simulate the full world. Architecture TBD. Affects how snapshot rewinding and branching would work.
+- **Snapshot rewinding** — depends on world simulation architecture decisions.
+- **Non-historical birth validation** — test the world-building session with fantasy/sci-fi settings. After core mechanics stabilize.
+- **Bun / GitHub Pages deployment** — bring the codex and simulation state to life as a deployed site. After state and codex schemas are stable and unlikely to change.
 
-## Files to Create
+## Definition of Done (for the dev session after playtest)
 
-- `.claude/agents/psychology-agent.md` — profile evaluation, schema dynamics, defense assessment
-- `.claude/agents/world-agent.md` — world generation (birth), plausibility validation (turns), rare societal updates
-
-## Files to Rewrite
-
-- `.claude/agents/orchestrator.md` — strip domain ownership, three-phase turn cycle, commit-as-delegation
-- `.claude/agents/network-agent.md` — review for consistency with new domain boundaries
-- `.claude/agents/codex-agent.md` — review; now receives diffs from multiple domain agents
-- `CLAUDE.md` — updated turn protocol, domain ownership summary
-- `.claude/project/simulation.md` — three-phase turn protocol, domain map
-- `.claude/project/architecture.md` — agent responsibilities, delegation model
-- `.claude/project/schemas.md` — ensure each domain's schema is clearly scoped to its agent
-- `.claude/project/requirements.md` — new requirements for domain agents, update existing
-- `.claude/skills/lifesim/commands/birth.md` — world generation delegates to world agent
-- `.claude/skills/lifesim/commands/load.md` — review; state loading may need to orient around domain agents
-- `.claude/skills/lifesim/commands/exit.md` — lighter flow (validate + snapshot + commit, not synthesis trigger)
-- `.claude/skills/lifesim/commands/profile.md` — review; psychology domain now owned by psychology agent
-- `.claude/skills/lifesim/commands/replay.md` — review; codex domain now owned by codex agent
-
-## What's Not in Scope
-
-- Playtest validation (following session)
-- New features (snapshot rewinding, ancestry, AI mode)
-
-## Definition of Done
-
-- All five domains have clear agent definitions with explicit file ownership
-- Orchestrator encodes the three-phase cycle with no direct state domain ownership
-- Project docs (simulation.md, architecture.md, schemas.md) are consistent with the new model
-- All skill sub-commands (birth, load, exit, profile, replay) are consistent with the new domain architecture
-- Requirements.md reflects the new architecture
-- Session committed and PR'd
+- Playtest observations reviewed against simulation state and codex updates
+- Friction points identified and categorized (architectural vs. tuning)
+- Pivotal moment mechanics designed (at minimum: trigger conditions, behavioral differences, consequence amplification)
+- Requirements.md updated with refined pivotal moment requirements
+- If design is clear enough: implement the mechanics

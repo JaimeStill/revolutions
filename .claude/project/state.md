@@ -44,9 +44,24 @@ sim/
           README.md
 ```
 
+## State Ownership
+
+Every state file has exactly one owning agent:
+
+| File | Owner | Update Rate |
+|------|-------|-------------|
+| `scene.md` | orchestrator | Every commit |
+| `timeline.json` | orchestrator | When time advances |
+| `individual.json` | psychology-agent | When significance threshold crossed |
+| `network.json` | network-agent | When relationships change |
+| `society.json` | world-agent | Rare (major upheavals) |
+| `period.md` | world-agent | At birth; tonal register shifts during play |
+| `generation.json` | world-agent | At birth (read-only after) |
+| `codex/*` | codex-agent | At inflection points and session exits |
+
 ## State Layers
 
-Each layer has a different update rate. Period and generation are constants per life (read-only after birth). Society is near-constant (rare upheavals only). Social network is slow-moving. Individual state updates when thresholds are crossed. Scene updates every turn.
+Each layer has a different update rate. Period and generation are near-constant per life (period may update for tonal register shifts). Society is near-constant (rare upheavals only). Social network is slow-moving. Individual state updates when thresholds are crossed. Scene updates every commit.
 
 ## Snapshots
 
