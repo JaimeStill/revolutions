@@ -18,7 +18,25 @@ Capabilities the simulation needs, roughly ordered by dependency.
 - [x] Network agent owns network.json
 - [x] World agent owns world state (society.json, period.md, generation.json)
 - [x] Codex agent owns codex/*
+- [x] Editor agent reviews codex output for literary quality, voice consistency, and factual accuracy
 - [x] Orchestrator delegates to affected domain agents at commit time
+
+## Birth and Character Generation
+- [x] Birth supports protagonist scope (full instance creation) and character scope (non-protagonist generation)
+- [x] Birth supports any entry point — age 0 through late life
+- [x] Late-start entries populate all layers appropriate to the entry age
+- [x] Three backstory resolution modes: emergent, established, sparse
+- [x] Sparse resolution enables reverse-inference — psychology agent proposes forming contexts during play
+- [x] Generated character profiles stored in `state/characters/<id>.json`
+- [x] Character scope callable by orchestrator, player, or fork command
+
+## Fork
+- [x] `/lifesim fork` promotes a network character to their own simulation
+- [x] Fork transforms existing character data (profile, network node, codex entry) into protagonist format
+- [x] Network edges inverted to the forked character's perspective
+- [x] World state shared from source instance
+- [x] Timeline and inflection points calibrated to the forked character's developmental history
+- [x] Forked instances are independent after creation
 
 ## Event Mechanics
 - [x] Relationship events during time compression — orchestrator selects neglected high-warmth/attachment characters
@@ -61,14 +79,16 @@ Capabilities the simulation needs, roughly ordered by dependency.
 
 ## State History
 - [x] Snapshots capture full state at inflection points and session exits
+- [x] Chronicle split into indexed chapter files for efficient context loading
 - [ ] Simulation can be rewound to any snapshot point (deferred — depends on world simulation architecture)
 
 ## Codex
 - [x] Synthesis pass generates codex at inflection transitions
 - [x] Synthesis pass runs at session exit (if no inflection-triggered synthesis occurred)
-- [x] Chronicle organized by inflection point chapters
+- [x] Chronicle organized by developmental chapters in indexed directory
 - [x] Codex entries for characters, world, and psychology
 - [x] Codex agent receives domain agent summaries alongside state diffs
+- [x] Editor agent reviews codex output before finalization
 
 ## Ancestry
 - [ ] Ancestry stubs maintained
@@ -95,4 +115,5 @@ Capabilities the simulation needs, roughly ordered by dependency.
 - [ ] World simulation — full world perspective beyond single character (architecture TBD)
 - [ ] Snapshot rewinding with branching (depends on world simulation decisions)
 - [ ] Non-historical birth validation (after core mechanics stabilize)
+- [ ] Multi-perspective coordination — forked instances sharing a timeline reconcile overlapping events
 - [ ] Bun infrastructure / GitHub Pages deployment for codex and simulation state (after state and codex schemas are stable)

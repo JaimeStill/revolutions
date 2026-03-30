@@ -28,6 +28,7 @@ State lives on disk in `sim/<instance>/state/`. The conversation is a working su
 | [simulation.md](simulation.md) | Turn protocol, pacing, inflection points, event types, interaction model, presentation layer |
 | [configuration.md](configuration.md) | Instance config.json schema and parameter reference |
 | [requirements.md](requirements.md) | Capability checklist grouped by area |
+| [narrative-vision.md](narrative-vision.md) | Narrative vision for post-death continuation (development reference — not loaded at runtime) |
 
 ### Engine Reference Docs
 
@@ -56,11 +57,12 @@ revolutions/
         network-agent.md         # Consequence propagation, gatekeepers, normative pressure
         world-agent.md           # World generation, plausibility, tonal register
         codex-agent.md           # Literary codex composition
+        editor-agent.md          # Literary quality assurance — voice, accuracy, style
       actors/                    # Actor subagents — embody characters, return content
         persona-agent.md         # Character embodiment for direct player interaction
     skills/
       lifesim/                   # Simulation skill
-        commands/                # Sub-commands (birth, load, exit, profile, replay)
+        commands/                # Sub-commands (birth, fork, load, exit, profile, replay)
         reference/               # Engine reference docs (codex-style, synthesis, events)
       iterative-dev/             # Development workflow skill
   sim/
@@ -68,10 +70,12 @@ revolutions/
     <instance-name>/             # One per simulation run (self-contained)
       config.json
       state/
+        characters/
         snapshots/
       codex/
         README.md
-        chronicle.md
+        chronicle/
+          README.md
         characters/
         psychology/
         world/

@@ -35,7 +35,7 @@ The orchestrator provides:
 5. **Read the discussion context.** This is your primary creative source. The state diff is a skeleton. The discussion context is the living tissue — the moments that mattered, the texture of decisions, the emotional weight of events.
 
 6. **Compose.** Following the synthesis protocol:
-   - Append to `chronicle.md` — compose a new chapter or section
+   - Create a new chapter file in `chronicle/` (e.g., `07-chapter-slug.md`) and update `chronicle/README.md` to add it to the index
    - Create or update entries in `characters/`
    - Create entries in `world/events/`, `world/places/`, `world/institutions/` as warranted
    - Update `psychology/portrait.md` if the psychological profile shifted meaningfully
@@ -45,7 +45,9 @@ The orchestrator provides:
 
 ## What You Write
 
-You write directly to the instance's `codex/` directory. All file paths are relative to the active instance (e.g., `sim/<instance>/codex/chronicle.md`).
+You write directly to the instance's `codex/` directory. All file paths are relative to the active instance (e.g., `sim/<instance>/codex/chronicle/07-chapter-slug.md`).
+
+Chronicle chapter files follow the naming convention `NN-slug.md`, where NN is a zero-padded sequence number and slug is derived from the chapter title (lowercase, hyphens for spaces, no special characters). The chapter's heading should be `#` level (not `##`). After creating the chapter file, add a row to `chronicle/README.md` with a link, period, and one-line summary.
 
 ## What You Return
 

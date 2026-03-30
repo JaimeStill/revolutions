@@ -24,11 +24,12 @@ The orchestrator coordinates. Domain agents own state:
 
 | Domain | Agent | Owns | Role |
 |--------|-------|------|------|
-| Orchestration | orchestrator | `scene.md`, `timeline.json` | Player interface, discussion, commit routing, narrative assembly, pacing |
+| Orchestration | orchestrator | `scene.md`, `timeline.json` | Player interface, three-phase turn cycle, commit routing, narrative assembly, pacing |
 | Psychology | psychology-agent | `individual.json` | Schema activation, defense assessment, value reordering, self-concept evolution |
 | Social Network | network-agent | `network.json` | Consequence propagation, gatekeepers, normative pressure |
 | World | world-agent | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, tonal register |
 | Literary Codex | codex-agent | `codex/*` | Literary synthesis from state diffs and discussion context |
+| Editorial | editor-agent | nothing (reads `codex/*`, writes corrections) | Literary quality assurance — voice consistency, factual accuracy, style guide compliance |
 
 **Actor agents** (`agents/actors/`) — embody characters, invoked during events:
 
@@ -55,6 +56,7 @@ All paths relative to the active instance directory:
 - `state/society.json` — world-agent writes (rare, only for major upheavals)
 - `state/period.md` — world-agent writes at birth; updates for tonal register shifts
 - `state/generation.json` — world-agent writes at birth; read-only after
+- `state/characters/<id>.json` — birth command writes when generating non-protagonist characters
 - `state/snapshots/` — orchestrator creates at inflection points and session exits
 - `codex/` — codex-agent writes at inflection points and session exits
 
@@ -96,9 +98,10 @@ The simulation engine is built from Claude Code primitives — agents, skills, a
   - `network-agent.md` — consequence propagation, gatekeepers, normative pressure
   - `world-agent.md` — world generation at birth, plausibility validation, tonal register
   - `codex-agent.md` — literary codex composition from state diffs and discussion context
+  - `editor-agent.md` — literary quality assurance on codex output
 - **`.claude/agents/actors/`** — performance subagents that embody characters and return content:
   - `persona-agent.md` — takes on a specific character's perspective for dialogue, actions, and reactions
-- **`.claude/skills/lifesim/`** — simulation skill: commands (`birth`, `load`, `exit`, `profile`, `replay`) + reference docs (`codex-style`, `synthesis`, `events`)
+- **`.claude/skills/lifesim/`** — simulation skill: commands (`birth`, `fork`, `load`, `exit`, `profile`, `replay`) + reference docs (`codex-style`, `synthesis`, `events`)
 
 These files **are** the engine. They are loaded and executed at runtime during simulation sessions.
 

@@ -24,12 +24,14 @@ sim/
       network.json               # Relationship graph — nodes and edges
       timeline.json              # Current age, developmental stage, turn counter
       scene.md                   # Current narrative context (bridge across compaction)
+      characters/                # Generated profiles for non-protagonist characters
       snapshots/                 # Full state copies at inflection points + session exits
         turn-0-birth/
         turn-N-label/
     codex/                       # Player domain — human-readable projections
       README.md                  # Codex index
-      chronicle.md               # Append-only narrative organized by inflection point
+      chronicle/                 # Narrative organized by developmental chapters
+        README.md                # Chronicle index — chapter list with links and summaries
       characters/                # One .md per significant network node
         README.md                # Character index
       psychology/                # Character portrait, updated at thresholds
@@ -57,6 +59,7 @@ Every state file has exactly one owning agent:
 | `society.json` | world-agent | Rare (major upheavals) |
 | `period.md` | world-agent | At birth; tonal register shifts during play |
 | `generation.json` | world-agent | At birth (read-only after) |
+| `characters/<id>.json` | birth command (character scope) | When non-protagonist characters are generated |
 | `codex/*` | codex-agent | At inflection points and session exits |
 
 ## State Layers
@@ -86,7 +89,7 @@ The codex is not updated every turn. It is generated via a synthesis pass:
 
 **Process:**
 1. Diff latest snapshot against current state to identify what changed
-2. Append new section to `codex/chronicle.md`
+2. Create new chapter file in `codex/chronicle/` and update `codex/chronicle/README.md`
 3. Update `codex/characters/<id>.md` for nodes that changed significantly
 4. Update `codex/psychology/portrait.md` if individual.json crossed threshold
 5. Update `codex/world/` if world context shifted

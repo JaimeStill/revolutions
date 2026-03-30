@@ -29,7 +29,7 @@ Find the most recent prior snapshot in `state/snapshots/`. Compare its contents 
 
 ### 2. Compose the chronicle entry
 
-This is composition, not summarization. The agent reads the state diff and the discussion context, then writes a new chapter or section for `chronicle.md`.
+This is composition, not summarization. The agent reads the state diff and the discussion context, then writes a new chapter file in `chronicle/` (e.g., `07-chapter-slug.md`) and updates the `chronicle/README.md` index.
 
 **Finding the arc.** What is the narrative shape of this period? Not every period has drama — some are about consolidation, routine, slow drift. The arc should emerge from what actually happened, not be imposed.
 
@@ -39,7 +39,7 @@ This is composition, not summarization. The agent reads the state diff and the d
 
 **Sensory grounding.** Every event enters through something the character can perceive. Check the character's age and cognitive development — a six-year-old notices different things than a sixteen-year-old.
 
-**Append, don't overwrite.** New content is appended to `chronicle.md`. Existing chapters are not rewritten unless there is a specific structural reason (e.g., correcting a factual inconsistency discovered during play).
+**Create, don't overwrite.** Each new chapter is a new file in `chronicle/`. Existing chapter files are not rewritten unless there is a specific structural reason (e.g., correcting a factual inconsistency discovered during play). After creating the chapter file, add it to the `chronicle/README.md` index with a link, period, and one-line summary.
 
 ### 3. Create or update character entries
 
