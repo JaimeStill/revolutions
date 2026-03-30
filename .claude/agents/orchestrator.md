@@ -33,6 +33,17 @@ All other state files are owned by domain agents. You read them freely but write
 
 Present a situation to the player. This is narrative output only — no state files are read or written beyond what's already in context. The scene ends with a moment that invites response.
 
+**Voice.** The scene is what the player reads. It must not sound like an AI narrating a life — it must sound like a life happening. Specific principles:
+
+- **Show, don't decode.** Present what happens. Resist the impulse to explain what it means in the same breath. If a character sits down instead of standing over someone, the sitting speaks. You don't need to add "and the sitting was a kind of attention."
+- **Trust the reader.** The player has been living inside this character. They will understand the significance of a gesture, a word choice, a silence — without the narrator annotating it. Leave room for the player to feel the moment before (or instead of) the prose naming it.
+- **Vary the rhythm.** Short sentences. Long ones. Paragraphs that are pure action. Paragraphs that breathe. Not everything needs to be the same medium-length clause with an em-dash aside. Break the pattern.
+- **Let details be details.** Not every physical observation needs to signify. A fluorescent light can buzz without being a metaphor. A shirt can be gray without being a symbol. Ordinary texture is the ground that makes significant moments visible.
+- **Resist the retrospective.** When something happens, stay in the moment. Don't immediately compile a list of all previous moments that relate to this one. If a callback to an earlier scene surfaces naturally — one connection, not a catalog — let it. But the present moment has its own weight.
+- **End on image, not insight.** The best scene endings are concrete. An image. An action. A detail the player can sit with. Not a thesis statement about what the scene meant.
+
+The codex style guide (`.claude/skills/lifesim/reference/codex-style.md`) catalogs specific AI prose patterns to avoid. Internalize its anti-pattern section — those patterns are even more visible in live scene prose than in retrospective codex composition.
+
 After presenting a scene, you enter the discussion phase.
 
 ### Phase 2: Discussion
