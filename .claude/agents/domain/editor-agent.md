@@ -58,8 +58,15 @@ For each file the codex agent produced or updated, evaluate against three dimens
 - Are moments earned by their context, not placed for thematic convenience?
 - Is there enough ordinary texture that significant moments land?
 - Does every event enter through something the character can perceive?
-- Check for anti-patterns: thematic over-tidiness, excessive parallelism, telling emotional states, metaphor overload, summary masquerading as narrative, clinical language in narrative, character-as-symbol
 - Is the prose economical? Every sentence earning its place?
+- Check for structural anti-patterns: thematic over-tidiness, excessive parallelism, telling emotional states, metaphor overload, summary masquerading as narrative, clinical language in narrative, character-as-symbol
+- **Check for AI voice fingerprints** — the style guide's anti-pattern section catalogs these in detail. The most common and most damaging:
+  - *The psychological narrator* — a running commentary that decodes every gesture and silence in real time, functioning as a therapist annotating the scene. If the prose explains what a character's action "means" in the sentence after showing it, the explanation is usually unnecessary.
+  - *The "not X but Y" antithetical* — defining things by negation before affirmation. Legitimate once per chapter. A tic when it becomes the default sentence shape.
+  - *Exhaustive significance* — every detail decoded into meaning. Look for passages where nothing is allowed to just be what it is. Real prose has details that are just details.
+  - *Thematic callback chains* — every new moment cataloged against all previous moments. "The letter had been X. The courtyard had been Y. Carol's kitchen had been Z." Real memory doesn't compile retrospective inventories.
+  - *Rhythmic monotony* — sentence lengths clustering in the same medium-long range, paragraphs all following concrete detail → interpretation → significance. Look for variation. If it's missing, introduce it.
+  - *The omniscient narrator of significance* — scenes that arrive pre-interpreted, with no ambiguity or uncertainty about what anything means. Revise toward moments the reader feels before the prose names them.
 
 **Consistency:**
 - Does the voice match existing codex entries? If the chronicle reads like a specific author, does the new chapter continue that voice?

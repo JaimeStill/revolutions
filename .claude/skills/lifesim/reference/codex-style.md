@@ -89,16 +89,94 @@ Every codex subdirectory contains a `README.md` that indexes its contents. Each 
 
 ## Anti-Patterns
 
-These are the tells of generic AI prose. Avoid them:
+These are the tells of generic AI prose. Avoid them.
+
+### Structural anti-patterns
 
 - **Thematic over-tidiness.** Every paragraph making a point and exiting cleanly. Real lives don't organize themselves into vignettes. Leave room for mess, for details that don't resolve neatly, for threads that dangle.
-- **Excessive parallelism.** "She was X but also Y. He was A yet somehow B." Once or twice is rhetoric. Every paragraph is a tic.
-- **Telling emotional states.** "He felt sad." "She was anxious." Show the behavior. Trust the reader.
-- **Assumed cultural knowledge.** Naming an event (Columbine, the Black Death, the Cultural Revolution) and expecting the reader to supply the weight. Build it from the ground.
 - **Summary masquerading as narrative.** "The next three years were defined by..." is compression. "He became more withdrawn" is summary. Compression selects vivid details and lets them stand for a period. Summary tells you what happened without showing you anything.
-- **Metaphor overload.** One good metaphor per passage. If every sentence is figurative, none of them land.
-- **Clinical language in narrative.** "His attachment style was anxious-avoidant" belongs in the psychology portrait, not the chronicle. In the chronicle, show the attachment pattern through behavior.
+- **Assumed cultural knowledge.** Naming an event (Columbine, the Black Death, the Cultural Revolution) and expecting the reader to supply the weight. Build it from the ground.
 - **Character-as-symbol.** Reducing a person to their narrative function. Karen is not "the anxious mother." Kyle is not "the bully." They are people who, among other things, worry and intimidate.
+
+### AI voice fingerprints
+
+These are specific, recurring patterns that mark prose as machine-generated. They are not inherently bad in isolation — most are legitimate rhetorical devices. The problem is frequency, predictability, and clustering. When they appear together, on every page, the prose develops a recognizable signature that pulls the reader out of the life and into awareness of the engine.
+
+**The "not X but Y" antithetical.**
+Defining things by negation before affirmation. Powerful once per chapter. Deadening when it becomes the default sentence shape.
+
+> ✗ "Not a wave, not a smile — a look. Not surprise, not pleasure exactly, but the careful registration of something that matched what she'd been hoping to find."
+
+The fix is not to avoid the construction entirely — it's to notice when you're reaching for it and choose a different shape. Sometimes the affirmative version is stronger: "She looked at him. The expression was one he was learning to read." Sometimes the detail speaks without framing: "She looked back once, long enough to be unmistakable, and then she was through the doors."
+
+**The psychological narrator.**
+A running commentary track that decodes every gesture, silence, and word choice in real time. The narrator functions as a therapist annotating the scene rather than a camera recording it.
+
+> ✗ "It was the self-sacrifice schema talking, wrapping a genuine anxiety in the logic of someone else's burden."
+> ✗ "She was not asking him to watch a performance. She was asking him to step into the world she went home to."
+> ✗ "The crossing was deliberate — not rushed, not casual, but the movement of someone who had decided where she was going before she entered the room."
+
+The fix: show the behavior and let the reader do the interpreting. "Mom's plate is full with Megan" is already the self-sacrifice schema talking — the reader can hear it without being told. Sofia crossing the lobby to Drew already shows deliberateness — the narrator doesn't need to annotate the crossing. Trust that a reader who has lived inside this character for chapters will understand what a gesture means.
+
+Not every moment needs its significance identified. Some of the best moments in fiction are ones where the reader feels the weight before they can name it — and the narrator never names it at all.
+
+**The "the way" connective.**
+A bridging phrase that links a concrete detail to its interpretation. Once is invisible. Three times per page is a verbal tic.
+
+> ✗ "the way she said most things — after a pause, with the words already assembled"
+> ✗ "the way Marcus looked at a piece of code that had an obvious solution the author couldn't see"
+> ✗ "the way you feel a change in barometric pressure before the weather turns"
+
+Usually the fix is to just cut the bridge and let the detail exist on its own, or restructure the sentence so the detail is the sentence.
+
+**"The particular/specific quality of."**
+An abstract filler phrase that gestures toward specificity without providing it.
+
+> ✗ "the particular quality of her attention"
+> ✗ "the particular formality of young musicians performing something they'd rehearsed to the point of ownership"
+
+If the quality is worth naming, name it concretely. If it's not worth naming, the sentence doesn't need the phrase. "Her attention" is fine. "Young musicians in their concert blacks, careful with their instruments" is better than "the particular formality of young musicians."
+
+**Excessive em-dash parentheticals.**
+Em-dash asides that decode the subtext of what just happened. Individually, many of these are good — they add texture, voice, specificity. The problem is density. When every other sentence has a parenthetical aside, the prose develops a lurching rhythm: statement — qualification — statement — qualification.
+
+Ration them. One or two per section. When you catch yourself adding a third, cut the weakest of the three.
+
+**Thematic callback chains.**
+Every new scene moment immediately linked to every previous relevant scene, creating a closed loop of self-reference that flatters the prose's own continuity.
+
+> ✗ "The letter had been a leap. The courtyard had been a catch. Carol's kitchen had been a mirror. The concert lobby had been something else."
+
+Real memory doesn't work this way. A person standing in a lobby after a significant moment doesn't compile a retrospective inventory of all previous significant moments and assign each one a metaphor. They feel something. Maybe one previous moment surfaces — the most recent, or the most structurally similar, not the complete set. Resist the urge to connect everything. Let some connections form in the reader's mind without the narrator drawing the lines.
+
+**The omniscient narrator of significance.**
+The narrator always knows exactly what everything means. There is no ambiguity, no uncertainty, no moment where the prose registers something without fully understanding it. Every scene arrives pre-interpreted.
+
+Real literary fiction has moments where the narrator — even a close-third narrator — doesn't fully understand what just happened. The reader feels the weight of a moment before its meaning resolves. The prose can describe what someone felt without explaining why. It can end a scene on an image rather than an insight. "He sat on the edge of his bed in the dark" is a complete ending. It doesn't need "and he understood that he had not come home with a story about something that happened to him."
+
+**Rhythmic monotony.**
+Sentence lengths clustering in the medium-long range. Paragraphs following the same arc: concrete detail → interpretation → significance. Few short sentences. Few genuinely long, winding ones. Everything in the same comfortable middle.
+
+Vary the rhythm deliberately. A three-word sentence after a long paragraph hits differently than another medium clause. A paragraph that is all concrete detail — no interpretation — changes the texture. Silence between the notes.
+
+**Exhaustive significance.**
+Nothing is allowed to be merely what it is. Every gesture, word choice, silence, and physical detail is decoded into meaning. The prose functions as a closed system where everything signifies.
+
+Real lives have waste. Real fiction has details that are just details — the color of a wall, a song on the radio, the way someone folds a napkin — that exist because the world exists, not because the narrator needs them to mean something. These details are what make the significant moments significant: they're the ordinary ground against which meaning becomes visible.
+
+When you catch every detail meaning something, deliberately include some that don't. A sentence about the weather that is just weather. A physical detail that is just a physical detail. Let the reader decide what matters.
+
+**Telling emotional states.**
+"He felt sad." "She was anxious." Show the behavior. Trust the reader.
+
+**Excessive parallelism.**
+"She was X but also Y. He was A yet somehow B." Once or twice is rhetoric. Every paragraph is a tic.
+
+**Metaphor overload.**
+One good metaphor per passage. If every sentence is figurative, none of them land.
+
+**Clinical language in narrative.**
+"His attachment style was anxious-avoidant" belongs in the psychology portrait, not the chronicle. In the chronicle, show the attachment pattern through behavior.
 
 ## Economy
 

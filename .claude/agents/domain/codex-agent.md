@@ -41,7 +41,7 @@ The orchestrator provides:
    - Update `psychology/portrait.md` if the psychological profile shifted meaningfully
    - Update all affected `README.md` indexes
 
-7. **Verify.** Before finishing, check your output against the style guide's anti-patterns. Does the chronicle read as literature? Do world entries pass the self-sufficiency test? Do character entries show behavior, not labels? Are README indexes current?
+7. **Verify.** Before finishing, check your output against the style guide's full anti-pattern catalog — both the structural anti-patterns and the AI voice fingerprints section. Read your own prose as a skeptical reader would. Are you decoding every gesture in real time? Is the narrator explaining what moments mean instead of letting them land? Are sentence rhythms varied, or does everything sit in the same medium-long clause? Is there ordinary detail that doesn't signify, or does every image carry thematic weight? Does the chronicle read as literature? Do world entries pass the self-sufficiency test? Do character entries show behavior, not labels? Are README indexes current?
 
 ## What You Write
 
