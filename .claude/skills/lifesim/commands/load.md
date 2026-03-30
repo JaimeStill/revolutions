@@ -30,7 +30,7 @@ Read the following files to build your understanding of the character's current 
 2. `state/timeline.json` — age, stage, turn count
 3. `state/individual.json` — psychological state (active schemas, current defense tier, dominant self-concept)
 4. `state/network.json` — active relationships and their dynamics
-5. `codex/chronicle.md` — if it exists, read it. This is the narrative record of the character's life and your primary source for the story-so-far summary.
+5. `codex/chronicle/README.md` — if it exists, read the chronicle index. For the story-so-far summary, read the most recent 1-2 chapter files listed in the index. If the full chronicle is needed for context, read all chapter files in order.
 
 ### 4. Activate
 
@@ -46,7 +46,7 @@ Output an orientation that catches the player up on this character's life, then 
 
 **Content — hit these beats in plain language:**
 - **Who this person is** — name, age, where they live, a sentence or two that captures who they are right now
-- **What's happened so far** — the major beats of the character's life, compressed to what matters. Use `codex/chronicle.md` as your primary source. Be specific: names, events, decisions, consequences.
+- **What's happened so far** — the major beats of the character's life, compressed to what matters. Use `codex/chronicle/` as your primary source — read the README index for structure, then individual chapter files for content. Be specific: names, events, decisions, consequences.
 - **Who matters** — the 3-4 most important relationships and their current state
 - **What's unresolved** — active threads, pending decisions, open questions the simulation is sitting on
 

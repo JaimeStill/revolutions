@@ -1,7 +1,7 @@
 ---
 name: lifesim
-description: "Human lifecycle simulator. Use when the user wants to start a new life (/lifesim birth), load a saved simulation (/lifesim load), exit and save (/lifesim exit), view a character's psychology (/lifesim profile), or replay a life story (/lifesim replay). Triggers on: birth, new life, start simulation, load simulation, resume life, exit simulation, save simulation, stop simulation, character profile, psychological portrait, replay life, life story."
-argument-hint: "[birth|load <instance>|exit|profile|replay]"
+description: "Human lifecycle simulator. Use when the user wants to start a new life (/lifesim birth), fork a character's perspective (/lifesim fork), load a saved simulation (/lifesim load), exit and save (/lifesim exit), view a character's psychology (/lifesim profile), or replay a life story (/lifesim replay). Triggers on: birth, new life, start simulation, fork character, load simulation, resume life, exit simulation, save simulation, stop simulation, character profile, psychological portrait, replay life, life story."
+argument-hint: "[birth|fork [instance] [character]|load <instance>|exit|profile|replay]"
 ---
 
 # Lifesim
@@ -14,7 +14,8 @@ Route based on `$ARGUMENTS`:
 
 | Command | File | Purpose |
 |---------|------|---------|
-| `birth` | [commands/birth.md](commands/birth.md) | Create a new simulation instance |
+| `birth` | [commands/birth.md](commands/birth.md) | Create a new simulation instance or generate a character |
+| `fork` | [commands/fork.md](commands/fork.md) | Promote a network character to their own simulation |
 | `load` | [commands/load.md](commands/load.md) | Load an existing simulation instance |
 | `exit` | [commands/exit.md](commands/exit.md) | Snapshot, synthesize codex, commit, and close |
 | `profile` | [commands/profile.md](commands/profile.md) | Render the active character's psychological portrait |
@@ -46,10 +47,12 @@ sim/<instance-name>/
     network.json           # Relationship graph — nodes and edges
     timeline.json          # Age, stage, turn counter
     scene.md               # Current narrative moment
+    characters/            # Generated profiles for non-protagonist characters
     snapshots/             # Full state copies at inflection points + session exits
   codex/                   # Player domain — human-readable projections
     README.md              # Codex index
-    chronicle.md           # Append-only narrative organized by inflection point
+    chronicle/             # Narrative organized by developmental chapters
+      README.md            # Chronicle index — chapter list with links and summaries
     characters/            # One .md per significant network node
       README.md            # Character index
     psychology/            # Character portrait, updated at thresholds

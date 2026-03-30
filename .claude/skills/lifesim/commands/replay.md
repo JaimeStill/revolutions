@@ -10,7 +10,7 @@ If a simulation is active (check `sim/.active`), use that instance. Otherwise, l
 
 ### 2. Read the Codex
 
-Check if `codex/chronicle.md` exists. If it does, this is the primary narrative source — it contains the synthesized story of the life organized by inflection points.
+Check if `codex/chronicle/README.md` exists. If it does, read the index to get the ordered list of chapter files, then read each chapter file in sequence. This is the primary narrative source — the chronicle directory contains the synthesized story of the life organized by developmental chapters.
 
 ### 3. Read State History
 

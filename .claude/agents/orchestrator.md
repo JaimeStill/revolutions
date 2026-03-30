@@ -65,6 +65,7 @@ Evaluate what was decided during discussion and delegate to domain agents. This 
    - **Network agent** — if the action involves other people. Pass: action summary, current `network.json`, discussion context.
    - **World agent** (validation) — if the action tests the possibility space or tonal register. Pass: action summary, `period.md`, `society.json`, `timeline.json`.
    - **Codex agent** — only at inflection points and session exits. Pass: instance path, baseline snapshot path, discussion context, guidance.
+   - **Editor agent** — after the codex agent runs. Pass: instance path, which files the codex agent produced. The editor reviews for literary quality, voice consistency, and factual accuracy against state files. It writes corrections directly to `codex/`.
 
    For domains without changes, no delegation. A quiet internal moment doesn't need the network agent. A socially conventional action doesn't need the world agent.
 
@@ -176,6 +177,7 @@ Not every commit requires all domain agents:
 - **Network agent** — when the action involves people. A solitary moment doesn't need social processing. A confrontation does.
 - **World agent** — when the action tests plausibility or the tonal register. Most actions within an established world don't need validation. Novel, boundary-pushing, or register-shifting actions do.
 - **Codex agent** — only at inflection points and session exits. Never during routine commits.
+- **Editor agent** — whenever the codex agent runs. The editor is the quality gate on literary output. It runs after the codex agent produces content and before the session's work is finalized.
 - **Persona agent** — when a character is a participant in the scene (see Character Embodiment above). Brief appearances and single lines do not need delegation.
 
 Routine commits (quiet moments, time compression, internal reflection) may need no delegation at all — just scene and timeline updates.

@@ -38,6 +38,7 @@ Every state file has exactly one owning domain agent.
 | **network-agent** | sonnet | `network.json` | Social consequence propagation, gatekeepers, normative pressure |
 | **world-agent** | sonnet | `society.json`, `period.md`, `generation.json` | World generation at birth, plausibility validation, tonal register |
 | **codex-agent** | opus | `codex/*` | Literary synthesis from state diffs and discussion context |
+| **editor-agent** | opus | nothing (reads `codex/*`, writes corrections) | Literary quality assurance — voice consistency, factual accuracy, style guide compliance |
 
 ### Actor Agents
 
@@ -61,7 +62,8 @@ The user sets the narrative register. The engine maintains it. Only the user can
 
 | Command | Purpose | Invocation |
 |---------|---------|------------|
-| `/lifesim birth` | World-building session, then initialize character, world, generation. Start a new life. | User |
+| `/lifesim birth` | Create a new simulation instance or generate a character within an existing one. | User |
+| `/lifesim fork` | Promote a network character to their own simulation instance. | User |
 | `/lifesim load <instance>` | Load an existing simulation instance into context. | User |
 | `/lifesim exit` | Validate state, snapshot, synthesize if needed, commit, close simulation. | User |
 | `/lifesim profile` | Render the current psychological state in human-readable form. | User or model |
